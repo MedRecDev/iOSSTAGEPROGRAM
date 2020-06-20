@@ -1,0 +1,49 @@
+PODS:
+  - Alamofire (5.2.1)
+  - IQKeyboardManagerSwift (6.5.5)
+  - MBProgressHUD (1.2.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - PagingKit (1.15.0)
+  - RxSwift (5.1.1)
+  - SDWebImage (5.8.1):
+    - SDWebImage/Core (= 5.8.1)
+  - SDWebImage/Core (5.8.1)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - MBProgressHUD (~> 1.2.0)
+  - Moya/RxSwift
+  - PagingKit
+  - SDWebImage (~> 5.0)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - MBProgressHUD
+    - Moya
+    - PagingKit
+    - RxSwift
+    - SDWebImage
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: 4939bbc4fd42a31719d97f8e53d880798b1d7658
+
+COCOAPODS: 1.8.4
