@@ -50,4 +50,52 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func fetchStateList(pageNumber: Int, stateId: Int, pageSize: Int, completion: @escaping (_ response: [SPState]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.StateList(page_number: pageNumber, state_id: stateId, page_size: pageSize)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let dict = responseJson["data"]
+                    let arrState = dict["data"]
+                    var states: [SPState] = []
+                    for json in arrState.arrayValue {
+                        let state = SPState(fromJson: json)
+                        states.append(state)
+                    }
+                    completion(states, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching state list")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while fetching state list")
+            }
+        }
+    }
+    
+    func fetchVideoList(pageNumber: Int, pageSize: Int, stateId: Int, completion: @escaping (_ response: [SPVideoDetail]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.VideoList(pageNumber: pageNumber, stateId: stateId, pageSize: pageSize)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let dict = responseJson["data"]
+                    let arrVideos = dict["data"]
+                    var videos: [SPVideoDetail] = []
+                    for json in arrVideos.arrayValue {
+                        let state = SPVideoDetail(fromJson: json)
+                        videos.append(state)
+                    }
+                    completion(videos, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching state list")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while fetching video list")
+            }
+        }
+    }
 }

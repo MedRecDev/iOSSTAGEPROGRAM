@@ -9,9 +9,9 @@ target 'StageProgram' do
   pod 'SwiftyJSON','~> 4.0'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 5.0'
-  pod 'PagingKit'
   pod 'Moya/RxSwift'
   pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'Parchment'
   # Pods for StageProgram
 
 end

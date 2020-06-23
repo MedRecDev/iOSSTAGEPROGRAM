@@ -9,15 +9,10 @@
 import Foundation
 import Moya
 
-enum GenderType : String {
-    case Male = "M"
-    case Female = "FM"
-}
-
 enum AppTutorService {
     case TokenCreate(username: String, password: String, client_id: String, grantType : String)
-    case login(email:String, password: String)
-    case sendOTP(phoneNo:String, dialingCode: String)
+    case StateList(page_number: Int, state_id: Int, page_size: Int)
+    case VideoList(pageNumber: Int, stateId: Int, pageSize: Int)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -31,10 +26,10 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         //Post
         case .TokenCreate:
             return "token/create"
-        case .login:
-            return "auth/login"
-        case .sendOTP:
-            return "LogIn/SendOtp"
+        case .StateList:
+            return "state"
+        case .VideoList:
+            return "videos"
         }
     }
     
@@ -42,20 +37,20 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         switch self {
         case .TokenCreate(let username, let password, let client_id, let grantType):
             return ["grant_type" : grantType, "username" : username, "password" : password, "client_id" : client_id]
-        case .login(let email, let password):
-            return ["PhoneNo":email, "Otp":password]
-        case .sendOTP(let phoneNo, let dialingCode):
-            return ["PhoneNo":phoneNo, "DialingCode":dialingCode]
+        case .StateList(let pageNumber, let stateId, let pageSize):
+            return ["page_number" : pageNumber, "state_id" : stateId, "page_size" : pageSize]
+        case .VideoList(let pageNumber, let stateId, let pageSize):
+            return ["page_number" : pageNumber, "state_id" : stateId, "page_size" : pageSize]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate , .login, .sendOTP:
+        case .TokenCreate:
             return .post
-            //        case .getPaymentEarning:
-            //            return .get
+        case .StateList, .VideoList:
+            return .get
         }
     }
     
@@ -64,14 +59,12 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         switch self {
             
         //Post API
-        case  .TokenCreate , .login, .sendOTP:
+        case  .TokenCreate:
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])
-            // Get API with Parameters
-            //        case .getPaymentEarning:
-            //                return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
-            
+        case .StateList, .VideoList:
+                return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
         //Get WithOut Parameters
         default :
             return .requestPlain

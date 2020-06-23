@@ -7,7 +7,7 @@ PODS:
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
-  - PagingKit (1.15.0)
+  - Parchment (2.4.0)
   - RxSwift (5.1.1)
   - SDWebImage (5.8.1):
     - SDWebImage/Core (= 5.8.1)
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 1.2.0)
   - Moya/RxSwift
-  - PagingKit
+  - Parchment
   - SDWebImage (~> 5.0)
   - SwiftyJSON (~> 4.0)
 
@@ -29,7 +29,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - MBProgressHUD
     - Moya
-    - PagingKit
+    - Parchment
     - RxSwift
     - SDWebImage
     - SwiftyJSON
@@ -39,11 +39,11 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
+  Parchment: 002785473861582385db5c6725165353c500198e
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 4939bbc4fd42a31719d97f8e53d880798b1d7658
+PODFILE CHECKSUM: 38f94a49541c01388845b34d6b215a0c1fccbefd
 
 COCOAPODS: 1.8.4

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCVCell" id="gTV-IL-0wX" customClass="VideoCVCell" customModule="StageProgram" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlX-1E-ghM">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFH-t8-C8w">
+                        <rect key="frame" x="0.0" y="100" width="150" height="50"/>
+                        <color key="backgroundColor" red="0.64313725490196072" green="0.0" blue="0.11372549019607843" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="asf-ZE-FLQ"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gki-rt-Yik">
+                        <rect key="frame" x="10" y="108" width="130" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-Gl-Waf">
+                        <rect key="frame" x="10" y="113" width="130" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="8"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gki-rt-Yik" secondAttribute="trailing" constant="10" id="0yz-72-YRB"/>
+                <constraint firstItem="6LP-Gl-Waf" firstAttribute="trailing" secondItem="gki-rt-Yik" secondAttribute="trailing" id="2Iw-OX-SoH"/>
+                <constraint firstItem="nlX-1E-ghM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="85C-bb-KAz"/>
+                <constraint firstItem="gki-rt-Yik" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="GwK-JR-1xn"/>
+                <constraint firstAttribute="trailing" secondItem="rFH-t8-C8w" secondAttribute="trailing" id="Isq-y0-Mfb"/>
+                <constraint firstItem="6LP-Gl-Waf" firstAttribute="leading" secondItem="gki-rt-Yik" secondAttribute="leading" id="JOG-Ga-zgD"/>
+                <constraint firstItem="nlX-1E-ghM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="K9x-tF-3TS"/>
+                <constraint firstItem="6LP-Gl-Waf" firstAttribute="top" secondItem="gki-rt-Yik" secondAttribute="bottom" constant="5" id="RTF-EX-abP"/>
+                <constraint firstAttribute="bottom" secondItem="rFH-t8-C8w" secondAttribute="bottom" id="UTi-1S-KEj"/>
+                <constraint firstItem="gki-rt-Yik" firstAttribute="top" secondItem="rFH-t8-C8w" secondAttribute="top" constant="8" id="Zns-E1-zBo"/>
+                <constraint firstAttribute="bottom" secondItem="nlX-1E-ghM" secondAttribute="bottom" id="bx0-CE-stU"/>
+                <constraint firstItem="rFH-t8-C8w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gc3-Ls-e0r"/>
+                <constraint firstAttribute="trailing" secondItem="nlX-1E-ghM" secondAttribute="trailing" id="hRT-wq-rjV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imgvThmbnail" destination="nlX-1E-ghM" id="65E-uW-c9x"/>
+                <outlet property="lblTitle" destination="gki-rt-Yik" id="4A9-QY-4H8"/>
+                <outlet property="lblViewCount" destination="6LP-Gl-Waf" id="OMj-e0-VKk"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="133"/>
+        </collectionViewCell>
+    </objects>
+</document>

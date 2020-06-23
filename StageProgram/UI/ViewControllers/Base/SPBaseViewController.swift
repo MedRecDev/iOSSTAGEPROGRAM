@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class SPBaseViewController: UIViewController {
 
@@ -19,7 +20,30 @@ class SPBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
+    func showAlert(withTitle title: String = "Stage Program", withMessage message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(ok)
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true)
+        })
+    }
+    
+}
+
+//  For showing & Hiding Progress View
+extension SPBaseViewController {
+    func showProgressHUD() {
+        if let keyWindow = UIApplication.shared.windows.first {
+            MBProgressHUD.showAdded(to: keyWindow, animated: true)
+        }
+    }
+    
+    func hideProgressHUD() {
+        if let keyWindow = UIApplication.shared.windows.first {
+            MBProgressHUD.hide(for: keyWindow, animated: true)
+        }
+    }
 }
