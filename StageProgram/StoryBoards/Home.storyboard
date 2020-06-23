@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Video Feed-->
+        <!--NEWS-->
         <scene sceneID="Ktg-8j-mFg">
             <objects>
                 <viewController id="YEa-he-1d4" sceneMemberID="viewController">
@@ -24,17 +24,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fYC-bb-0Rt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Video Feed" id="3z2-Ya-bZE"/>
+                    <tabBarItem key="tabBarItem" title="NEWS" image="livetv_unselected" selectedImage="livetv_selected" id="3z2-Ya-bZE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUX-LN-RiZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-162" y="609"/>
         </scene>
-        <!--Home-->
+        <!--HOME-->
         <scene sceneID="I3u-kI-Pfy">
             <objects>
                 <navigationController id="NfL-ER-Mry" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="nnQ-5B-4Iq"/>
+                    <tabBarItem key="tabBarItem" title="HOME" image="home_unselected" selectedImage="home_selected" id="nnQ-5B-4Iq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gOH-n3-3vY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -223,6 +223,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.64313725490196072" green="0.0" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="NfL-ER-Mry" kind="relationship" relationship="viewControllers" id="1b0-Aj-L55"/>
@@ -298,6 +299,10 @@
     </scenes>
     <resources>
         <image name="VectorSmartObject" width="65" height="65"/>
+        <image name="home_selected" width="24" height="24"/>
+        <image name="home_unselected" width="24" height="24"/>
+        <image name="livetv_selected" width="26.5" height="24"/>
+        <image name="livetv_unselected" width="26.5" height="24"/>
         <image name="logo" width="160" height="15"/>
     </resources>
 </document>

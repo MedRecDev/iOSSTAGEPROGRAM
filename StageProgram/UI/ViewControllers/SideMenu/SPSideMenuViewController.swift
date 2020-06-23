@@ -12,7 +12,7 @@ class SPSideMenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var sideMenuTitles = ["Profile", "Privacy Policy", "Share", "About us", "Contact us"]
-    var sideMenuImages = ["ic_lock", "ic_lock", "ic_share", "ic_info", "ic_phone"]
+    var sideMenuImages = ["ic_person", "ic_lock", "ic_share", "ic_info", "ic_phone"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "SideMenuTVCell", bundle: nil), forCellReuseIdentifier: "SideMenuTVCell")
