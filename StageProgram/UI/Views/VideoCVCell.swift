@@ -14,11 +14,12 @@ class VideoCVCell: UICollectionViewCell {
     @IBOutlet weak var imgvThmbnail: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblViewCount: UILabel!
-    @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var gradientView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.gradientView.setGradientBackground(topColor: UIColor(red: 164/255, green: 0, blue: 29/255, alpha: 0.55), bottomColor: UIColor(red: 82/255, green: 0, blue: 15/255, alpha: 0.55))
     }
     
     func updateUI(video: SPVideoDetail?) {
@@ -27,7 +28,7 @@ class VideoCVCell: UICollectionViewCell {
                 self.imgvThmbnail.image = image
             }
             self.lblTitle.text = videoDetail.videoTitle
-            self.lblViewCount.text = "Views \(videoDetail.totalViews ?? 0)"
+            self.lblViewCount.text = "Views   \(videoDetail.totalViews ?? 0)"
         }
     }
 }

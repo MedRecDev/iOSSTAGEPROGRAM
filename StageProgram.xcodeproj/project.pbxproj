@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */; };
 		488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46D924A1F921007BE492 /* UIView+Gradient.swift */; };
+		488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */; };
+		488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */; };
+		488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */; };
 		48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C5FEE924A09C0D009141D5 /* UIView+AutoLayout.swift */; };
 		48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48C5FEED24A0A558009141D5 /* Montserrat-Black.otf */; };
 		48C5FEF624A0A558009141D5 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48C5FEEE24A0A558009141D5 /* Montserrat-Regular.otf */; };
@@ -47,6 +50,9 @@
 		3FAF3BF26A6C2D00702897E1 /* Pods-StageProgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StageProgram.release.xcconfig"; path = "Target Support Files/Pods-StageProgram/Pods-StageProgram.release.xcconfig"; sourceTree = "<group>"; };
 		4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		488B46D924A1F921007BE492 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSideMenuViewController.swift; sourceTree = "<group>"; };
+		488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTVCell.swift; sourceTree = "<group>"; };
+		488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTVCell.xib; sourceTree = "<group>"; };
 		48C5FEE924A09C0D009141D5 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		48C5FEED24A0A558009141D5 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
 		48C5FEEE24A0A558009141D5 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
@@ -104,6 +110,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		488B46DB24A207A9007BE492 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		48C5FEEB24A0A523009141D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +155,8 @@
 			children = (
 				48C5FF0124A0AF82009141D5 /* VideoCVCell.swift */,
 				48C5FF0224A0AF82009141D5 /* VideoCVCell.xib */,
+				488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */,
+				488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +164,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				488B46DB24A207A9007BE492 /* SideMenu */,
 				48FD8EB1249DF08100C72683 /* Splash */,
 				48CFDC7424924F8C002DB2DE /* Home */,
 				48CFDC7324924F7B002DB2DE /* Base */,
@@ -362,6 +379,7 @@
 			files = (
 				48C5FEFB24A0A558009141D5 /* Montserrat-ExtraBold.otf in Resources */,
 				48C5FEF924A0A558009141D5 /* Montserrat-Italic.otf in Resources */,
+				488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */,
 				48D1DC2F2490A7A400260F3A /* LoginSignup.storyboard in Resources */,
 				48C5FEF724A0A558009141D5 /* Montserrat-Medium.otf in Resources */,
 				48C5FEFC24A0A558009141D5 /* Montserrat-Light.otf in Resources */,
@@ -431,9 +449,11 @@
 				48D1792C24A086F800B08B70 /* StatesDataManager.swift in Sources */,
 				48D1DC192490A4B100260F3A /* AppDelegate.swift in Sources */,
 				48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */,
+				488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */,
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
+				488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */,
 				48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */,
 				48D1DC1B2490A4B100260F3A /* SceneDelegate.swift in Sources */,
 				48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */,

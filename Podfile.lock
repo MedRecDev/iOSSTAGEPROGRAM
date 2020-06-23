@@ -12,6 +12,7 @@ PODS:
   - SDWebImage (5.8.1):
     - SDWebImage/Core (= 5.8.1)
   - SDWebImage/Core (5.8.1)
+  - SideMenu (6.4.8)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - Parchment
   - SDWebImage (~> 5.0)
+  - SideMenu
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -32,6 +34,7 @@ SPEC REPOS:
     - Parchment
     - RxSwift
     - SDWebImage
+    - SideMenu
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -42,8 +45,9 @@ SPEC CHECKSUMS:
   Parchment: 002785473861582385db5c6725165353c500198e
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
+  SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 38f94a49541c01388845b34d6b215a0c1fccbefd
+PODFILE CHECKSUM: 62df7bc04186a242ebbe58f40b5a1a69b05baeb7
 
 COCOAPODS: 1.8.4

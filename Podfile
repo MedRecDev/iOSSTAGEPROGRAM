@@ -12,6 +12,7 @@ target 'StageProgram' do
   pod 'Moya/RxSwift'
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'Parchment'
+  pod 'SideMenu'
   # Pods for StageProgram
 
 end

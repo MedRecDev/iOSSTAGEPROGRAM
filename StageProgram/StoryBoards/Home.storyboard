@@ -233,5 +233,71 @@
             </objects>
             <point key="canvasLocation" x="-606" y="-119"/>
         </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="W16-Vz-FZR">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuViewController" id="cw8-wR-K9d" customClass="SPSideMenuViewController" customModule="StageProgram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xIm-eU-fCw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7p-rX-OZf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <color key="backgroundColor" red="0.64313725490196072" green="0.0" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="ERJ-Bv-wHm"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorSmartObject" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-ae-df1">
+                                <rect key="frame" x="174.5" y="58" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="WJX-Cv-Zzt"/>
+                                    <constraint firstAttribute="height" constant="65" id="cHY-Jz-NVZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XfL-rt-nh3">
+                                <rect key="frame" x="127" y="143" width="160" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="SoT-bB-CEb"/>
+                                    <constraint firstAttribute="width" constant="160" id="ti7-Mm-Lhu"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PeN-io-SF5">
+                                <rect key="frame" x="0.0" y="208" width="414" height="654"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cw8-wR-K9d" id="5kj-wA-6Jv"/>
+                                    <outlet property="delegate" destination="cw8-wR-K9d" id="Qu7-Cg-oHr"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hJG-ae-df1" firstAttribute="top" secondItem="h7p-rX-OZf" secondAttribute="bottom" constant="-30" id="4Iq-nI-Ig1"/>
+                            <constraint firstItem="68d-Ew-i23" firstAttribute="bottom" secondItem="PeN-io-SF5" secondAttribute="bottom" id="4rE-ON-ZBk"/>
+                            <constraint firstItem="PeN-io-SF5" firstAttribute="leading" secondItem="68d-Ew-i23" secondAttribute="leading" id="BQV-se-Kzf"/>
+                            <constraint firstItem="hJG-ae-df1" firstAttribute="centerX" secondItem="xIm-eU-fCw" secondAttribute="centerX" id="Ghw-f1-8Lc"/>
+                            <constraint firstItem="XfL-rt-nh3" firstAttribute="centerX" secondItem="xIm-eU-fCw" secondAttribute="centerX" id="OcT-N7-TMZ"/>
+                            <constraint firstItem="h7p-rX-OZf" firstAttribute="top" secondItem="xIm-eU-fCw" secondAttribute="top" id="S7B-8a-E32"/>
+                            <constraint firstItem="XfL-rt-nh3" firstAttribute="top" secondItem="hJG-ae-df1" secondAttribute="bottom" constant="20" id="XHV-pn-BsB"/>
+                            <constraint firstItem="68d-Ew-i23" firstAttribute="trailing" secondItem="h7p-rX-OZf" secondAttribute="trailing" id="c6e-Ss-Mha"/>
+                            <constraint firstItem="68d-Ew-i23" firstAttribute="trailing" secondItem="PeN-io-SF5" secondAttribute="trailing" id="gVB-lA-CH8"/>
+                            <constraint firstItem="h7p-rX-OZf" firstAttribute="leading" secondItem="68d-Ew-i23" secondAttribute="leading" id="jB4-cJ-MFe"/>
+                            <constraint firstItem="PeN-io-SF5" firstAttribute="top" secondItem="XfL-rt-nh3" secondAttribute="bottom" constant="50" id="xML-Im-0Qi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="68d-Ew-i23"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PeN-io-SF5" id="w0d-OT-wlh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHS-iS-zzi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="-119"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="VectorSmartObject" width="65" height="65"/>
+        <image name="logo" width="160" height="15"/>
+    </resources>
 </document>

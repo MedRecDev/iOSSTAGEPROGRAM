@@ -14,6 +14,7 @@ class SPHomeViewController: SPBaseViewController {
     var pagingViewController : PagingViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.handleLeftBarButtonItem(leftButtonType: .Menu)
         self.fetchStateList()
     }
     

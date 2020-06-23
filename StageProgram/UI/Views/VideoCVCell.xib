@@ -64,6 +64,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="gradientView" destination="rFH-t8-C8w" id="o6i-8C-zUx"/>
                 <outlet property="imgvThmbnail" destination="nlX-1E-ghM" id="65E-uW-c9x"/>
                 <outlet property="lblTitle" destination="gki-rt-Yik" id="4A9-QY-4H8"/>
                 <outlet property="lblViewCount" destination="6LP-Gl-Waf" id="OMj-e0-VKk"/>
