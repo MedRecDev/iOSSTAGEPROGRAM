@@ -11,6 +11,7 @@ import VersaPlayer
 
 class SPVideoDetailViewController: SPBaseViewController {
 
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var versaPlayerControls: VersaPlayerControls!
     @IBOutlet weak var versaPlayer: VersaPlayerView!
@@ -30,6 +31,7 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         self.tableView.register(UINib(nibName: "SuggestedVideoTVCell", bundle: nil), forCellReuseIdentifier: "SuggestedVideoTVCell")
+        self.tableView.separatorStyle = .none
         
         self.videoDetailDM.videoDetail = self.videoDetail
         self.fetchSuggestedVideos()
@@ -63,6 +65,11 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.videoDetailDM.fetchSuggestedVideos { (success, errorMessage) in
             self.hideProgressHUD()
             if success {
+                if let videos = self.videoDetailDM.suggestedVideos {
+                    self.tableViewHeightConstraint.constant = CGFloat(videos.count) * 110
+                    self.view.layoutIfNeeded()
+                    self.view.setNeedsLayout()
+                }
                 self.tableView.reloadData()
             }
         }
@@ -99,5 +106,9 @@ extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelega
         let video = self.videoDetailDM.suggestedVideos![indexPath.row]
         cell.updateUI(videoDetail: video)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
