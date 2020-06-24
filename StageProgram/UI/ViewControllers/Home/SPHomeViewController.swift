@@ -18,6 +18,17 @@ class SPHomeViewController: SPBaseViewController {
         self.fetchStateList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let videoDetailVC = segue.destination as? SPVideoDetailViewController, let videoDetail = sender as? SPVideoDetail  {
+            videoDetailVC.videoDetail = videoDetail
+        }
+    }
+    
     func fetchStateList() {
         self.showProgressHUD()
         StatesDataManager.shared.fetchStateList { (succsess, errorMessage) in
@@ -76,5 +87,6 @@ extension SPHomeViewController : PagingViewControllerDataSource {
 extension SPHomeViewController : VideoListControllerDelegate {
     func videoTapped(video: SPVideoDetail) {
         print("Video Tapped with id : \(video.videoSourceId ?? 0)")
+        self.performSegue(withIdentifier: "showVideoDetailSceneSegue", sender: video)
     }
 }

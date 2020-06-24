@@ -25,6 +25,9 @@
 		48C5FF0024A0AA20009141D5 /* SPVideoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C5FEFF24A0AA20009141D5 /* SPVideoDetail.swift */; };
 		48C5FF0324A0AF82009141D5 /* VideoCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C5FF0124A0AF82009141D5 /* VideoCVCell.swift */; };
 		48C5FF0424A0AF82009141D5 /* VideoCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C5FF0224A0AF82009141D5 /* VideoCVCell.xib */; };
+		48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */; };
+		48C9D53024A352B400555C4B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52F24A352B400555C4B /* DateExtension.swift */; };
+		48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */; };
 		48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48CFDC6824923B68002DB2DE /* Home.storyboard */; };
 		48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */; };
 		48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */; };
@@ -36,6 +39,8 @@
 		48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC212490A4B200260F3A /* Assets.xcassets */; };
 		48D1DC252490A4B200260F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC232490A4B200260F3A /* LaunchScreen.storyboard */; };
 		48D1DC2F2490A7A400260F3A /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */; };
+		48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */; };
+		48E3020A24A37C360019C1B4 /* SuggestedVideoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */; };
 		48E3E691249E4E77005CE6CB /* SPState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3E690249E4E77005CE6CB /* SPState.swift */; };
 		48FD8EA6249DE72400C72683 /* SPVideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EA5249DE72400C72683 /* SPVideoListViewController.swift */; };
 		48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EA9249DEB0100C72683 /* ServerProvider.swift */; };
@@ -66,6 +71,9 @@
 		48C5FEFF24A0AA20009141D5 /* SPVideoDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPVideoDetail.swift; sourceTree = "<group>"; };
 		48C5FF0124A0AF82009141D5 /* VideoCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCVCell.swift; sourceTree = "<group>"; };
 		48C5FF0224A0AF82009141D5 /* VideoCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoCVCell.xib; sourceTree = "<group>"; };
+		48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVideoDetailViewController.swift; sourceTree = "<group>"; };
+		48C9D52F24A352B400555C4B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailDataManager.swift; sourceTree = "<group>"; };
 		48CFDC6824923B68002DB2DE /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPHomeViewController.swift; sourceTree = "<group>"; };
 		48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPBaseViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +87,8 @@
 		48D1DC242490A4B200260F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D1DC262490A4B200260F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
+		48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedVideoTVCell.swift; sourceTree = "<group>"; };
+		48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedVideoTVCell.xib; sourceTree = "<group>"; };
 		48E3E690249E4E77005CE6CB /* SPState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPState.swift; sourceTree = "<group>"; };
 		48FD8EA5249DE72400C72683 /* SPVideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVideoListViewController.swift; sourceTree = "<group>"; };
 		48FD8EA9249DEB0100C72683 /* ServerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProvider.swift; sourceTree = "<group>"; };
@@ -141,6 +151,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		48C9D52C24A3430C00555C4B /* VideoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */,
+			);
+			path = VideoDetails;
+			sourceTree = "<group>";
+		};
 		48CFDC6A24923B7D002DB2DE /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +175,8 @@
 				48C5FF0224A0AF82009141D5 /* VideoCVCell.xib */,
 				488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */,
 				488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */,
+				48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */,
+				48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +184,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48C9D52C24A3430C00555C4B /* VideoDetails */,
 				488B46DB24A207A9007BE492 /* SideMenu */,
 				48FD8EB1249DF08100C72683 /* Splash */,
 				48CFDC7424924F8C002DB2DE /* Home */,
@@ -188,6 +209,7 @@
 				48FD8EB4249E02D500C72683 /* UserDataManager.swift */,
 				48D1792B24A086F800B08B70 /* StatesDataManager.swift */,
 				48C5FEFD24A0A6C2009141D5 /* VideoDataManager.swift */,
+				48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */,
 			);
 			path = DataAccessLayer;
 			sourceTree = "<group>";
@@ -215,6 +237,7 @@
 				48C5FEE924A09C0D009141D5 /* UIView+AutoLayout.swift */,
 				48CFDC78249250D8002DB2DE /* UIColorExtensions.swift */,
 				488B46D924A1F921007BE492 /* UIView+Gradient.swift */,
+				48C9D52F24A352B400555C4B /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +405,7 @@
 				488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */,
 				48D1DC2F2490A7A400260F3A /* LoginSignup.storyboard in Resources */,
 				48C5FEF724A0A558009141D5 /* Montserrat-Medium.otf in Resources */,
+				48E3020A24A37C360019C1B4 /* SuggestedVideoTVCell.xib in Resources */,
 				48C5FEFC24A0A558009141D5 /* Montserrat-Light.otf in Resources */,
 				48D1DC252490A4B200260F3A /* LaunchScreen.storyboard in Resources */,
 				48C5FEF824A0A558009141D5 /* Montserrat-SemiBold.otf in Resources */,
@@ -445,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E3E691249E4E77005CE6CB /* SPState.swift in Sources */,
+				48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */,
 				4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */,
 				48D1792C24A086F800B08B70 /* StatesDataManager.swift in Sources */,
 				48D1DC192490A4B100260F3A /* AppDelegate.swift in Sources */,
@@ -454,9 +479,12 @@
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
 				488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */,
+				48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */,
+				48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */,
 				48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */,
 				48D1DC1B2490A4B100260F3A /* SceneDelegate.swift in Sources */,
 				48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */,
+				48C9D53024A352B400555C4B /* DateExtension.swift in Sources */,
 				48C5FEFE24A0A6C2009141D5 /* VideoDataManager.swift in Sources */,
 				48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */,
 				48C5FF0324A0AF82009141D5 /* VideoCVCell.swift in Sources */,

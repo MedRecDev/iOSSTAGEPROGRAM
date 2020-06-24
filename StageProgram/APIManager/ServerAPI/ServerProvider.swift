@@ -13,6 +13,7 @@ enum AppTutorService {
     case TokenCreate(username: String, password: String, client_id: String, grantType : String)
     case StateList(page_number: Int, state_id: Int, page_size: Int)
     case VideoList(pageNumber: Int, stateId: Int, pageSize: Int)
+    case SuggestionList(videoId: Int)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -30,6 +31,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "state"
         case .VideoList:
             return "videos"
+        case .SuggestionList:
+            return "videos/suggestion"
         }
     }
     
@@ -41,6 +44,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["page_number" : pageNumber, "state_id" : stateId, "page_size" : pageSize]
         case .VideoList(let pageNumber, let stateId, let pageSize):
             return ["page_number" : pageNumber, "state_id" : stateId, "page_size" : pageSize]
+        case .SuggestionList(let videoId):
+            return ["video_id": videoId]
         }
     }
     
@@ -49,7 +54,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         switch self {
         case .TokenCreate:
             return .post
-        case .StateList, .VideoList:
+        case .StateList, .VideoList, .SuggestionList:
             return .get
         }
     }
@@ -63,7 +68,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])
-        case .StateList, .VideoList:
+        case .StateList, .VideoList, .SuggestionList:
                 return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
         //Get WithOut Parameters
         default :

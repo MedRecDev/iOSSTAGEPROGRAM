@@ -13,6 +13,7 @@ target 'StageProgram' do
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'Parchment'
   pod 'SideMenu'
+  pod 'VersaPlayer'
   # Pods for StageProgram
 
 end

@@ -98,4 +98,27 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func fetchSuggestionsList(videoId: Int, completion: @escaping (_ response: [SPVideoDetail]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.SuggestionList(videoId: videoId)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let arrVideos = responseJson["data"]
+                    var videos: [SPVideoDetail] = []
+                    for json in arrVideos.arrayValue {
+                        let state = SPVideoDetail(fromJson: json)
+                        videos.append(state)
+                    }
+                    completion(videos, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching state list")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while fetching video list")
+            }
+        }
+    }
 }
