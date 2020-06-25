@@ -42,6 +42,10 @@
 		48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */; };
 		48E3020A24A37C360019C1B4 /* SuggestedVideoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */; };
 		48E3E691249E4E77005CE6CB /* SPState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3E690249E4E77005CE6CB /* SPState.swift */; };
+		48EA4C5F24A4631900164B53 /* SPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA4C5E24A4631900164B53 /* SPLoginViewController.swift */; };
+		48EA4C6124A47B6F00164B53 /* SPRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA4C6024A47B6F00164B53 /* SPRegisterViewController.swift */; };
+		48EA4C6324A489DF00164B53 /* SPForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA4C6224A489DF00164B53 /* SPForgotPasswordViewController.swift */; };
+		48EA4C6524A4961300164B53 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA4C6424A4961300164B53 /* SPUser.swift */; };
 		48FD8EA6249DE72400C72683 /* SPVideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EA5249DE72400C72683 /* SPVideoListViewController.swift */; };
 		48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EA9249DEB0100C72683 /* ServerProvider.swift */; };
 		48FD8EAE249DEB0100C72683 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EAB249DEB0100C72683 /* NetworkAdapter.swift */; };
@@ -90,6 +94,10 @@
 		48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedVideoTVCell.swift; sourceTree = "<group>"; };
 		48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedVideoTVCell.xib; sourceTree = "<group>"; };
 		48E3E690249E4E77005CE6CB /* SPState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPState.swift; sourceTree = "<group>"; };
+		48EA4C5E24A4631900164B53 /* SPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPLoginViewController.swift; sourceTree = "<group>"; };
+		48EA4C6024A47B6F00164B53 /* SPRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRegisterViewController.swift; sourceTree = "<group>"; };
+		48EA4C6224A489DF00164B53 /* SPForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		48EA4C6424A4961300164B53 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		48FD8EA5249DE72400C72683 /* SPVideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVideoListViewController.swift; sourceTree = "<group>"; };
 		48FD8EA9249DEB0100C72683 /* ServerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProvider.swift; sourceTree = "<group>"; };
 		48FD8EAB249DEB0100C72683 /* NetworkAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48EA4C5D24A462F100164B53 /* LoginSignUp */,
 				48C9D52C24A3430C00555C4B /* VideoDetails */,
 				488B46DB24A207A9007BE492 /* SideMenu */,
 				48FD8EB1249DF08100C72683 /* Splash */,
@@ -300,10 +309,21 @@
 		48E3E68F249E4E56005CE6CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				48EA4C6424A4961300164B53 /* SPUser.swift */,
 				48C5FEFF24A0AA20009141D5 /* SPVideoDetail.swift */,
 				48E3E690249E4E77005CE6CB /* SPState.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		48EA4C5D24A462F100164B53 /* LoginSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				48EA4C5E24A4631900164B53 /* SPLoginViewController.swift */,
+				48EA4C6024A47B6F00164B53 /* SPRegisterViewController.swift */,
+				48EA4C6224A489DF00164B53 /* SPForgotPasswordViewController.swift */,
+			);
+			path = LoginSignUp;
 			sourceTree = "<group>";
 		};
 		48FD8EA7249DEAC300C72683 /* APIManager */ = {
@@ -468,14 +488,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EA4C6124A47B6F00164B53 /* SPRegisterViewController.swift in Sources */,
 				48E3E691249E4E77005CE6CB /* SPState.swift in Sources */,
 				48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */,
 				4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */,
 				48D1792C24A086F800B08B70 /* StatesDataManager.swift in Sources */,
 				48D1DC192490A4B100260F3A /* AppDelegate.swift in Sources */,
 				48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */,
+				48EA4C6524A4961300164B53 /* SPUser.swift in Sources */,
 				488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */,
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,
+				48EA4C6324A489DF00164B53 /* SPForgotPasswordViewController.swift in Sources */,
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
 				488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */,
@@ -492,6 +515,7 @@
 				48FD8EB5249E02D500C72683 /* UserDataManager.swift in Sources */,
 				48FD8EAE249DEB0100C72683 /* NetworkAdapter.swift in Sources */,
 				48CFDC79249250D8002DB2DE /* UIColorExtensions.swift in Sources */,
+				48EA4C5F24A4631900164B53 /* SPLoginViewController.swift in Sources */,
 				48FD8EA6249DE72400C72683 /* SPVideoListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,13 +662,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medrec.StageProgram;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rajeev.stageshow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -657,13 +682,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.medrec.StageProgram;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rajeev.stageshow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

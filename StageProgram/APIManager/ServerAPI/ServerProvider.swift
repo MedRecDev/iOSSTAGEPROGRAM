@@ -14,6 +14,10 @@ enum AppTutorService {
     case StateList(page_number: Int, state_id: Int, page_size: Int)
     case VideoList(pageNumber: Int, stateId: Int, pageSize: Int)
     case SuggestionList(videoId: Int)
+    case UserLogin(email: String, password: String)
+    case UserRegister(firstName: String, lastName: String, email: String, password: String, phoneNo: String)
+    case VideoLike(videoId: Int, userToken: String)
+    case VideoDisLike(videoId: Int, userToken: String)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -33,6 +37,14 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "videos"
         case .SuggestionList:
             return "videos/suggestion"
+        case .UserLogin:
+            return "account/login"
+        case .UserRegister:
+            return "account/register"
+        case .VideoLike:
+            return "videos/like"
+        case .VideoDisLike:
+            return "videos/unlike"
         }
     }
     
@@ -46,14 +58,24 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["page_number" : pageNumber, "state_id" : stateId, "page_size" : pageSize]
         case .SuggestionList(let videoId):
             return ["video_id": videoId]
+        case .UserLogin(let email, let password):
+            return ["email": email, "password": password]
+        case .UserRegister(let firstName, let lastName, let email, let password, let phoneNo):
+            return ["first_name": firstName, "last_name": lastName, "email": email, "password": password, "contact_no": phoneNo]
+        case .VideoLike(let videoId, let userToken):
+            return ["video_id": videoId, "user_token": userToken]
+        case .VideoDisLike(let videoId, let userToken):
+            return ["video_id": videoId, "user_token": userToken]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate:
+        case .TokenCreate, .UserLogin, .UserRegister:
             return .post
+        case .VideoLike, .VideoDisLike:
+            return .put
         case .StateList, .VideoList, .SuggestionList:
             return .get
         }
@@ -64,7 +86,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         switch self {
             
         //Post API
-        case  .TokenCreate:
+        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike:
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])

@@ -38,6 +38,11 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.updateUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.versaPlayer.pause()
+    }
+    
     func updateUI() {
         if let url = URL(string: self.videoDetail.mediaUrl) {
             self.versaPlayer.use(controls: self.versaPlayerControls)
@@ -81,11 +86,41 @@ class SPVideoDetailViewController: SPBaseViewController {
     }
     
     @IBAction func likeTapped(_ sender: Any) {
-        
+        if let _ = UserDataManager.shared.currentUser {
+            self.showProgressHUD()
+            self.videoDetailDM.videoLike { (likeCount, errorMessage) in
+                self.hideProgressHUD()
+                if let likeCount = likeCount {
+                    self.lblLikeCount.text = "\(likeCount)"
+                } else if let msg = errorMessage {
+                    self.showAlert(withMessage: msg)
+                }
+            }
+        } else {
+            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func dislikeTapped(_ sender: Any) {
-        
+        if let _ = UserDataManager.shared.currentUser {
+            self.showProgressHUD()
+            self.videoDetailDM.videoDisLike { (likeCount, errorMessage) in
+                self.hideProgressHUD()
+                if let unLikeCount = likeCount {
+                    self.lblDislikeCount.text = "\(unLikeCount)"
+                } else if let msg = errorMessage {
+                    self.showAlert(withMessage: msg)
+                }
+            }
+        } else {
+            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func shareTapped(_ sender: Any) {

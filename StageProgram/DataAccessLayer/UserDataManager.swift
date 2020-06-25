@@ -10,7 +10,9 @@ import UIKit
 import SwiftyJSON
 
 class UserDataManager: NSObject {
+    
     static let shared = UserDataManager()
+    var currentUser : SPUser?
     
     private override init() {
         //  Private init
@@ -25,4 +27,16 @@ class UserDataManager: NSObject {
             }
         }
     }
+    
+    func userLogin(email: String, password: String, completion:@escaping (Bool, String?) -> Void) {
+        NetworkAdapter().userLogin(email: email, password: password) { (user, errorMessage) in
+            if let user = user {
+                self.currentUser = user
+                completion(true, nil)
+            } else  {
+                completion(false, errorMessage)
+            }
+        }
+    }
+    
 }

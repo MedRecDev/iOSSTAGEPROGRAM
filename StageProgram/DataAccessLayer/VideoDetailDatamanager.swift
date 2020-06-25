@@ -24,4 +24,22 @@ class VideoDetailDataManager: NSObject {
             }
         }
     }
+    
+    func videoLike(completion:@escaping (Int?, String?) -> Void) {
+        let videoId : Int = self.videoDetail.videoSourceId
+        if let userToken = UserDataManager.shared.currentUser?.userToken {
+            NetworkAdapter().videoLike(videoId: videoId, userToken: userToken) { (likeCount, errorMessage) in
+                completion(likeCount, errorMessage)
+            }
+        }
+    }
+    
+    func videoDisLike(completion:@escaping (Int?, String?) -> Void) {
+        let videoId : Int = self.videoDetail.videoSourceId
+        if let userToken = UserDataManager.shared.currentUser?.userToken {
+            NetworkAdapter().videoUnLike(videoId: videoId, userToken: userToken) { (unlikeCount, errorMessage) in
+                completion(unlikeCount, errorMessage)
+            }
+        }
+    }
 }

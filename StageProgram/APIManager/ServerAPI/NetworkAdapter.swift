@@ -121,4 +121,94 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func userLogin(email: String, password: String, completion: @escaping (_ response: SPUser?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.UserLogin(email: email, password: password)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let _ = responseJson["data"].dictionary {
+                        let userJson = responseJson["data"]
+                        let user = SPUser(fromJson: userJson)
+                        completion(user, nil)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while user login")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while user login")
+            }
+        }
+    }
+    
+    func userRegister(email: String, password: String, firstName: String, lastName: String, phoneNo: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.UserRegister(firstName: firstName, lastName: lastName, email: email, password: password, phoneNo: phoneNo)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let userToken = responseJson["data"].string, let errorMessage = responseJson["message"].string {
+                        completion(userToken, errorMessage)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while user register")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while user register")
+            }
+        }
+    }
+    
+    func videoLike(videoId: Int, userToken: String, completion: @escaping (_ response: Int?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.VideoLike(videoId: videoId, userToken: userToken)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let data = responseJson["data"].dictionary {
+                        completion(data["like_count"]?.intValue, nil)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while video like")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while video like")
+            }
+        }
+    }
+    
+    func videoUnLike(videoId: Int, userToken: String, completion: @escaping (_ response: Int?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.VideoDisLike(videoId: videoId, userToken: userToken)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let data = responseJson["data"].dictionary {
+                        completion(data["unlike_count"]?.intValue, nil)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while video unlike")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while video unlike")
+            }
+        }
+    }
 }
