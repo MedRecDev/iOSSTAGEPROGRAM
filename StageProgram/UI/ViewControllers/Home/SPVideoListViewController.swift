@@ -24,8 +24,9 @@ class SPVideoListViewController: SPBaseViewController {
     @IBOutlet weak var gradientView: UIView!
     
     var state: SPState?
-    var videoManager : VideoDataManager?
+    var videoManager : VideoDataManager = VideoDataManager()
     var delegate : VideoListControllerDelegate?
+    var isLoading : Bool = false
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 2,
         minimumInteritemSpacing: 10,
@@ -36,8 +37,7 @@ class SPVideoListViewController: SPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
-        self.videoManager = VideoDataManager()
-        self.videoManager?.stateId = state!.stateId
+        self.videoManager.stateId = state!.stateId
         self.fetchVideoList()
     }
     
@@ -55,7 +55,7 @@ class SPVideoListViewController: SPBaseViewController {
         
     func fetchVideoList() {
         self.showProgressHUD()
-        self.videoManager?.fetchVideoList(completion: { (success, errorMessage) in
+        self.videoManager.fetchVideoList(completion: { (success, errorMessage) in
             self.hideProgressHUD()
             if success {
                 self.updateTopView()
@@ -68,7 +68,7 @@ class SPVideoListViewController: SPBaseViewController {
     }
     
     func updateTopView() {
-        if let videoDetail = self.videoManager?.videos?.first, self.state?.stateId == 0 {
+        if let videoDetail = self.videoManager.videos.first, self.state?.stateId == 0 {
             self.topView.isHidden = false
             self.imgvThumbnail.sd_setImage(with: URL(string: videoDetail.mainThumbnailUrl)) { (image, error, cacheType, url) in
                 self.imgvThumbnail.image = image
@@ -79,9 +79,22 @@ class SPVideoListViewController: SPBaseViewController {
         }
     }
     
+    func loadMoreData() {
+        if !self.isLoading {
+            self.isLoading = true;
+            self.videoManager.fetchVideoList(completion: { (success, errorMessage) in
+                if success {
+                    self.updateTopView()
+                    self.collectionView.reloadData()
+                    self.isLoading = false
+                }
+            })
+        }
+    }
+    
     //MARK: IBActions
     @IBAction func topViewTapped(_ sender: Any) {
-        if let videoDetail = self.videoManager?.videos?.first, self.state?.stateId == 0 {
+        if let videoDetail = self.videoManager.videos.first, self.state?.stateId == 0 {
             self.delegate?.videoTapped(video: videoDetail)
         }
     }
@@ -90,10 +103,10 @@ class SPVideoListViewController: SPBaseViewController {
 
 extension SPVideoListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let videos = self.videoManager?.videos, self.state?.stateId != 0 {
-            return videos.count
-        } else if let videos = self.videoManager?.videos, self.state?.stateId == 0 {
-            return videos.count - 1
+        if self.state?.stateId != 0 {
+            return self.videoManager.videos.count
+        } else if self.state?.stateId == 0 {
+            return self.videoManager.videos.count - 1
         }
         return 0
     }
@@ -101,10 +114,10 @@ extension SPVideoListViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCVCell", for: indexPath) as! VideoCVCell
         if self.state?.stateId == 0 {
-            let videoDetail = self.videoManager?.videos?[indexPath.item + 1]
+            let videoDetail = self.videoManager.videos[indexPath.item + 1]
             cell.updateUI(video: videoDetail)
         } else {
-            let videoDetail = self.videoManager?.videos?[indexPath.item]
+            let videoDetail = self.videoManager.videos[indexPath.item]
             cell.updateUI(video: videoDetail)
         }
         return cell
@@ -113,10 +126,27 @@ extension SPVideoListViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var videoDetail : SPVideoDetail!
         if self.state?.stateId == 0 {
-            videoDetail = self.videoManager?.videos?[indexPath.item + 1]
+            videoDetail = self.videoManager.videos[indexPath.item + 1]
         } else {
-            videoDetail = self.videoManager?.videos?[indexPath.item]
+            videoDetail = self.videoManager.videos[indexPath.item]
         }
         self.delegate?.videoTapped(video: videoDetail)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row >= self.videoManager.videos.count - 4 && !self.isLoading  {
+            self.loadMoreData()
+        }
+    }
 }
+
+//extension SPVideoListViewController : UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoading {
+//            loadMoreData()
+//        }
+//    }
+//}

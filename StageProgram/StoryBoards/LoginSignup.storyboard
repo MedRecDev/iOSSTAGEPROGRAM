@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="Zla-9K-Lao">
-                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
+                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="Kop-lR-4RC"/>
                                     <constraint firstAttribute="height" constant="193" id="vEO-lg-ZBs"/>
@@ -97,7 +97,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4r-0D-S8r">
-                                <rect key="frame" x="271" y="403" width="118" height="27"/>
+                                <rect key="frame" x="284" y="403" width="105" height="26"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                 <state key="normal" title="Forgot Password ? ">
                                     <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,7 +107,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-SN-ArC">
-                                <rect key="frame" x="20" y="471" width="374" height="45"/>
+                                <rect key="frame" x="20" y="470" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="oKw-W3-iyZ"/>
@@ -121,16 +121,16 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAa-KB-j9X">
-                                <rect key="frame" x="89" y="536" width="236" height="27"/>
+                                <rect key="frame" x="102.5" y="535" width="209.5" height="26"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q3-rb-Zya">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="27"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="134.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.54117647058823526" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-iS-NZh">
-                                        <rect key="frame" x="155" y="0.0" width="81" height="27"/>
+                                        <rect key="frame" x="136.5" y="0.0" width="73" height="26"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <state key="normal" title="Register Now">
                                             <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="6T5-5B-u9M">
-                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
+                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="193" id="Wvi-bz-pPa"/>
                                     <constraint firstAttribute="width" constant="187" id="i6m-FG-vDN"/>
@@ -303,16 +303,16 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEh-kM-9pu">
-                                                <rect key="frame" x="90.5" y="405" width="233.5" height="27"/>
+                                                <rect key="frame" x="104" y="405" width="206" height="27"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nja-r8-VP1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="27"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="146" height="27"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" red="0.53725490200000003" green="0.54117647059999996" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hme-nH-mNY">
-                                                        <rect key="frame" x="168.5" y="0.0" width="65" height="27"/>
+                                                        <rect key="frame" x="148" y="0.0" width="58" height="27"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Login Now">
                                                             <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -412,7 +412,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-dl-Py8">
-                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
+                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="TVg-E0-eEG"/>
                                     <constraint firstAttribute="height" constant="193" id="kaf-pl-aTZ"/>
@@ -445,13 +445,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-4D-QCf">
-                                <rect key="frame" x="104" y="258" width="206.5" height="26"/>
+                                <rect key="frame" x="115.5" y="258" width="183.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="21"/>
                                 <color key="textColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPY-Tg-AdI">
-                                <rect key="frame" x="20" y="319" width="374" height="45"/>
+                                <rect key="frame" x="20" y="317.5" width="374" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="F78-dC-w91"/>
                                 </constraints>
@@ -463,7 +463,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmx-Fd-ds9">
-                                <rect key="frame" x="20" y="394" width="374" height="45"/>
+                                <rect key="frame" x="20" y="392.5" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="gor-0F-cWU"/>
