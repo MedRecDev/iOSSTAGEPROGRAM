@@ -63,5 +63,3 @@ class SPLoginViewController: SPBaseViewController {
         self.performSegue(withIdentifier: "showRegisterSegue", sender: nil)
     }
 }
-
-

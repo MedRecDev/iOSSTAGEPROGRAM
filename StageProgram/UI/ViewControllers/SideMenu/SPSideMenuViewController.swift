@@ -11,8 +11,8 @@ import UIKit
 class SPSideMenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var sideMenuTitles = ["Profile", "Privacy Policy", "Share", "About us", "Contact us"]
-    var sideMenuImages = ["ic_person", "ic_lock", "ic_share", "ic_info", "ic_phone"]
+    var sideMenuTitles = ["Profile", "Privacy Policy", "Share", "Feedback", "About us", "Contact us"]
+    var sideMenuImages = ["ic_person", "ic_lock", "ic_share", "ic_info", "ic_info", "ic_phone"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "SideMenuTVCell", bundle: nil), forCellReuseIdentifier: "SideMenuTVCell")
@@ -34,5 +34,9 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }

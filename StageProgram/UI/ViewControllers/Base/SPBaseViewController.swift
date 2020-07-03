@@ -16,6 +16,10 @@ enum LeftBarButtonType {
     case RedBack
 }
 
+enum RightBarButtonType {
+    case Upload
+    case Profile
+}
 
 class SPBaseViewController: UIViewController {
 
@@ -39,6 +43,47 @@ class SPBaseViewController: UIViewController {
         }else if leftButtonType == .WhiteBack {
              let image = UIImage(named: "back")?.withRenderingMode(.alwaysOriginal)
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moveBack))
+        }
+    }
+    
+    func handleRightBarButtonItem(rightButtonTypes: [RightBarButtonType]) {
+        var barButtonItems : [UIBarButtonItem] = []
+        for buttonType in rightButtonTypes {
+            if buttonType == .Upload {
+                let image = UIImage(named: "ic_file_upload")?.withRenderingMode(.alwaysOriginal)
+                let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(uploadVideo))
+                barButtonItems.append(barButton)
+            } else if buttonType == .Profile {
+                let rightButton = UIButton(frame: CGRect(x: 0, y: 20, width: 30, height: 30))
+                let placeholderImage = UIImage(named: "ic_person")
+                rightButton.setBackgroundImage(placeholderImage, for: .normal)
+                rightButton.addTarget(self, action: #selector(didTapOnUser), for: .touchUpInside)
+                rightButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+                rightButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+                let rightBarButtomItem = UIBarButtonItem(customView: rightButton)
+                barButtonItems.append(rightBarButtomItem)
+            }
+        }
+        navigationItem.rightBarButtonItems = barButtonItems
+    }
+    
+    @objc func didTapOnUser() {
+        
+    }
+    
+    @objc func uploadVideo() {
+        if let _ = UserDataManager.shared.currentUser {
+            //        self.performSegue(withIdentifier: "showUploadScreenSegue", sender: nil)
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let videoUploadVC = storyboard.instantiateViewController(withIdentifier: "VideoUploadViewController")
+            videoUploadVC.modalPresentationStyle = .fullScreen
+//            self.navigationController?.pushViewController(videoUploadVC, animated: true)
+            self.present(videoUploadVC, animated: true, completion: nil)
+        } else {
+            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true, completion: nil)
         }
     }
     

@@ -15,6 +15,7 @@ class SPHomeViewController: SPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.handleLeftBarButtonItem(leftButtonType: .Menu)
+        self.handleRightBarButtonItem(rightButtonTypes: [.Profile, .Upload])
         self.fetchStateList()
     }
     

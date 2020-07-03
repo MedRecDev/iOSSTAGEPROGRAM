@@ -12,6 +12,9 @@
 		488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */; };
 		488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */; };
 		488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */; };
+		48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */; };
+		48AAEF5D24ADF39E007D337A /* RPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5C24ADF39E007D337A /* RPicker.swift */; };
+		48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */; };
 		48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C5FEE924A09C0D009141D5 /* UIView+AutoLayout.swift */; };
 		48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48C5FEED24A0A558009141D5 /* Montserrat-Black.otf */; };
 		48C5FEF624A0A558009141D5 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 48C5FEEE24A0A558009141D5 /* Montserrat-Regular.otf */; };
@@ -62,6 +65,10 @@
 		488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSideMenuViewController.swift; sourceTree = "<group>"; };
 		488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTVCell.swift; sourceTree = "<group>"; };
 		488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTVCell.xib; sourceTree = "<group>"; };
+		48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
+		48AAEF5C24ADF39E007D337A /* RPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPicker.swift; sourceTree = "<group>"; };
+		48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVideoDataManager.swift; sourceTree = "<group>"; };
+		48AAEF6024AF1452007D337A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48C5FEE924A09C0D009141D5 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		48C5FEED24A0A558009141D5 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
 		48C5FEEE24A0A558009141D5 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
@@ -123,6 +130,7 @@
 		16B69BEB7B2DBC9619D7362F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48AAEF6024AF1452007D337A /* Social.framework */,
 				ECD3072A5079F00C0FE0BDCF /* Pods_StageProgram.framework */,
 			);
 			name = Frameworks;
@@ -134,6 +142,14 @@
 				488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		48AAEF5924ADEF6A007D337A /* VideoUpload */ = {
+			isa = PBXGroup;
+			children = (
+				48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */,
+			);
+			path = VideoUpload;
 			sourceTree = "<group>";
 		};
 		48C5FEEB24A0A523009141D5 /* Resources */ = {
@@ -192,6 +208,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48AAEF5924ADEF6A007D337A /* VideoUpload */,
 				48EA4C5D24A462F100164B53 /* LoginSignUp */,
 				48C9D52C24A3430C00555C4B /* VideoDetails */,
 				488B46DB24A207A9007BE492 /* SideMenu */,
@@ -205,6 +222,7 @@
 		48CFDC6F24923BCB002DB2DE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				48AAEF5C24ADF39E007D337A /* RPicker.swift */,
 				48CFDC77249250B3002DB2DE /* Extensions */,
 				48FD8EAF249DEBB300C72683 /* GlobalConstants.swift */,
 				4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */,
@@ -219,6 +237,7 @@
 				48D1792B24A086F800B08B70 /* StatesDataManager.swift */,
 				48C5FEFD24A0A6C2009141D5 /* VideoDataManager.swift */,
 				48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */,
+				48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */,
 			);
 			path = DataAccessLayer;
 			sourceTree = "<group>";
@@ -496,8 +515,10 @@
 				48D1DC192490A4B100260F3A /* AppDelegate.swift in Sources */,
 				48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */,
 				48EA4C6524A4961300164B53 /* SPUser.swift in Sources */,
+				48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */,
 				488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */,
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,
+				48AAEF5D24ADF39E007D337A /* RPicker.swift in Sources */,
 				48EA4C6324A489DF00164B53 /* SPForgotPasswordViewController.swift in Sources */,
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
@@ -509,6 +530,7 @@
 				48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */,
 				48C9D53024A352B400555C4B /* DateExtension.swift in Sources */,
 				48C5FEFE24A0A6C2009141D5 /* VideoDataManager.swift in Sources */,
+				48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */,
 				48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */,
 				48C5FF0324A0AF82009141D5 /* VideoCVCell.swift in Sources */,
 				48C5FF0024A0AA20009141D5 /* SPVideoDetail.swift in Sources */,

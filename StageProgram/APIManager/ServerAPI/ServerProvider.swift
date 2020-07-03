@@ -18,6 +18,7 @@ enum AppTutorService {
     case UserRegister(firstName: String, lastName: String, email: String, password: String, phoneNo: String)
     case VideoLike(videoId: Int, userToken: String)
     case VideoDisLike(videoId: Int, userToken: String)
+    case UploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -45,6 +46,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "videos/like"
         case .VideoDisLike:
             return "videos/unlike"
+        case .UploadVideo:
+            return "videos/upload"
         }
     }
     
@@ -66,13 +69,15 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["video_id": videoId, "user_token": userToken]
         case .VideoDisLike(let videoId, let userToken):
             return ["video_id": videoId, "user_token": userToken]
+        case .UploadVideo(let userToken, let videoTitle, let videoDescription, let stateId, let videoFilePath):
+            return ["user_token": userToken, "video_title": videoTitle, "video_description": videoDescription, "state_id": stateId, "video_file": videoFilePath]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate, .UserLogin, .UserRegister:
+        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo:
             return .post
         case .VideoLike, .VideoDisLike:
             return .put
@@ -92,6 +97,19 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
                                                urlParameters: [:])
         case .StateList, .VideoList, .SuggestionList:
                 return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
+        case .UploadVideo:
+            var mutDatas = [MultipartFormData]()
+            for (key, value) in self.parameters! {
+                if let data = (value as? String)?.data(using: .utf8) {
+                    mutDatas.append(MultipartFormData(provider: .data(data), name: key))
+                }
+                else if let intValue = value as? Int, let data = String(intValue).data(using: .utf8) {
+                    mutDatas.append(MultipartFormData(provider: .data(data), name: key))
+                } else if let data = value as? Data {
+                    mutDatas.append(MultipartFormData(provider: .data(data), name: key))
+                }
+            }
+            return .uploadCompositeMultipart(mutDatas, urlParameters: [:])
         //Get WithOut Parameters
         default :
             return .requestPlain

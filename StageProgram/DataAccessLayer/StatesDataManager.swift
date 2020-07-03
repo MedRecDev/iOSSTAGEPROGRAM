@@ -14,7 +14,7 @@ class StatesDataManager: NSObject {
     
     var states : [SPState]?
     var pageNumber : Int = 0
-    var pageSize : Int = 15
+    var pageSize : Int = 100
     var stateId : Int = 0
     private override init() {
         //  Private init
