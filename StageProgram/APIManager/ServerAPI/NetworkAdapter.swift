@@ -28,9 +28,12 @@ var authToken :String? {
 // MARK: Common APIs
 class NetworkAdapter {
     
-    fileprivate var provider = MoyaProvider<AppTutorService>(plugins: [NetworkLoggerPlugin(), AccessTokenPlugin(tokenClosure: { (authType) -> String in
+    fileprivate var provider = MoyaProvider<AppTutorService>(endpointClosure: MoyaProvider.defaultEndpointMapping, requestClosure: MoyaProvider<AppTutorService>.defaultRequestMapping, stubClosure: MoyaProvider.neverStub, callbackQueue: nil, session: DefaultAlamofireManager.sharedManager, plugins: [NetworkLoggerPlugin(),  AccessTokenPlugin(tokenClosure: { (authType) -> String in
         return authToken ?? ""
-    })])
+    })], trackInflights: false)
+//    fileprivate var provider = MoyaProvider<AppTutorService>(manager: DefaultAlamofireManager.sharedManager, plugins: [NetworkLoggerPlugin(),  AccessTokenPlugin(tokenClosure: { (authType) -> String in
+//        return authToken ?? ""
+//    })])
     
     func createToken(username: String, password: String, grantType: String, clientId: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
         self.provider.request(.TokenCreate(username: username, password: password, client_id: clientId, grantType: grantType)) { (result) in
@@ -233,4 +236,15 @@ class NetworkAdapter {
             }
         }
     }
+}
+
+class DefaultAlamofireManager: Alamofire.Session {
+    static let sharedManager: DefaultAlamofireManager = {
+        let configuration = URLSessionConfiguration.default
+        configuration.headers = .default
+        configuration.timeoutIntervalForRequest = 120 // as seconds, you can set your request timeout
+        configuration.timeoutIntervalForResource = 120 // as seconds, you can set your resource timeout
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        return DefaultAlamofireManager(configuration: configuration)
+    }()
 }

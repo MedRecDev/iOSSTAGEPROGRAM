@@ -16,16 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_iOS" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-PB-Cvg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-PB-Cvg">
+                                <rect key="frame" x="77" y="279.5" width="260" height="337"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="made_in_india" translatesAutoresizingMaskIntoConstraints="NO" id="rpB-Gk-vrG">
+                                <rect key="frame" x="150" y="842" width="114" height="15"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Ig-PB-Cvg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lRa-eo-zv2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Ig-PB-Cvg" secondAttribute="trailing" id="nLm-jL-urg"/>
-                            <constraint firstItem="6Ig-PB-Cvg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qlL-0U-KHy"/>
-                            <constraint firstAttribute="bottom" secondItem="6Ig-PB-Cvg" secondAttribute="bottom" id="y9M-RO-o8j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rpB-Gk-vrG" secondAttribute="bottom" constant="5" id="SnJ-Mw-5cz"/>
+                            <constraint firstItem="6Ig-PB-Cvg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Z92-aa-R4w"/>
+                            <constraint firstItem="6Ig-PB-Cvg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cGV-Zp-x3U"/>
+                            <constraint firstItem="rpB-Gk-vrG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sG6-PB-JEF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -36,6 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_iOS" width="375" height="812"/>
+        <image name="made_in_india" width="114" height="15"/>
+        <image name="splash_logo" width="260" height="337"/>
     </resources>
 </document>

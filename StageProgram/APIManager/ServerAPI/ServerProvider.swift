@@ -109,7 +109,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
                     mutDatas.append(MultipartFormData(provider: .data(data), name: key))
                 }
             }
-            return .uploadCompositeMultipart(mutDatas, urlParameters: [:])
+            return .uploadMultipart(mutDatas)
+//            return .uploadCompositeMultipart(mutDatas, urlParameters: [:])
         //Get WithOut Parameters
         default :
             return .requestPlain

@@ -8,6 +8,7 @@
 
 import UIKit
 import VersaPlayer
+import SDWebImage
 
 class SPVideoDetailViewController: SPBaseViewController {
 
@@ -124,7 +125,14 @@ class SPVideoDetailViewController: SPBaseViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        
+//        let videoShareUrls = [self.videoDetail.videoTitle, self.videoDetail.videoShareUrl]
+        let card = FlashCard()
+        card.news = self.videoDetail.videoTitle
+        card.url = self.videoDetail.videoShareUrl
+        card.thumbnailUrl = self.videoDetail.mainThumbnailUrl
+//        let imageItem = UIImage(data: Data(contentsOf: URL()))
+        let activityVC = UIActivityViewController(activityItems: [card], applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
     }
 }
 
@@ -145,5 +153,26 @@ extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+class FlashCard: NSObject, UIActivityItemSource {
+    var news: String = ""
+    var url : String = ""
+    var thumbnailUrl : String = ""
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return news;
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+        if activityType == UIActivity.ActivityType.postToTwitter {
+            return news + url
+        } else {
+            return url
+        }
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+        return thumbnailUrl
     }
 }
