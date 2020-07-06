@@ -236,6 +236,52 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func fetchNewsState(completion: @escaping (_ response: [SPNewsStates]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.NewsStates) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let dict = responseJson["data"]
+                    var newsStates: [SPNewsStates] = []
+                    for json in dict.arrayValue {
+                        let newsState = SPNewsStates(fromJson: json)
+                        newsStates.append(newsState)
+                    }
+                    completion(newsStates, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching news state list")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while fetching news state list")
+            }
+        }
+    }
+    
+    func fetchNewsChannels(completion: @escaping (_ response: [SPNewsChannel]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.NewsChannels) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let dict = responseJson["data"]
+                    var newsChannels: [SPNewsChannel] = []
+                    for json in dict.arrayValue {
+                        let newsChannel = SPNewsChannel(fromJson: json)
+                        newsChannels.append(newsChannel)
+                    }
+                    completion(newsChannels, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching news channels list")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while fetching news channels list")
+            }
+        }
+    }
 }
 
 class DefaultAlamofireManager: Alamofire.Session {

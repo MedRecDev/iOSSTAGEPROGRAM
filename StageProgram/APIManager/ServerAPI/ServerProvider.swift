@@ -19,6 +19,8 @@ enum AppTutorService {
     case VideoLike(videoId: Int, userToken: String)
     case VideoDisLike(videoId: Int, userToken: String)
     case UploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data)
+    case NewsStates
+    case NewsChannels
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -48,6 +50,10 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "videos/unlike"
         case .UploadVideo:
             return "videos/upload"
+        case .NewsStates:
+            return "news/states"
+        case .NewsChannels:
+            return "news/channels"
         }
     }
     
@@ -71,6 +77,10 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["video_id": videoId, "user_token": userToken]
         case .UploadVideo(let userToken, let videoTitle, let videoDescription, let stateId, let videoFilePath):
             return ["user_token": userToken, "video_title": videoTitle, "video_description": videoDescription, "state_id": stateId, "video_file": videoFilePath]
+        case .NewsStates:
+            return [:]
+        case .NewsChannels:
+            return [:]
         }
     }
     
@@ -81,7 +91,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return .post
         case .VideoLike, .VideoDisLike:
             return .put
-        case .StateList, .VideoList, .SuggestionList:
+        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels:
             return .get
         }
     }
@@ -95,7 +105,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])
-        case .StateList, .VideoList, .SuggestionList:
+        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels:
                 return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
         case .UploadVideo:
             var mutDatas = [MultipartFormData]()

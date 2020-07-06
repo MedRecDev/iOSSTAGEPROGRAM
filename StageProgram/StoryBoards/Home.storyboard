@@ -23,21 +23,82 @@
         </array>
     </customFonts>
     <scenes>
-        <!--NEWS-->
+        <!--News List View Controller-->
         <scene sceneID="Ktg-8j-mFg">
             <objects>
-                <viewController id="YEa-he-1d4" sceneMemberID="viewController">
+                <viewController id="YEa-he-1d4" customClass="NewsListViewController" customModule="STAGE_PROGRAM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xpw-Gl-MEM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v3S-Oi-c7O">
+                                <rect key="frame" x="0.0" y="88" width="414" height="720"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YEa-he-1d4" id="UJk-M0-KfV"/>
+                                    <outlet property="delegate" destination="YEa-he-1d4" id="Q16-HJ-IFd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="v3S-Oi-c7O" firstAttribute="leading" secondItem="fYC-bb-0Rt" secondAttribute="leading" id="hbN-vh-IU8"/>
+                            <constraint firstItem="fYC-bb-0Rt" firstAttribute="trailing" secondItem="v3S-Oi-c7O" secondAttribute="trailing" id="oSV-bV-ZzG"/>
+                            <constraint firstItem="v3S-Oi-c7O" firstAttribute="top" secondItem="fYC-bb-0Rt" secondAttribute="top" id="scV-h0-pYV"/>
+                            <constraint firstItem="fYC-bb-0Rt" firstAttribute="bottom" secondItem="v3S-Oi-c7O" secondAttribute="bottom" constant="5" id="yfk-c8-83H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fYC-bb-0Rt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="NEWS" image="livetv_unselected" selectedImage="livetv_selected" id="3z2-Ya-bZE"/>
+                    <navigationItem key="navigationItem" id="PuN-0h-HnS"/>
+                    <connections>
+                        <outlet property="tableView" destination="v3S-Oi-c7O" id="dkc-wq-uyJ"/>
+                        <segue destination="FRa-hG-YHX" kind="show" identifier="showYoutubePlayerVideoScene" id="37X-dD-4ns"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUX-LN-RiZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-162" y="609"/>
+            <point key="canvasLocation" x="747.82608695652175" y="608.70535714285711"/>
+        </scene>
+        <!--Youtube Player View Controller-->
+        <scene sceneID="tpv-av-hs1">
+            <objects>
+                <viewController storyboardIdentifier="YoutubePlayerViewController" id="FRa-hG-YHX" customClass="YoutubePlayerViewController" customModule="STAGE_PROGRAM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mRQ-53-dUh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfw-Hf-z3S" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53c-Bc-cWX">
+                                <rect key="frame" x="175" y="416" width="64" height="64"/>
+                                <state key="normal" image="play_icon"/>
+                                <connections>
+                                    <action selector="btnPlayTapped:" destination="FRa-hG-YHX" eventType="touchUpInside" id="C7Q-zu-GXl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="53c-Bc-cWX" firstAttribute="centerY" secondItem="mRQ-53-dUh" secondAttribute="centerY" id="379-qR-9kS"/>
+                            <constraint firstItem="53c-Bc-cWX" firstAttribute="centerX" secondItem="mRQ-53-dUh" secondAttribute="centerX" id="DHL-Bm-Qb3"/>
+                            <constraint firstItem="TmP-PD-u1I" firstAttribute="trailing" secondItem="Pfw-Hf-z3S" secondAttribute="trailing" id="Hzd-eF-Dbe"/>
+                            <constraint firstItem="Pfw-Hf-z3S" firstAttribute="leading" secondItem="TmP-PD-u1I" secondAttribute="leading" id="PlL-UO-cYi"/>
+                            <constraint firstItem="TmP-PD-u1I" firstAttribute="bottom" secondItem="Pfw-Hf-z3S" secondAttribute="bottom" id="mv5-Y5-p0A"/>
+                            <constraint firstItem="Pfw-Hf-z3S" firstAttribute="top" secondItem="TmP-PD-u1I" secondAttribute="top" id="wfh-FQ-H1j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TmP-PD-u1I"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="z4j-xX-CK6"/>
+                    <connections>
+                        <outlet property="playButton" destination="53c-Bc-cWX" id="K4Y-4U-AI4"/>
+                        <outlet property="youtubePlayer" destination="Pfw-Hf-z3S" id="77k-jF-oxd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6g-hv-ner" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693" y="609"/>
         </scene>
         <!--HOME-->
         <scene sceneID="I3u-kI-Pfy">
@@ -500,7 +561,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M19-Vc-56U" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="268.5" y="139" width="30" height="50"/>
+                            <rect key="frame" x="286.5" y="139" width="48" height="50"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="image" keyPath="activeImage" value="fastforward"/>
@@ -508,7 +569,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7J-af-epu" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="226.5" y="139" width="30" height="50"/>
+                            <rect key="frame" x="226.5" y="139" width="48" height="50"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="image" keyPath="activeImage" value="skipForward"/>
@@ -516,7 +577,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lF-ol-zvV" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="122.5" y="139" width="30" height="50"/>
+                            <rect key="frame" x="104.5" y="139" width="48" height="50"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="image" keyPath="activeImage" value="skipBackward"/>
@@ -534,14 +595,14 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh8-iR-tc3" customClass="VersaTimeLabel" customModule="VersaPlayer">
-                            <rect key="frame" x="259" y="209" width="70" height="30"/>
+                            <rect key="frame" x="265" y="209" width="70" height="30"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="b2a-AK-a8Q" customClass="VersaSeekbarSlider" customModule="VersaPlayer">
-                            <rect key="frame" x="93" y="209" width="163" height="31"/>
+                            <rect key="frame" x="93" y="209" width="169" height="31"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="minimumTrackTintColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="maximumTrackTintColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -552,7 +613,7 @@
                             <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </activityIndicatorView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LK2-t8-KJV" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="339" y="209" width="30" height="30"/>
+                            <rect key="frame" x="345" y="209" width="24" height="30"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -563,7 +624,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X57-qn-V6F" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="10" y="60" width="30" height="30"/>
+                            <rect key="frame" x="10" y="60" width="24" height="24"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -574,7 +635,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeo-yl-oJR" customClass="VersaStatefulButton" customModule="VersaPlayer">
-                            <rect key="frame" x="80.5" y="139" width="30" height="50"/>
+                            <rect key="frame" x="44.5" y="139" width="48" height="50"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="image" keyPath="activeImage" value="rewind"/>
@@ -870,7 +931,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="NfL-ER-Mry" kind="relationship" relationship="viewControllers" id="1b0-Aj-L55"/>
-                        <segue destination="YEa-he-1d4" kind="relationship" relationship="viewControllers" id="oBe-ih-r94"/>
+                        <segue destination="z8A-q9-poR" kind="relationship" relationship="viewControllers" id="oBe-ih-r94"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxS-cV-aWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -939,6 +1000,25 @@
             </objects>
             <point key="canvasLocation" x="330" y="-119"/>
         </scene>
+        <!--NEWS-->
+        <scene sceneID="x9N-Cv-Dx1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z8A-q9-poR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="NEWS" image="livetv_unselected" selectedImage="livetv_selected" id="3z2-Ya-bZE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fSW-SD-4Iy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YEa-he-1d4" kind="relationship" relationship="rootViewController" id="aPF-gc-oDQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Szh-qx-Kvs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-162.31884057971016" y="608.70535714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="VectorSmartObject" width="65" height="65"/>
@@ -958,6 +1038,7 @@
         <image name="pause" width="48" height="48"/>
         <image name="pip" width="24" height="24"/>
         <image name="play" width="48" height="48"/>
+        <image name="play_icon" width="64" height="64"/>
         <image name="red_back" width="16" height="16"/>
         <image name="rewind" width="48" height="48"/>
         <image name="skipBackward" width="48" height="48"/>

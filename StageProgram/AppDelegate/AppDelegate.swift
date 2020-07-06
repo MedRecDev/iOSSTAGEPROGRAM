@@ -42,5 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+//        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+//        let youtubePlayerVC = homeStoryboard.instantiateViewController(withIdentifier: "YoutubePlayerViewController") as? YoutubePlayerViewController
+//        if let navController = window?.rootViewController
+        if window == self.window {
+            return .portrait
+        } else {
+            return .allButUpsideDown
+        }
+    }
 }
 

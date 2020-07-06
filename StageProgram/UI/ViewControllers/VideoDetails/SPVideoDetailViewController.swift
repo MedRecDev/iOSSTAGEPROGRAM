@@ -25,6 +25,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     @IBOutlet weak var lblShareCount: UILabel!
     var videoDetail : SPVideoDetail!
     var videoDetailDM : VideoDetailDataManager = VideoDetailDataManager()
+    var videoTumbnailImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,9 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.videoDetailDM.videoDetail = self.videoDetail
         self.fetchSuggestedVideos()
         self.updateUI()
+        SDWebImageManager.shared.loadImage(with: URL(string: self.videoDetail!.mainThumbnailUrl), options: [], progress: nil) { (image, data, error, cacheType, success, url) in
+            self.videoTumbnailImage = image
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,13 +129,18 @@ class SPVideoDetailViewController: SPBaseViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-//        let videoShareUrls = [self.videoDetail.videoTitle, self.videoDetail.videoShareUrl]
         let card = FlashCard()
         card.news = self.videoDetail.videoTitle
         card.url = self.videoDetail.videoShareUrl
         card.thumbnailUrl = self.videoDetail.mainThumbnailUrl
-//        let imageItem = UIImage(data: Data(contentsOf: URL()))
-        let activityVC = UIActivityViewController(activityItems: [card], applicationActivities: nil)
+        var imageItem : UIImage? = videoTumbnailImage
+        if let image = videoTumbnailImage {
+            imageItem = image
+        } else {
+            imageItem = UIImage(named: "placeholder_rectangle")
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: [card, imageItem!], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
 }

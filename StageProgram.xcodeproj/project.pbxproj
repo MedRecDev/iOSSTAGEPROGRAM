@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */; };
+		48416C8024B33F750019CBD8 /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48416C7F24B33F750019CBD8 /* YoutubePlayerViewController.swift */; };
 		488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46D924A1F921007BE492 /* UIView+Gradient.swift */; };
 		488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */; };
 		488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */; };
@@ -31,6 +32,14 @@
 		48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */; };
 		48C9D53024A352B400555C4B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52F24A352B400555C4B /* DateExtension.swift */; };
 		48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */; };
+		48CDDAA924B2F78100B2C412 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAA824B2F78100B2C412 /* NewsListViewController.swift */; };
+		48CDDAAC24B3027600B2C412 /* NewsChannelsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAAA24B3027600B2C412 /* NewsChannelsTVCell.swift */; };
+		48CDDAAD24B3027600B2C412 /* NewsChannelsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */; };
+		48CDDAB024B30FE000B2C412 /* NewLiveTVCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAAE24B30FE000B2C412 /* NewLiveTVCVCell.swift */; };
+		48CDDAB124B30FE000B2C412 /* NewLiveTVCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CDDAAF24B30FE000B2C412 /* NewLiveTVCVCell.xib */; };
+		48CDDAB424B313B400B2C412 /* SPNewsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB224B313B400B2C412 /* SPNewsStates.swift */; };
+		48CDDAB524B313B400B2C412 /* SPNewsChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */; };
+		48CDDAB724B31A1500B2C412 /* SPNewsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */; };
 		48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48CFDC6824923B68002DB2DE /* Home.storyboard */; };
 		48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */; };
 		48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */; };
@@ -61,6 +70,7 @@
 /* Begin PBXFileReference section */
 		3FAF3BF26A6C2D00702897E1 /* Pods-StageProgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StageProgram.release.xcconfig"; path = "Target Support Files/Pods-StageProgram/Pods-StageProgram.release.xcconfig"; sourceTree = "<group>"; };
 		4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
+		48416C7F24B33F750019CBD8 /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		488B46D924A1F921007BE492 /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSideMenuViewController.swift; sourceTree = "<group>"; };
 		488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTVCell.swift; sourceTree = "<group>"; };
@@ -85,6 +95,14 @@
 		48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVideoDetailViewController.swift; sourceTree = "<group>"; };
 		48C9D52F24A352B400555C4B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailDataManager.swift; sourceTree = "<group>"; };
+		48CDDAA824B2F78100B2C412 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		48CDDAAA24B3027600B2C412 /* NewsChannelsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsChannelsTVCell.swift; sourceTree = "<group>"; };
+		48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsChannelsTVCell.xib; sourceTree = "<group>"; };
+		48CDDAAE24B30FE000B2C412 /* NewLiveTVCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLiveTVCVCell.swift; sourceTree = "<group>"; };
+		48CDDAAF24B30FE000B2C412 /* NewLiveTVCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewLiveTVCVCell.xib; sourceTree = "<group>"; };
+		48CDDAB224B313B400B2C412 /* SPNewsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsStates.swift; sourceTree = "<group>"; };
+		48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsChannel.swift; sourceTree = "<group>"; };
+		48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNewsDataManager.swift; sourceTree = "<group>"; };
 		48CFDC6824923B68002DB2DE /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPHomeViewController.swift; sourceTree = "<group>"; };
 		48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPBaseViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +201,15 @@
 			path = VideoDetails;
 			sourceTree = "<group>";
 		};
+		48CDDAA724B2F70500B2C412 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				48CDDAA824B2F78100B2C412 /* NewsListViewController.swift */,
+				48416C7F24B33F750019CBD8 /* YoutubePlayerViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		48CFDC6A24923B7D002DB2DE /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +228,10 @@
 				488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */,
 				48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */,
 				48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */,
+				48CDDAAA24B3027600B2C412 /* NewsChannelsTVCell.swift */,
+				48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */,
+				48CDDAAE24B30FE000B2C412 /* NewLiveTVCVCell.swift */,
+				48CDDAAF24B30FE000B2C412 /* NewLiveTVCVCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +239,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48CDDAA724B2F70500B2C412 /* News */,
 				48AAEF5924ADEF6A007D337A /* VideoUpload */,
 				48EA4C5D24A462F100164B53 /* LoginSignUp */,
 				48C9D52C24A3430C00555C4B /* VideoDetails */,
@@ -238,6 +270,7 @@
 				48C5FEFD24A0A6C2009141D5 /* VideoDataManager.swift */,
 				48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */,
 				48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */,
+				48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */,
 			);
 			path = DataAccessLayer;
 			sourceTree = "<group>";
@@ -328,6 +361,8 @@
 		48E3E68F249E4E56005CE6CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */,
+				48CDDAB224B313B400B2C412 /* SPNewsStates.swift */,
 				48EA4C6424A4961300164B53 /* SPUser.swift */,
 				48C5FEFF24A0AA20009141D5 /* SPVideoDetail.swift */,
 				48E3E690249E4E77005CE6CB /* SPState.swift */,
@@ -450,7 +485,9 @@
 				48C5FEF824A0A558009141D5 /* Montserrat-SemiBold.otf in Resources */,
 				48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */,
 				48D1DC202490A4B100260F3A /* Main.storyboard in Resources */,
+				48CDDAAD24B3027600B2C412 /* NewsChannelsTVCell.xib in Resources */,
 				48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */,
+				48CDDAB124B30FE000B2C412 /* NewLiveTVCVCell.xib in Resources */,
 				48C5FEF624A0A558009141D5 /* Montserrat-Regular.otf in Resources */,
 				48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */,
 				48C5FF0424A0AF82009141D5 /* VideoCVCell.xib in Resources */,
@@ -508,13 +545,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				48EA4C6124A47B6F00164B53 /* SPRegisterViewController.swift in Sources */,
+				48CDDAB024B30FE000B2C412 /* NewLiveTVCVCell.swift in Sources */,
 				48E3E691249E4E77005CE6CB /* SPState.swift in Sources */,
+				48CDDAAC24B3027600B2C412 /* NewsChannelsTVCell.swift in Sources */,
 				48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */,
 				4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */,
 				48D1792C24A086F800B08B70 /* StatesDataManager.swift in Sources */,
 				48D1DC192490A4B100260F3A /* AppDelegate.swift in Sources */,
+				48CDDAA924B2F78100B2C412 /* NewsListViewController.swift in Sources */,
 				48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */,
 				48EA4C6524A4961300164B53 /* SPUser.swift in Sources */,
+				48CDDAB524B313B400B2C412 /* SPNewsChannel.swift in Sources */,
 				48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */,
 				488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */,
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,
@@ -526,13 +567,16 @@
 				48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */,
 				48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */,
 				48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */,
+				48416C8024B33F750019CBD8 /* YoutubePlayerViewController.swift in Sources */,
 				48D1DC1B2490A4B100260F3A /* SceneDelegate.swift in Sources */,
 				48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */,
 				48C9D53024A352B400555C4B /* DateExtension.swift in Sources */,
+				48CDDAB424B313B400B2C412 /* SPNewsStates.swift in Sources */,
 				48C5FEFE24A0A6C2009141D5 /* VideoDataManager.swift in Sources */,
 				48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */,
 				48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */,
 				48C5FF0324A0AF82009141D5 /* VideoCVCell.swift in Sources */,
+				48CDDAB724B31A1500B2C412 /* SPNewsDataManager.swift in Sources */,
 				48C5FF0024A0AA20009141D5 /* SPVideoDetail.swift in Sources */,
 				48FD8EB5249E02D500C72683 /* UserDataManager.swift in Sources */,
 				48FD8EAE249DEB0100C72683 /* NetworkAdapter.swift in Sources */,

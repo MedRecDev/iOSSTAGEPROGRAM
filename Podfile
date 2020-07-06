@@ -14,6 +14,7 @@ target 'StageProgram' do
   pod 'Parchment'
   pod 'SideMenu'
   pod 'VersaPlayer'
+  pod 'YouTubePlayer'
   # Pods for StageProgram
 
 end

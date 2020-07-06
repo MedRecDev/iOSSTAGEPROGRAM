@@ -15,6 +15,7 @@ PODS:
   - SideMenu (6.4.8)
   - SwiftyJSON (4.3.0)
   - VersaPlayer (3.0.2)
+  - YouTubePlayer (0.7.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - SideMenu
   - SwiftyJSON (~> 4.0)
   - VersaPlayer
+  - YouTubePlayer
 
 SPEC REPOS:
   trunk:
@@ -39,6 +41,7 @@ SPEC REPOS:
     - SideMenu
     - SwiftyJSON
     - VersaPlayer
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
@@ -51,7 +54,8 @@ SPEC CHECKSUMS:
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   VersaPlayer: 0e9a0ea7da786729ffb377dbd17b34641a8265e4
+  YouTubePlayer: bd78e43a1fb0f98cbfc40864514f44924e177147
 
-PODFILE CHECKSUM: 25829b578107bea66fe7c7cc5db037c21b5781ad
+PODFILE CHECKSUM: 352f80e72fda5569f49998a83d916a3ff9853b0f
 
 COCOAPODS: 1.8.4
