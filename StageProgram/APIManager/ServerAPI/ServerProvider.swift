@@ -21,6 +21,8 @@ enum AppTutorService {
     case UploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data)
     case NewsStates
     case NewsChannels
+    case RegisterComplete(userToken: String, otp: String)
+    case ResendOTP(userToken: String, tokenType: Int)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -54,6 +56,10 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "news/states"
         case .NewsChannels:
             return "news/channels"
+        case .RegisterComplete:
+            return "account/register-complete"
+        case .ResendOTP:
+            return "resendotp"
         }
     }
     
@@ -81,13 +87,17 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return [:]
         case .NewsChannels:
             return [:]
+        case .RegisterComplete(let userToken, let otp):
+            return ["token": userToken,"one_time_password": otp]
+        case .ResendOTP(let userToken, let tokenType):
+            return ["resend_token_type": tokenType, "token": userToken]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo:
+        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP:
             return .post
         case .VideoLike, .VideoDisLike:
             return .put
@@ -99,9 +109,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
     /// The type of HTTP task to be performed.
     var task: Task {
         switch self {
-            
         //Post API
-        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike:
+        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike, .RegisterComplete, .ResendOTP:
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])

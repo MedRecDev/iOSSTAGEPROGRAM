@@ -13,6 +13,7 @@ class UserDataManager: NSObject {
     
     static let shared = UserDataManager()
     var currentUser : SPUser?
+    var userToken : String?
     
     private override init() {
         //  Private init
@@ -39,4 +40,42 @@ class UserDataManager: NSObject {
         }
     }
     
+    func userRegister(firstName: String, lastName: String, email: String, password: String, phoneNo: String, completion:@escaping (Bool, String?) -> Void) {
+        NetworkAdapter().userRegister(email: email, password: password, firstName: firstName, lastName: lastName, phoneNo: phoneNo) { (response, errorMessage) in
+            if let user = response as? SPUser {
+                self.currentUser = user
+                completion(true, nil)
+            } else if let uToken = response as? String {
+                self.userToken = uToken
+                completion(true, nil)
+            } else {
+                completion(false, errorMessage)
+            }
+        }
+    }
+    
+    func completeRegistrationWithOTP(otp: String, completion: @escaping (Bool, String?) -> Void) {
+        var token = ""
+        if let uToken = self.userToken {
+            token = uToken
+        } else if let uToken = UserDataManager.shared.userToken {
+            token = uToken
+        }
+        NetworkAdapter().completeRegisterFlowWithOTP(userToken: token, otp: otp) { (user, errorMessage) in
+            if let user = user {
+                self.currentUser = user
+                completion(true, nil)
+            } else  {
+                completion(false, errorMessage)
+            }
+        }
+    }
+    
+    func resendOTP(completion: @escaping (Bool, String?) -> Void) {
+        if let userToken = UserDataManager.shared.userToken {
+            NetworkAdapter().resendOTP(userToken: userToken, tokenType: 2) { (success, errorMessage) in
+                completion(success, errorMessage)
+            }
+        }
+    }
 }

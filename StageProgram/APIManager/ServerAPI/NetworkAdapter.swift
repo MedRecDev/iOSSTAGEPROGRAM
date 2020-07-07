@@ -149,15 +149,20 @@ class NetworkAdapter {
         }
     }
     
-    func userRegister(email: String, password: String, firstName: String, lastName: String, phoneNo: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
+    func userRegister(email: String, password: String, firstName: String, lastName: String, phoneNo: String, completion: @escaping (_ response: Any?, _ errorMessage: String?) -> Void) {
         self.provider.request(.UserRegister(firstName: firstName, lastName: lastName, email: email, password: password, phoneNo: phoneNo)) { (result) in
             switch result {
             case .success(let response):
                 let data = response.data
                 do {
                     let responseJson = try JSON(data: data)
-                    if let userToken = responseJson["data"].string, let errorMessage = responseJson["message"].string {
-                        completion(userToken, errorMessage)
+                    if let _ = responseJson["data"].dictionary {
+                        let userJson = responseJson["data"]
+                        let user = SPUser(fromJson: userJson)
+                        completion(user, nil)
+                    } else if let _ = responseJson["data"].string {
+                        let userToken = responseJson["data"].stringValue
+                        completion(userToken, nil)
                     } else {
                         let errorMessage = responseJson["message"].string
                         completion(nil, errorMessage)
@@ -167,6 +172,49 @@ class NetworkAdapter {
                 }
             case .failure(let _):
                 completion(nil, "Error occured while user register")
+            }
+        }
+    }
+    
+    func completeRegisterFlowWithOTP(userToken: String, otp: String, completion: @escaping (_ response: SPUser?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.RegisterComplete(userToken: userToken, otp: otp)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let _ = responseJson["data"].dictionary {
+                        let userJson = responseJson["data"]
+                        let user = SPUser(fromJson: userJson)
+                        completion(user, nil)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while user register")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while user register")
+            }
+        }
+    }
+    
+    func resendOTP(userToken: String, tokenType: Int, completion: @escaping (_ response: Bool, _ errorMessage: String?) -> Void) {
+        self.provider.request(.ResendOTP(userToken: userToken, tokenType: tokenType)) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    let data = response.data
+                    let responseJson = try JSON(data: data)
+                    let errorMessage = responseJson["message"].string
+                    completion(true, errorMessage)
+                }
+                catch {
+                    completion(false, "Error occured while re-sending OTP")
+                }
+            case .failure(_):
+                completion(false, "Error occured while re-sending OTP")
             }
         }
     }

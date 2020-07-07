@@ -15,6 +15,8 @@ target 'StageProgram' do
   pod 'SideMenu'
   pod 'VersaPlayer'
   pod 'YouTubePlayer'
+  pod 'GoogleAnalytics'
+  pod 'Firebase/Analytics'
   # Pods for StageProgram
 
 end

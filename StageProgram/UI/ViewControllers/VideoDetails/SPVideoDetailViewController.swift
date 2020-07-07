@@ -9,6 +9,7 @@
 import UIKit
 import VersaPlayer
 import SDWebImage
+import FirebaseAnalytics
 
 class SPVideoDetailViewController: SPBaseViewController {
 
@@ -40,6 +41,9 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.updateUI()
         SDWebImageManager.shared.loadImage(with: URL(string: self.videoDetail!.mainThumbnailUrl), options: [], progress: nil) { (image, data, error, cacheType, success, url) in
             self.videoTumbnailImage = image
+        }
+        if let videoTitle = self.videoDetail.videoTitle {
+            Analytics.setScreenName(videoTitle, screenClass: "SPVideoDetailViewController")
         }
     }
     

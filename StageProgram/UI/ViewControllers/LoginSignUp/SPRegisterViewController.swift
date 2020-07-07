@@ -84,6 +84,67 @@ class SPRegisterViewController: SPBaseViewController {
     }
     
     @IBAction func registerTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let names = self.txtfName.text?.split(separator: " ")
+        guard let firstName = names?.first else {
+            self.showAlert(withMessage: "Please enter a valid name!")
+            return
+        }
+        guard let lastName = names?.last else {
+            self.showAlert(withMessage: "Please enter a valid name!")
+            return
+        }
+        guard let email = self.txtfEmail.text else {
+            self.showAlert(withMessage: "Please enter a valid email!")
+            return
+        }
+        guard let password = self.txtfPassword.text else {
+            self.showAlert(withMessage: "Please enter a valid password!")
+            return
+        }
+        guard !self.isValidPassword(testStr: password) else {
+            self.showAlert(withMessage: "Please enter a valid password!")
+            return
+        }
+        guard let confirmPass = self.txtfConfirmPassword.text else {
+            self.showAlert(withMessage: "Please enter a valid confirm password!")
+            return
+        }
+        
+        if confirmPass != password {
+            self.showAlert(withMessage: "Please enter a valid confirm password!")
+            return
+        }
+        guard let phone = self.txtfPhone.text else {
+            self.showAlert(withMessage: "Please enter a valid phone!")
+            return
+        }
+        let first = String(firstName)
+        let last = String(lastName)
+        self.showProgressHUD()
+        UserDataManager.shared.userRegister(firstName: first, lastName: last, email: email, password: password, phoneNo: phone) { (success, errorMessage) in
+            self.hideProgressHUD()
+            if success {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let otpVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
+                otpVC.userToken = UserDataManager.shared.userToken
+                self.navigationController?.pushViewController(otpVC, animated: true)
+            } else if let msg = errorMessage {
+                self.showAlert(withMessage: msg)
+            }
+        }
+//        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SPRegisterViewController {
+    func isValidPassword(testStr:String?) -> Bool {
+        guard testStr != nil else { return false }
+     
+        // at least one uppercase,
+        // at least one digit
+        // at least one lowercase
+        // 8 characters total
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$")
+        return passwordTest.evaluate(with: testStr)
     }
 }

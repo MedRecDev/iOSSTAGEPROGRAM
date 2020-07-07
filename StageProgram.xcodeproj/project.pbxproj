@@ -13,6 +13,8 @@
 		488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */; };
 		488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */; };
 		488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */; };
+		4898427824B45576008F162A /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898427724B45576008F162A /* OTPViewController.swift */; };
+		4898427A24B4872F008F162A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4898427924B4872F008F162A /* GoogleService-Info.plist */; };
 		48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */; };
 		48AAEF5D24ADF39E007D337A /* RPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5C24ADF39E007D337A /* RPicker.swift */; };
 		48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */; };
@@ -75,6 +77,8 @@
 		488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSideMenuViewController.swift; sourceTree = "<group>"; };
 		488B46DE24A2167B007BE492 /* SideMenuTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTVCell.swift; sourceTree = "<group>"; };
 		488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTVCell.xib; sourceTree = "<group>"; };
+		4898427724B45576008F162A /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
+		4898427924B4872F008F162A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		48AAEF5C24ADF39E007D337A /* RPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPicker.swift; sourceTree = "<group>"; };
 		48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVideoDataManager.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		48C5FEEB24A0A523009141D5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4898427924B4872F008F162A /* GoogleService-Info.plist */,
 				48C5FEEC24A0A52C009141D5 /* Fonts */,
 			);
 			path = Resources;
@@ -376,6 +381,7 @@
 				48EA4C5E24A4631900164B53 /* SPLoginViewController.swift */,
 				48EA4C6024A47B6F00164B53 /* SPRegisterViewController.swift */,
 				48EA4C6224A489DF00164B53 /* SPForgotPasswordViewController.swift */,
+				4898427724B45576008F162A /* OTPViewController.swift */,
 			);
 			path = LoginSignUp;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 				48C5FEF824A0A558009141D5 /* Montserrat-SemiBold.otf in Resources */,
 				48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */,
 				48D1DC202490A4B100260F3A /* Main.storyboard in Resources */,
+				4898427A24B4872F008F162A /* GoogleService-Info.plist in Resources */,
 				48CDDAAD24B3027600B2C412 /* NewsChannelsTVCell.xib in Resources */,
 				48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */,
 				48CDDAB124B30FE000B2C412 /* NewLiveTVCVCell.xib in Resources */,
@@ -564,6 +571,7 @@
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
 				488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */,
+				4898427824B45576008F162A /* OTPViewController.swift in Sources */,
 				48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */,
 				48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */,
 				48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */,
@@ -736,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rajeev.stageprog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stageprogram.sp;
 				PRODUCT_NAME = "STAGE PROGRAM";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -758,7 +766,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rajeev.stageprog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stageprogram.sp;
 				PRODUCT_NAME = "STAGE PROGRAM";
 				PROVISIONING_PROFILE_SPECIFIER = StageProg_AppStore;
 				SWIFT_VERSION = 5.0;

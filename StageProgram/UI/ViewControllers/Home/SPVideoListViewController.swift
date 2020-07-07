@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 protocol VideoListControllerDelegate {
     func videoTapped(video: SPVideoDetail)
@@ -39,6 +40,13 @@ class SPVideoListViewController: SPBaseViewController {
         self.setUpUI()
         self.videoManager.stateId = state!.stateId
         self.fetchVideoList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let stateName = state?.stateName {
+            Analytics.setScreenName(stateName   , screenClass: "SPVideoListViewController")
+        }
     }
     
     func setUpUI() {
