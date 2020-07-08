@@ -27,6 +27,13 @@ class OTPViewController: SPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.txtfFirst.textAlignment = .center
+        self.txtSecond.textAlignment = .center
+        self.txtfThird.textAlignment = .center
+        self.txtfFourth.textAlignment = .center
+        self.txtfFifth.textAlignment = .center
+        self.txtfSixth.textAlignment = .center
+        
         self.txtfFirst.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.txtSecond.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.txtfThird.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)

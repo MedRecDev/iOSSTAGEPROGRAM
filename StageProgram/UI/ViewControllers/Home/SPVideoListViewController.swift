@@ -78,7 +78,7 @@ class SPVideoListViewController: SPBaseViewController {
     func updateTopView() {
         if let videoDetail = self.videoManager.videos.first, self.state?.stateId == 0 {
             self.topView.isHidden = false
-            self.imgvThumbnail.sd_setImage(with: URL(string: videoDetail.mainThumbnailUrl)) { (image, error, cacheType, url) in
+            self.imgvThumbnail.sd_setImage(with: URL(string: videoDetail.mainThumbnailUrl), placeholderImage: UIImage(named: "placeholder_rectangle"), options: []) { (image, error, cacheType, url) in
                 self.imgvThumbnail.image = image
             }
             self.lblTitle.text = videoDetail.videoTitle

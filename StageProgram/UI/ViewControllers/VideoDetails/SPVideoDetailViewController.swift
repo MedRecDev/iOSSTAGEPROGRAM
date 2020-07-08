@@ -95,7 +95,8 @@ class SPVideoDetailViewController: SPBaseViewController {
     }
     
     @IBAction func likeTapped(_ sender: Any) {
-        if let _ = UserDataManager.shared.currentUser {
+        let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+        if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             self.showProgressHUD()
             self.videoDetailDM.videoLike { (likeCount, errorMessage) in
                 self.hideProgressHUD()
@@ -114,7 +115,8 @@ class SPVideoDetailViewController: SPBaseViewController {
     }
     
     @IBAction func dislikeTapped(_ sender: Any) {
-        if let _ = UserDataManager.shared.currentUser {
+        let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+        if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             self.showProgressHUD()
             self.videoDetailDM.videoDisLike { (likeCount, errorMessage) in
                 self.hideProgressHUD()
@@ -134,7 +136,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     
     @IBAction func shareTapped(_ sender: Any) {
         let card = FlashCard()
-        card.news = self.videoDetail.videoTitle
+        card.news = "Download App :- https://bit.ly/3ePhhqM #stageprogram #stageprograms #stageshow #stagedance #shortvideo #india"
         card.url = self.videoDetail.videoShareUrl
         card.thumbnailUrl = self.videoDetail.mainThumbnailUrl
         var imageItem : UIImage? = videoTumbnailImage
@@ -143,7 +145,6 @@ class SPVideoDetailViewController: SPBaseViewController {
         } else {
             imageItem = UIImage(named: "placeholder_rectangle")
         }
-        
         let activityVC = UIActivityViewController(activityItems: [card, imageItem!], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
@@ -166,6 +167,14 @@ extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let video = self.videoDetailDM.suggestedVideos![indexPath.row]
+        self.videoDetail = video
+        self.videoDetailDM.videoDetail = video
+        self.fetchSuggestedVideos()
+        self.updateUI()
     }
 }
 

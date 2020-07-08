@@ -41,7 +41,7 @@ class SPBaseViewController: UIViewController {
             let image = UIImage(named: "MenuIcon")?.withRenderingMode(.alwaysOriginal)
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showSideMenu))
         }else if leftButtonType == .WhiteBack {
-             let image = UIImage(named: "back")?.withRenderingMode(.alwaysOriginal)
+             let image = UIImage(named: "white_back")?.withRenderingMode(.alwaysOriginal)
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moveBack))
         }
     }
@@ -68,16 +68,23 @@ class SPBaseViewController: UIViewController {
     }
     
     @objc func didTapOnUser() {
-        
+        let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+        if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
+            //  Will show Profile screen
+        } else {
+            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true, completion: nil)
+        }
     }
     
     @objc func uploadVideo() {
-        if let _ = UserDataManager.shared.currentUser {
-            //        self.performSegue(withIdentifier: "showUploadScreenSegue", sender: nil)
+        let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+        if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let videoUploadVC = storyboard.instantiateViewController(withIdentifier: "VideoUploadViewController")
             videoUploadVC.modalPresentationStyle = .fullScreen
-//            self.navigationController?.pushViewController(videoUploadVC, animated: true)
             self.present(videoUploadVC, animated: true, completion: nil)
         } else {
             let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
@@ -88,7 +95,11 @@ class SPBaseViewController: UIViewController {
     }
     
     @objc func moveBack() {
-        self.navigationController?.popViewController(animated: true)
+        if let _ = self.presentingViewController {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func showAlert(withTitle title: String = "Stage Program", withMessage message:String) {

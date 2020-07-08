@@ -37,6 +37,49 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if indexPath.row == 0 {
+            let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
+                //  Will show Profile screen
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
+        } else if indexPath.row == 1 {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let webVC = storyboard.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
+            webVC.type = .PrivacyPolicy
+            let navController = UINavigationController(rootViewController: webVC)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
+        }
+        else if indexPath.row == 2 {
+            let card = FlashCard()
+            card.news = "Download App :- https://bit.ly/3ePhhqM #stageprogram #stageprograms #stageshow #stagedance #shortvideo #india"
+            let image = UIImage(named: "splash_logo")
+            let activityVC = UIActivityViewController(activityItems: [card, image], applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        else if indexPath.row == 3 {
+            //  Feedback
+        }
+        else if indexPath.row == 4 {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let webVC = storyboard.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
+            webVC.type = .AboutUs
+            let navController = UINavigationController(rootViewController: webVC)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
+        }
+        else if indexPath.row == 5 {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let webVC = storyboard.instantiateViewController(withIdentifier: "WebViewViewController") as! WebViewViewController
+            webVC.type = .ContactUs
+            let navController = UINavigationController(rootViewController: webVC)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
+        }
     }
 }

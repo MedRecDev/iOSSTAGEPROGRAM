@@ -16,3 +16,6 @@ let KEY_RESPONSE_DATA = "data"
 let KEY_RESPONSE_TOKEN = "Token"
 let KEY_LOGIN_TOKEN = "LoginToken"
 let KEY_LOGIN_REFRESH_TOKEN = "RefreshToken"
+
+let KEY_USER_TOKEN = "UserToken"
+let KEY_REGISTRATION_COMPLETED = "UserRegistrationCompleted"
