@@ -21,6 +21,8 @@ class SPForgotPasswordViewController: UIViewController {
     }
     
     func setupUI() {
+        self.txtfEmail.attributedPlaceholder = NSAttributedString(string: "E-mail", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        
         self.txtfEmail.layer.cornerRadius = 20.0
         self.btnSendEmail.layer.cornerRadius = 20.0
         

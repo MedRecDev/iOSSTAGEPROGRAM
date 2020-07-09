@@ -9,7 +9,7 @@
 import UIKit
 import YouTubePlayer
 
-class YoutubePlayerViewController: UIViewController {
+class YoutubePlayerViewController: SPBaseViewController {
 
     @IBOutlet weak var youtubePlayer: YouTubePlayerView!
     @IBOutlet weak var playButton: UIButton!
@@ -27,6 +27,12 @@ class YoutubePlayerViewController: UIViewController {
             youtubePlayer.loadVideoURL(URL(string: channel.newsFeedUrl)!)
         }
         self.playButton.isHidden = true
+        self.handleLeftBarButtonItem(leftButtonType: .WhiteBack)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = channel?.newsChannelName
     }
     
     override func viewWillDisappear(_ animated: Bool) {

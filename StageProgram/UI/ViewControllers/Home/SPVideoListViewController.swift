@@ -47,6 +47,8 @@ class SPVideoListViewController: SPBaseViewController {
         if let stateName = state?.stateName {
             Analytics.setScreenName(stateName   , screenClass: "SPVideoListViewController")
         }
+        self.collectionView.reloadData()
+        self.updateTopView()
     }
     
     func setUpUI() {

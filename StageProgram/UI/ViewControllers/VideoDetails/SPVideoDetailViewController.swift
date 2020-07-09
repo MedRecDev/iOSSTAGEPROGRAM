@@ -24,7 +24,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     @IBOutlet weak var lblLikeCount: UILabel!
     @IBOutlet weak var lblDislikeCount: UILabel!
     @IBOutlet weak var lblShareCount: UILabel!
-    var videoDetail : SPVideoDetail!
+    weak var videoDetail : SPVideoDetail!
     var videoDetailDM : VideoDetailDataManager = VideoDetailDataManager()
     var videoTumbnailImage: UIImage?
     
@@ -36,7 +36,9 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.tableView.register(UINib(nibName: "SuggestedVideoTVCell", bundle: nil), forCellReuseIdentifier: "SuggestedVideoTVCell")
         self.tableView.separatorStyle = .none
         
+        self.videoDetail.totalViews += 1
         self.videoDetailDM.videoDetail = self.videoDetail
+        self.increaseViewCount()
         self.fetchSuggestedVideos()
         self.updateUI()
         SDWebImageManager.shared.loadImage(with: URL(string: self.videoDetail!.mainThumbnailUrl), options: [], progress: nil) { (image, data, error, cacheType, success, url) in
@@ -86,6 +88,12 @@ class SPVideoDetailViewController: SPBaseViewController {
                 }
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    func increaseViewCount() {
+        self.videoDetailDM.increaseVideoViews { (success, errorMsg) in
+            print("Video view count increased")
         }
     }
     

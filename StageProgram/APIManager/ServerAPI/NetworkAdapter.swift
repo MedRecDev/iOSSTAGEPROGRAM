@@ -263,6 +263,18 @@ class NetworkAdapter {
         }
     }
     
+    func increaseVideoViews(videoId: Int, completion: @escaping (_ response: Bool, _ errorMessage: String?) -> Void) {
+        self.provider.request(.IncreaseVideoView(videoId: videoId)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                completion(true, nil)
+            case .failure(let _):
+                completion(false, "Error occured while video unlike")
+            }
+        }
+    }
+    
     func uploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
         self.provider.request(.UploadVideo(userToken: userToken, videoTitle: videoTitle, videoDescription: videoDescription, stateId: stateId, videoFilePath: videoFilePath)) { (result) in
             switch result {

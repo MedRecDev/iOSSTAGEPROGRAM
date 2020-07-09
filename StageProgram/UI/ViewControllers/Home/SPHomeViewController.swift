@@ -14,6 +14,7 @@ class SPHomeViewController: SPBaseViewController {
     var pagingViewController : PagingViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Stage Program"
         self.handleLeftBarButtonItem(leftButtonType: .Menu)
         self.handleRightBarButtonItem(rightButtonTypes: [.Profile, .Upload])
         self.fetchStateList()

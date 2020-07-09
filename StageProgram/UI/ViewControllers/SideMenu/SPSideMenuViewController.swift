@@ -56,10 +56,9 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
             self.present(navController, animated: true, completion: nil)
         }
         else if indexPath.row == 2 {
-            let card = FlashCard()
-            card.news = "Download App :- https://bit.ly/3ePhhqM #stageprogram #stageprograms #stageshow #stagedance #shortvideo #india"
-            let image = UIImage(named: "splash_logo")
-            let activityVC = UIActivityViewController(activityItems: [card, image], applicationActivities: nil)
+            let news = "Download App :- https://bit.ly/3ePhhqM #stageprogram #stageprograms #stageshow #stagedance #shortvideo #india"
+            let image = UIImage(named: "featuregraphic")
+            let activityVC = UIActivityViewController(activityItems: [image, news], applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
         }
         else if indexPath.row == 3 {

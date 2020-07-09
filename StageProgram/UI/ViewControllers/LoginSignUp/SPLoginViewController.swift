@@ -36,6 +36,9 @@ class SPLoginViewController: SPBaseViewController {
         let leftViewPass = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: self.txtfEmail.frame.size.height))
         self.txtfPassword.leftView = leftViewPass
         self.txtfPassword.leftViewMode = .always
+        
+        self.txtfEmail.attributedPlaceholder = NSAttributedString(string: "E-mail", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        self.txtfPassword.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
     }
     
     //MARK: IBActions

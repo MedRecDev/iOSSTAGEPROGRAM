@@ -13,9 +13,12 @@ class NewsListViewController: SPBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.handleLeftBarButtonItem(leftButtonType: .Menu)
+        self.handleRightBarButtonItem(rightButtonTypes: [.Profile])
         self.tableView.register(UINib(nibName: "NewsChannelsTVCell", bundle: nil), forCellReuseIdentifier: "NewsChannelsTVCell")
         self.tableView.separatorStyle = .none
         self.fetchNewsStates()
+        self.title = "News Channels"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,6 +76,14 @@ extension NewsListViewController {
 
 extension NewsListViewController : NewsChannelCellDelegate {
     func newsChannelSelected(newsChannel: SPNewsChannel) {
-        self.performSegue(withIdentifier: "showYoutubePlayerVideoScene", sender: newsChannel)
+//        YoutubePlayerViewController
+//        let
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let youtubeVC = storyboard.instantiateViewController(withIdentifier: "YoutubePlayerViewController") as! YoutubePlayerViewController
+        youtubeVC.channel = newsChannel
+        let navController = UINavigationController(rootViewController: youtubeVC)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
+//        self.performSegue(withIdentifier: "showYoutubePlayerVideoScene", sender: newsChannel)
     }
 }

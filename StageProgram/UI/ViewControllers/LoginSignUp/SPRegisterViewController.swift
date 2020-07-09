@@ -32,6 +32,12 @@ class SPRegisterViewController: SPBaseViewController {
         self.txtfPassword.layer.cornerRadius = 20.0
         self.btnRegister.layer.cornerRadius = 20.0
         
+        self.txtfEmail.attributedPlaceholder = NSAttributedString(string: "E-mail", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        self.txtfPassword.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        self.txtfName.attributedPlaceholder = NSAttributedString(string: "Full Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        self.txtfPhone.attributedPlaceholder = NSAttributedString(string: "Phone no", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        self.txtfConfirmPassword.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0)])
+        
         self.txtfEmail.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0).cgColor
         self.txtfEmail.layer.borderWidth = 1.0
         self.txtfPassword.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0).cgColor

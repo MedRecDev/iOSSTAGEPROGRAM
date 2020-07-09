@@ -23,6 +23,7 @@ enum AppTutorService {
     case NewsChannels
     case RegisterComplete(userToken: String, otp: String)
     case ResendOTP(userToken: String, tokenType: Int)
+    case IncreaseVideoView(videoId: Int)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -60,6 +61,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "account/register-complete"
         case .ResendOTP:
             return "resendotp"
+        case .IncreaseVideoView:
+            return "videos/setviews"
         }
     }
     
@@ -91,6 +94,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["token": userToken,"one_time_password": otp]
         case .ResendOTP(let userToken, let tokenType):
             return ["resend_token_type": tokenType, "token": userToken]
+        case .IncreaseVideoView(let videoId):
+            return ["video_id": videoId]
         }
     }
     
@@ -99,7 +104,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         switch self {
         case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP:
             return .post
-        case .VideoLike, .VideoDisLike:
+        case .VideoLike, .VideoDisLike, .IncreaseVideoView:
             return .put
         case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels:
             return .get
@@ -114,7 +119,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])
-        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels:
+        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels, .IncreaseVideoView:
                 return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
         case .UploadVideo:
             var mutDatas = [MultipartFormData]()

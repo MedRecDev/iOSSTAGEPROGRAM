@@ -10,7 +10,7 @@ import UIKit
 
 class VideoDetailDataManager: NSObject {
     
-    var videoDetail : SPVideoDetail!
+    weak var videoDetail : SPVideoDetail!
     var suggestedVideos : [SPVideoDetail]?
     
     func fetchSuggestedVideos(completion:@escaping (Bool, String?) -> Void) {
@@ -40,6 +40,13 @@ class VideoDetailDataManager: NSObject {
             NetworkAdapter().videoUnLike(videoId: videoId, userToken: userToken) { (unlikeCount, errorMessage) in
                 completion(unlikeCount, errorMessage)
             }
+        }
+    }
+    
+    func increaseVideoViews(completion: @escaping (Bool, String?) -> Void) {
+        let videoId : Int = self.videoDetail.videoSourceId
+        NetworkAdapter().increaseVideoViews(videoId: videoId) { (success, errorMessage) in
+            completion(success, errorMessage)
         }
     }
 }
