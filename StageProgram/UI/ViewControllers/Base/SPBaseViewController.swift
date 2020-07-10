@@ -58,7 +58,7 @@ class SPBaseViewController: UIViewController {
                 barButtonItems.append(barButton)
             } else if buttonType == .Profile {
                 let rightButton = UIButton(frame: CGRect(x: 0, y: 20, width: 30, height: 30))
-                let placeholderImage = UIImage(named: "ic_person")
+                let placeholderImage = UIImage(named: "user_placeholder")
                 rightButton.setBackgroundImage(placeholderImage, for: .normal)
                 rightButton.addTarget(self, action: #selector(didTapOnUser), for: .touchUpInside)
                 rightButton.widthAnchor.constraint(equalToConstant: 30).isActive = true

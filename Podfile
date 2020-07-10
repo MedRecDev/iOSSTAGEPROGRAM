@@ -17,6 +17,7 @@ target 'StageProgram' do
   pod 'YouTubePlayer'
   pod 'GoogleAnalytics'
   pod 'Firebase/Analytics'
+  pod 'BMPlayer', '~> 1.3.0'
   # Pods for StageProgram
 
 end

@@ -10,13 +10,15 @@ import UIKit
 import VersaPlayer
 import SDWebImage
 import FirebaseAnalytics
+import BMPlayer
 
 class SPVideoDetailViewController: SPBaseViewController {
 
+    @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var versaPlayerControls: VersaPlayerControls!
-    @IBOutlet weak var versaPlayer: VersaPlayerView!
+    @IBOutlet weak var versaPlayer: BMPlayer!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewCount: UILabel!
@@ -36,6 +38,8 @@ class SPVideoDetailViewController: SPBaseViewController {
         self.tableView.register(UINib(nibName: "SuggestedVideoTVCell", bundle: nil), forCellReuseIdentifier: "SuggestedVideoTVCell")
         self.tableView.separatorStyle = .none
         
+        self.updatePlayerConfiguration()
+        
         self.videoDetail.totalViews += 1
         self.videoDetailDM.videoDetail = self.videoDetail
         self.increaseViewCount()
@@ -51,14 +55,20 @@ class SPVideoDetailViewController: SPBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.versaPlayer.pause()
+//        self.versaPlayer.pause()
+    }
+    
+    func updatePlayerConfiguration() {
+        BMPlayerConf.enablePlaytimeGestures = true
+        BMPlayerConf.enableVolumeGestures = true
+        self.versaPlayer.delegate = self
     }
     
     func updateUI() {
-        if let url = URL(string: self.videoDetail.mediaUrl) {
-            self.versaPlayer.use(controls: self.versaPlayerControls)
-            let playerItem = VersaPlayerItem(url: url)
-            self.versaPlayer.set(item: playerItem)
+        if let encodedURL = self.videoDetail.mediaUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedURL) {
+            let asset = BMPlayerResource(url: url)
+            self.versaPlayer.setVideo(resource: asset)
+            self.versaPlayer.play()
         }
         
         self.lblTitle.text = self.videoDetail.videoTitle
@@ -204,5 +214,34 @@ class FlashCard: NSObject, UIActivityItemSource {
     
     func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
         return thumbnailUrl
+    }
+}
+
+extension SPVideoDetailViewController : BMPlayerDelegate {
+    func bmPlayer(player: BMPlayer ,playerStateDidChange state: BMPlayerState) {
+//        print("playerStateDidChange")
+    }
+    
+    func bmPlayer(player: BMPlayer ,loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval)  {
+//        print("loadedTimeDidChange")
+    }
+    
+    func bmPlayer(player: BMPlayer ,playTimeDidChange currentTime : TimeInterval, totalTime: TimeInterval)  {
+//        print("playTimeDidChange")
+    }
+    
+    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
+//        print("playerIsPlaying")
+    }
+    
+    func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
+        if isFullscreen {
+            self.playerHeightConstraint.constant = self.view.frame.size.height + 20
+            self.tabBarController?.tabBar.isHidden = true
+            UIApplication.shared.statusBarUIView?.isHidden = true
+        } else {
+            self.playerHeightConstraint.constant = 250
+            self.tabBarController?.tabBar.isHidden = false
+        }
     }
 }

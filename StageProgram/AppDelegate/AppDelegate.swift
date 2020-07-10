@@ -48,14 +48,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-//        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-//        let youtubePlayerVC = homeStoryboard.instantiateViewController(withIdentifier: "YoutubePlayerViewController") as? YoutubePlayerViewController
-//        if let navController = window?.rootViewController
-        if window == self.window {
-            return .portrait
-        } else {
+        if let topVC = UIApplication.getTopViewController() as? SPVideoDetailViewController {
+            return .allButUpsideDown
+        } else if let topVC = UIApplication.getTopViewController() as? YoutubePlayerViewController {
             return .allButUpsideDown
         }
+        return .portrait
     }
 }
 
+
+extension UIApplication {
+
+    class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+
+        if let nav = base as? UINavigationController {
+            return getTopViewController(base: nav.visibleViewController)
+
+        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return getTopViewController(base: selected)
+
+        } else if let presented = base?.presentedViewController {
+            return getTopViewController(base: presented)
+        }
+        return base
+    }
+}

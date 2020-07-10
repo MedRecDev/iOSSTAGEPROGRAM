@@ -22,6 +22,8 @@ class SPHomeViewController: SPBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -60,6 +62,10 @@ class SPHomeViewController: SPBaseViewController {
         self.pagingViewController?.view.layout.pinHorizontalEdgesToSuperView()
         self.pagingViewController?.view.layout.pinVerticalEdgesToSuperView()
         self.pagingViewController!.didMove(toParent: self)
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
     }
 }
 
