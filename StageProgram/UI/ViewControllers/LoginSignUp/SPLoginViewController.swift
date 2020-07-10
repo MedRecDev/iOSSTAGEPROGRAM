@@ -51,8 +51,20 @@ class SPLoginViewController: SPBaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
+        guard let email = self.txtfEmail.text else {
+            self.showAlert(withMessage: "Please enter a valid email address.")
+            return
+        }
+        guard email.isValidEmail() else {
+            self.showAlert(withMessage: "Please enter a valid email address.")
+            return
+        }
+        guard let password = self.txtfPassword.text else {
+            self.showAlert(withMessage: "Please enter a valid password.")
+            return
+        }
         self.showProgressHUD()
-        UserDataManager.shared.userLogin(email: self.txtfEmail.text!, password: self.txtfPassword.text!) { (success, errorMessage) in
+        UserDataManager.shared.userLogin(email: email, password: password) { (success, errorMessage) in
             self.hideProgressHUD()
             if success {
                 self.dismiss(animated: true, completion: nil)

@@ -92,36 +92,40 @@ class SPRegisterViewController: SPBaseViewController {
     @IBAction func registerTapped(_ sender: Any) {
         let names = self.txtfName.text?.split(separator: " ")
         guard let firstName = names?.first else {
-            self.showAlert(withMessage: "Please enter a valid name!")
+            self.showAlert(withMessage: "Please enter a valid name.")
             return
         }
         guard let lastName = names?.last else {
-            self.showAlert(withMessage: "Please enter a valid name!")
+            self.showAlert(withMessage: "Please enter a valid name.")
             return
         }
         guard let email = self.txtfEmail.text else {
-            self.showAlert(withMessage: "Please enter a valid email!")
+            self.showAlert(withMessage: "Please enter a valid email address.")
+            return
+        }
+        guard email.isValidEmail() else {
+            self.showAlert(withMessage: "Please enter a valid email address.")
             return
         }
         guard let password = self.txtfPassword.text else {
-            self.showAlert(withMessage: "Please enter a valid password!")
+            self.showAlert(withMessage: "Please enter a valid password.")
             return
         }
         guard !self.isValidPassword(testStr: password) else {
-            self.showAlert(withMessage: "Please enter a valid password!")
+            self.showAlert(withMessage: "Please enter a valid password.")
             return
         }
         guard let confirmPass = self.txtfConfirmPassword.text else {
-            self.showAlert(withMessage: "Please enter a valid confirm password!")
+            self.showAlert(withMessage: "Please enter a valid confirm password.")
             return
         }
         
         if confirmPass != password {
-            self.showAlert(withMessage: "Please enter a valid confirm password!")
+            self.showAlert(withMessage: "Please enter a valid confirm password.")
             return
         }
         guard let phone = self.txtfPhone.text else {
-            self.showAlert(withMessage: "Please enter a valid phone!")
+            self.showAlert(withMessage: "Please enter a valid phone.")
             return
         }
         let first = String(firstName)

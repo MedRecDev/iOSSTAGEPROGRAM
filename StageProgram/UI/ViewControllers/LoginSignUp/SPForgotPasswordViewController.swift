@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPForgotPasswordViewController: UIViewController {
+class SPForgotPasswordViewController: SPBaseViewController {
 
     @IBOutlet weak var txtfEmail: UITextField!
     @IBOutlet weak var btnSendEmail: UIButton!
@@ -35,6 +35,14 @@ class SPForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func sendEmailTapped(_ sender: Any) {
+        guard let email = self.txtfEmail.text else {
+            self.showAlert(withMessage: "Please enter a valid email address.")
+            return
+        }
+        guard email.isValidEmail() else {
+            self.showAlert(withMessage: "Please enter a valid email address.")
+            return
+        }
         
     }
     

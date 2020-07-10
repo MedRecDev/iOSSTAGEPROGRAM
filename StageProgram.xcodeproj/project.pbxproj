@@ -55,6 +55,7 @@
 		48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC212490A4B200260F3A /* Assets.xcassets */; };
 		48D1DC252490A4B200260F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC232490A4B200260F3A /* LaunchScreen.storyboard */; };
 		48D1DC2F2490A7A400260F3A /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */; };
+		48E0BCF224B86A370094B04A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0BCF124B86A370094B04A /* String+Extension.swift */; };
 		48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */; };
 		48E3020A24A37C360019C1B4 /* SuggestedVideoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */; };
 		48E3E691249E4E77005CE6CB /* SPState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3E690249E4E77005CE6CB /* SPState.swift */; };
@@ -124,6 +125,7 @@
 		48D1DC242490A4B200260F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D1DC262490A4B200260F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
+		48E0BCF124B86A370094B04A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedVideoTVCell.swift; sourceTree = "<group>"; };
 		48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedVideoTVCell.xib; sourceTree = "<group>"; };
 		48E3E690249E4E77005CE6CB /* SPState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPState.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				48CFDC78249250D8002DB2DE /* UIColorExtensions.swift */,
 				488B46D924A1F921007BE492 /* UIView+Gradient.swift */,
 				48C9D52F24A352B400555C4B /* DateExtension.swift */,
+				48E0BCF124B86A370094B04A /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				48CFDC79249250D8002DB2DE /* UIColorExtensions.swift in Sources */,
 				48EA4C5F24A4631900164B53 /* SPLoginViewController.swift in Sources */,
 				48FD8EA6249DE72400C72683 /* SPVideoListViewController.swift in Sources */,
+				48E0BCF224B86A370094B04A /* String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,7 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -774,7 +778,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

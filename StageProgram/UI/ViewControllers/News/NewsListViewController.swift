@@ -21,6 +21,13 @@ class NewsListViewController: SPBaseViewController {
         self.title = "News Channels"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? YoutubePlayerViewController {
             dest.channel = sender as? SPNewsChannel
