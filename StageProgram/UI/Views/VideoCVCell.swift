@@ -24,7 +24,7 @@ class VideoCVCell: UICollectionViewCell {
     
     func updateUI(video: SPVideoDetail?) {
         if let videoDetail = video {
-            self.imgvThmbnail.sd_setImage(with: URL(string: videoDetail.mainThumbnailUrl), placeholderImage: UIImage(named: "placeholder_square"), options: []) { (image, error, cacheType, url) in
+            self.imgvThmbnail.sd_setImage(with: URL(string: videoDetail.standardThumbnailUrl), placeholderImage: UIImage(named: "placeholder_square"), options: []) { (image, error, cacheType, url) in
                 self.imgvThmbnail.image = image
             }
             self.lblTitle.text = videoDetail.videoTitle

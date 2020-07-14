@@ -41,17 +41,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="Zla-9K-Lao">
-                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
+                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="Kop-lR-4RC"/>
                                     <constraint firstAttribute="height" constant="193" id="vEO-lg-ZBs"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorSmartObject" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-lK-uUl">
-                                <rect key="frame" x="174.5" y="83" width="65" height="65"/>
+                                <rect key="frame" x="160.5" y="57" width="93" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="3bc-oW-83V"/>
-                                    <constraint firstAttribute="height" constant="65" id="I8h-UV-fTR"/>
+                                    <constraint firstAttribute="width" constant="93" id="3bc-oW-83V"/>
+                                    <constraint firstAttribute="height" constant="121" id="I8h-UV-fTR"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="A02-vd-a7V">
@@ -79,7 +79,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <outlet property="delegate" destination="ie2-MG-e9i" id="wF9-7L-kXN"/>
                                 </connections>
@@ -97,7 +97,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4r-0D-S8r">
-                                <rect key="frame" x="284" y="403" width="105" height="26"/>
+                                <rect key="frame" x="271" y="403" width="118" height="27"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                 <state key="normal" title="Forgot Password ? ">
                                     <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,7 +107,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-SN-ArC">
-                                <rect key="frame" x="20" y="470" width="374" height="45"/>
+                                <rect key="frame" x="20" y="471" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="oKw-W3-iyZ"/>
@@ -121,16 +121,16 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAa-KB-j9X">
-                                <rect key="frame" x="102.5" y="535" width="209.5" height="26"/>
+                                <rect key="frame" x="89" y="536" width="236" height="27"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q3-rb-Zya">
-                                        <rect key="frame" x="0.0" y="0.0" width="134.5" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="27"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.54117647058823526" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-iS-NZh">
-                                        <rect key="frame" x="136.5" y="0.0" width="73" height="26"/>
+                                        <rect key="frame" x="155" y="0.0" width="81" height="27"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <state key="normal" title="Register Now">
                                             <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="gjA-WN-7tx" firstAttribute="top" secondItem="ACa-p4-Lnn" secondAttribute="top" constant="10" id="GQt-Yn-GQU"/>
                             <constraint firstItem="9Fk-lK-uUl" firstAttribute="centerX" secondItem="IKR-hY-2t6" secondAttribute="centerX" id="INj-Mr-lZj"/>
                             <constraint firstItem="nAa-KB-j9X" firstAttribute="top" secondItem="7rQ-SN-ArC" secondAttribute="bottom" constant="20" id="Lkb-nh-sNZ"/>
-                            <constraint firstItem="9Fk-lK-uUl" firstAttribute="bottom" secondItem="Zla-9K-Lao" secondAttribute="bottom" constant="-45" id="NXW-ri-VAq"/>
+                            <constraint firstItem="9Fk-lK-uUl" firstAttribute="bottom" secondItem="Zla-9K-Lao" secondAttribute="bottom" constant="-15" id="NXW-ri-VAq"/>
                             <constraint firstItem="x33-jd-ovp" firstAttribute="top" secondItem="A02-vd-a7V" secondAttribute="bottom" constant="30" id="Sbz-z3-Oc6"/>
                             <constraint firstItem="F8b-px-kAx" firstAttribute="trailing" secondItem="x33-jd-ovp" secondAttribute="trailing" id="TA6-2S-RzZ"/>
                             <constraint firstItem="x33-jd-ovp" firstAttribute="leading" secondItem="ACa-p4-Lnn" secondAttribute="leading" constant="20" id="ZPP-XQ-uIl"/>
@@ -201,17 +201,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="6T5-5B-u9M">
-                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
+                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="193" id="Wvi-bz-pPa"/>
                                     <constraint firstAttribute="width" constant="187" id="i6m-FG-vDN"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorSmartObject" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-sr-HfQ">
-                                <rect key="frame" x="174.5" y="83" width="65" height="65"/>
+                                <rect key="frame" x="160.5" y="57" width="93" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="Pum-at-FcH"/>
-                                    <constraint firstAttribute="height" constant="65" id="TdG-ZK-Rb0"/>
+                                    <constraint firstAttribute="width" constant="93" id="Pum-at-FcH"/>
+                                    <constraint firstAttribute="height" constant="121" id="TdG-ZK-Rb0"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="f3c-fP-9Mw">
@@ -246,7 +246,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="y8z-J7-Aph" id="3yJ-Om-7UD"/>
                                                 </connections>
@@ -282,7 +282,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="y8z-J7-Aph" id="3VV-Gf-I7A"/>
                                                 </connections>
@@ -303,16 +303,16 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEh-kM-9pu">
-                                                <rect key="frame" x="104" y="405" width="206" height="27"/>
+                                                <rect key="frame" x="90.5" y="405" width="233.5" height="27"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nja-r8-VP1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="146" height="27"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="166.5" height="27"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" red="0.53725490200000003" green="0.54117647059999996" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hme-nH-mNY">
-                                                        <rect key="frame" x="148" y="0.0" width="58" height="27"/>
+                                                        <rect key="frame" x="168.5" y="0.0" width="65" height="27"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Login Now">
                                                             <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,7 +382,7 @@
                             <constraint firstItem="8Rw-WD-W26" firstAttribute="trailing" secondItem="JOu-J8-3JC" secondAttribute="trailing" id="RTM-Ak-S2k"/>
                             <constraint firstItem="8Rw-WD-W26" firstAttribute="top" secondItem="f3c-fP-9Mw" secondAttribute="bottom" constant="30" id="b75-zt-BEp"/>
                             <constraint firstItem="hOH-sr-HfQ" firstAttribute="centerX" secondItem="qOm-3l-cN0" secondAttribute="centerX" id="cXV-PV-5Kr"/>
-                            <constraint firstItem="hOH-sr-HfQ" firstAttribute="bottom" secondItem="6T5-5B-u9M" secondAttribute="bottom" constant="-45" id="g8F-PM-yAp"/>
+                            <constraint firstItem="hOH-sr-HfQ" firstAttribute="bottom" secondItem="6T5-5B-u9M" secondAttribute="bottom" constant="-15" id="g8F-PM-yAp"/>
                             <constraint firstItem="JOu-J8-3JC" firstAttribute="bottom" secondItem="8Rw-WD-W26" secondAttribute="bottom" id="syI-xq-6t7"/>
                             <constraint firstItem="6T5-5B-u9M" firstAttribute="top" secondItem="qOm-3l-cN0" secondAttribute="top" id="tuZ-ms-Qie"/>
                             <constraint firstItem="6T5-5B-u9M" firstAttribute="centerX" secondItem="qOm-3l-cN0" secondAttribute="centerX" id="ugL-kQ-Pfc"/>
@@ -412,17 +412,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="9UK-YM-nYR">
-                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
+                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="193" id="YUF-sH-phd"/>
                                     <constraint firstAttribute="width" constant="187" id="nQW-Se-qtG"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorSmartObject" translatesAutoresizingMaskIntoConstraints="NO" id="nWM-fy-O0Y">
-                                <rect key="frame" x="174.5" y="83" width="65" height="65"/>
+                                <rect key="frame" x="160.5" y="57" width="93" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="37G-hM-jhO"/>
-                                    <constraint firstAttribute="height" constant="65" id="lLS-Qg-HLl"/>
+                                    <constraint firstAttribute="width" constant="93" id="37G-hM-jhO"/>
+                                    <constraint firstAttribute="height" constant="121" id="lLS-Qg-HLl"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9Ot-xp-fyC">
@@ -433,13 +433,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We have sent an OTP to your registered email. Please enter OTP to verify registration." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcb-CG-5ov">
-                                <rect key="frame" x="20" y="273" width="374" height="33"/>
+                                <rect key="frame" x="20" y="273" width="374" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRK-Sj-bfa">
-                                <rect key="frame" x="62" y="351" width="290" height="40"/>
+                                <rect key="frame" x="62" y="352.5" width="290" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pBD-ed-bqb">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -543,7 +543,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEa-v0-y88">
-                                <rect key="frame" x="167.5" y="416" width="79" height="26"/>
+                                <rect key="frame" x="163.5" y="417.5" width="87" height="27"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
                                 <state key="normal" title="Resent OTP ? ">
                                     <color key="titleColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -554,7 +554,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEN-4N-kLa">
-                                <rect key="frame" x="20" y="512" width="374" height="45"/>
+                                <rect key="frame" x="20" y="514.5" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="h34-15-jYi"/>
@@ -573,7 +573,7 @@
                         <constraints>
                             <constraint firstItem="9Ot-xp-fyC" firstAttribute="top" secondItem="9UK-YM-nYR" secondAttribute="bottom" constant="25" id="1Cd-El-Dsn"/>
                             <constraint firstItem="9Ot-xp-fyC" firstAttribute="centerX" secondItem="uG7-4Y-Kad" secondAttribute="centerX" id="9cb-Ye-A3N"/>
-                            <constraint firstItem="nWM-fy-O0Y" firstAttribute="bottom" secondItem="9UK-YM-nYR" secondAttribute="bottom" constant="-45" id="A4c-ta-mzT"/>
+                            <constraint firstItem="nWM-fy-O0Y" firstAttribute="bottom" secondItem="9UK-YM-nYR" secondAttribute="bottom" constant="-15" id="A4c-ta-mzT"/>
                             <constraint firstItem="f0y-VJ-eBm" firstAttribute="trailing" secondItem="Kcb-CG-5ov" secondAttribute="trailing" constant="20" id="BuY-wI-VNt"/>
                             <constraint firstItem="DEa-v0-y88" firstAttribute="top" secondItem="BRK-Sj-bfa" secondAttribute="bottom" constant="25" id="HEz-xw-UXY"/>
                             <constraint firstItem="KEN-4N-kLa" firstAttribute="top" secondItem="DEa-v0-y88" secondAttribute="bottom" constant="70" id="I5b-ID-Dxb"/>
@@ -617,17 +617,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_oval" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-dl-Py8">
-                                <rect key="frame" x="113.5" y="0.0" width="187" height="193"/>
+                                <rect key="frame" x="113.49999999999999" y="0.0" width="187.00000000000003" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="TVg-E0-eEG"/>
                                     <constraint firstAttribute="height" constant="193" id="kaf-pl-aTZ"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorSmartObject" translatesAutoresizingMaskIntoConstraints="NO" id="piS-r1-Lka">
-                                <rect key="frame" x="174.5" y="83" width="65" height="65"/>
+                                <rect key="frame" x="160.5" y="57" width="93" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="jle-h4-8FY"/>
-                                    <constraint firstAttribute="height" constant="65" id="ul7-vD-Tyb"/>
+                                    <constraint firstAttribute="width" constant="93" id="jle-h4-8FY"/>
+                                    <constraint firstAttribute="height" constant="121" id="ul7-vD-Tyb"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-4k-TQ4">
@@ -650,25 +650,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cX-4D-QCf">
-                                <rect key="frame" x="115.5" y="258" width="183.5" height="24.5"/>
+                                <rect key="frame" x="104" y="258" width="206.5" height="26"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="21"/>
                                 <color key="textColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPY-Tg-AdI">
-                                <rect key="frame" x="20" y="317.5" width="374" height="45"/>
+                                <rect key="frame" x="20" y="319" width="374" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="F78-dC-w91"/>
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <outlet property="delegate" destination="hY4-vh-LVT" id="b2X-0Q-VIm"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmx-Fd-ds9">
-                                <rect key="frame" x="20" y="392.5" width="374" height="45"/>
+                                <rect key="frame" x="20" y="394" width="374" height="45"/>
                                 <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="gor-0F-cWU"/>
@@ -693,7 +693,7 @@
                             <constraint firstItem="jmx-Fd-ds9" firstAttribute="top" secondItem="gPY-Tg-AdI" secondAttribute="bottom" constant="30" id="Y50-q4-FHJ"/>
                             <constraint firstItem="wG5-4k-TQ4" firstAttribute="centerX" secondItem="rZS-xJ-Usp" secondAttribute="centerX" id="csD-Fn-JzM"/>
                             <constraint firstItem="jmx-Fd-ds9" firstAttribute="trailing" secondItem="gPY-Tg-AdI" secondAttribute="trailing" id="fg0-Wz-tqv"/>
-                            <constraint firstItem="piS-r1-Lka" firstAttribute="bottom" secondItem="ckI-dl-Py8" secondAttribute="bottom" constant="-45" id="jMq-MN-sEN"/>
+                            <constraint firstItem="piS-r1-Lka" firstAttribute="bottom" secondItem="ckI-dl-Py8" secondAttribute="bottom" constant="-15" id="jMq-MN-sEN"/>
                             <constraint firstItem="ckI-dl-Py8" firstAttribute="top" secondItem="rZS-xJ-Usp" secondAttribute="top" id="n6p-gf-7UD"/>
                             <constraint firstItem="eCV-nw-9ee" firstAttribute="trailing" secondItem="gPY-Tg-AdI" secondAttribute="trailing" constant="20" id="qRL-RD-qlT"/>
                             <constraint firstItem="gPY-Tg-AdI" firstAttribute="leading" secondItem="eCV-nw-9ee" secondAttribute="leading" constant="20" id="sEM-JC-pEM"/>
@@ -716,7 +716,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="VectorSmartObject" width="65" height="65"/>
+        <image name="VectorSmartObject" width="112.5" height="147"/>
         <image name="logo" width="160" height="15"/>
         <image name="red_back" width="16" height="16"/>
         <image name="top_oval" width="187" height="193"/>

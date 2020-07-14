@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MobileCoreServices
+import AVFoundation
 
 class VideoUploadViewController: SPBaseViewController {
 
-    @IBOutlet weak var txtfDescription: UITextField!
+    @IBOutlet weak var txtvDescription: UITextView!
     @IBOutlet weak var txtfTitle: UITextField!
     @IBOutlet weak var btnType: UIButton!
     @IBOutlet weak var btnCategory: UIButton!
@@ -21,8 +23,9 @@ class VideoUploadViewController: SPBaseViewController {
     var videoUrl : URL?
     var videoFeedOptions = ["Stage Show", "Video Feed"]
     var categories : [SPState]? = StatesDataManager.shared.states
-    var fileUrlData: Data?
+    var fileUrlData: String?
     let uploadVideoManager : UploadVideoDataManager = UploadVideoDataManager()
+    var finalOutputUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +40,24 @@ class VideoUploadViewController: SPBaseViewController {
         self.btnCategory.layer.borderWidth = 1.0
         self.btnCategory.layer.cornerRadius = 5.0
         
+        self.txtvDescription.layer.borderColor = UIColor(hexString: "#D6D6D6").cgColor
+        self.txtvDescription.layer.borderWidth = 1.0
+        self.txtvDescription.layer.cornerRadius = 5.0
+        
+        
         if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 1136 {
             self.btnTypeWidthConstraint.constant = 130
             self.btnCategoryWidthConstraint.constant = 130
         }
         
         self.btnUpload.layer.cornerRadius = 20.0
+    }
+    
+    func resetAllFields() {
+        self.txtfTitle.text = ""
+        self.txtvDescription.text = ""
+        self.fileUrlData = nil
+        self.btnCategory.setTitle("Category", for: .normal)
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -53,7 +68,8 @@ class VideoUploadViewController: SPBaseViewController {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
-        imagePickerController.mediaTypes = ["public.movie"]
+        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+//        imagePickerController.mediaTypes = [kUTTypeMPEG4 as String]
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
@@ -83,7 +99,7 @@ class VideoUploadViewController: SPBaseViewController {
             message = "Please select a category"
         } else if self.txtfTitle.text!.count <= 0 {
             message = "Please enter a title for the video"
-        } else if self.txtfDescription.text!.count <= 0 {
+        } else if self.txtvDescription.text!.count <= 0 {
             message = "Please enter a category for the video"
         } else if self.fileUrlData == nil {
             message = "Please select a video file"
@@ -99,8 +115,9 @@ class VideoUploadViewController: SPBaseViewController {
                 return state.stateName == stateName
                 }).first
             self.showProgressHUD()
-            self.uploadVideoManager.uploadVideo(videoTitle: self.txtfTitle.text!, videoDescription: self.txtfDescription.text!, stateId: state!.stateId, videoFilePath: self.fileUrlData!) { (successMessage, errorMessage) in
+            self.uploadVideoManager.uploadVideo(videoTitle: self.txtfTitle.text!, videoDescription: self.txtvDescription.text!, stateId: state!.stateId, videoFilePath: self.fileUrlData!) { (successMessage, errorMessage) in
                 self.hideProgressHUD()
+                self.resetAllFields()
                 if let successMsg = successMessage {
                     let alertController = UIAlertController(title: "Stage Program", message: successMsg, preferredStyle: .alert)
                     let oKAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -121,8 +138,9 @@ extension VideoUploadViewController : UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let fileUrl = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
             do {
-                let data = try Data(contentsOf: fileUrl)
-                self.fileUrlData = data
+                self.encodeVideo(videoUrl: fileUrl) { (url) in
+                    self.fileUrlData = self.finalOutputUrl?.absoluteString
+                }
             } catch {
                 print("Error occurred")
             }
@@ -134,5 +152,50 @@ extension VideoUploadViewController : UIImagePickerControllerDelegate, UINavigat
 extension VideoUploadViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+}
+
+extension VideoUploadViewController {
+    func encodeVideo(videoUrl: URL, outputUrl: URL? = nil, resultClosure: @escaping (URL?) -> Void ) {
+
+        self.finalOutputUrl = outputUrl
+
+        if finalOutputUrl == nil {
+            var url = videoUrl
+            url.deletePathExtension()
+            url.appendPathExtension("mp4")
+            finalOutputUrl = url
+        }
+
+        if FileManager.default.fileExists(atPath: finalOutputUrl!.path) {
+            print("Converted file already exists \(finalOutputUrl!.path)")
+            resultClosure(finalOutputUrl)
+            return
+        }
+
+        let asset = AVURLAsset(url: videoUrl)
+        if let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetPassthrough) {
+            exportSession.outputURL = finalOutputUrl!
+            exportSession.outputFileType = AVFileType.mp4
+            let start = CMTimeMakeWithSeconds(0.0, preferredTimescale: 0)
+            let range = CMTimeRangeMake(start: start, duration: asset.duration)
+            exportSession.timeRange = range
+            exportSession.shouldOptimizeForNetworkUse = true
+            exportSession.exportAsynchronously() {
+
+                switch exportSession.status {
+                case .failed:
+                    print("Export failed: \(exportSession.error != nil ? exportSession.error!.localizedDescription : "No Error Info")")
+                case .cancelled:
+                    print("Export canceled")
+                case .completed:
+                    resultClosure(self.finalOutputUrl!)
+                default:
+                    break
+                }
+            }
+        } else {
+            resultClosure(nil)
+        }
     }
 }

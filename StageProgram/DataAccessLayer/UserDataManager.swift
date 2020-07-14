@@ -50,7 +50,7 @@ class UserDataManager: NSObject {
             } else if let uToken = response as? String {
                 self.userToken = uToken
                 UserDefaults.standard.setValue(false, forKey: KEY_REGISTRATION_COMPLETED)
-                UserDefaults.standard.setValue(self.currentUser?.userToken, forKey: KEY_USER_TOKEN)
+                UserDefaults.standard.setValue(uToken, forKey: KEY_USER_TOKEN)
                 completion(true, nil)
             } else {
                 completion(false, errorMessage)
@@ -62,7 +62,7 @@ class UserDataManager: NSObject {
         var token = ""
         if let uToken = self.userToken {
             token = uToken
-        } else if let uToken = UserDataManager.shared.userToken {
+        } else if let uToken = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) as? String {
             token = uToken
         }
         NetworkAdapter().completeRegisterFlowWithOTP(userToken: token, otp: otp) { (user, errorMessage) in

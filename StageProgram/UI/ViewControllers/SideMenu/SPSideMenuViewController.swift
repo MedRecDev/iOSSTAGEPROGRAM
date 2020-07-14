@@ -12,7 +12,7 @@ class SPSideMenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var sideMenuTitles = ["Profile", "Privacy Policy", "Share", "Feedback", "About us", "Contact us"]
-    var sideMenuImages = ["ic_person", "ic_lock", "ic_share", "ic_info", "ic_info", "ic_phone"]
+    var sideMenuImages = ["ic_person", "ic_lock", "ic_share", "ic_feedback", "ic_info", "ic_phone"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "SideMenuTVCell", bundle: nil), forCellReuseIdentifier: "SideMenuTVCell")
@@ -42,10 +42,17 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
             if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
                 //  Will show Profile screen
             } else {
-                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
-                loginVC.modalPresentationStyle = .fullScreen
-                self.present(loginVC, animated: true, completion: nil)
+                if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                    let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                    let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                    loginVC.modalPresentationStyle = .fullScreen
+                    self.present(loginVC, animated: true, completion: nil)
+                } else {
+                    let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                    let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                    loginVC.modalPresentationStyle = .fullScreen
+                    self.present(loginVC, animated: true, completion: nil)
+                }
             }
         } else if indexPath.row == 1 {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)

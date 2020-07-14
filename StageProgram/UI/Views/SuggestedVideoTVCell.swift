@@ -26,7 +26,7 @@ class SuggestedVideoTVCell: UITableViewCell {
     }
     
     func updateUI(videoDetail: SPVideoDetail) {
-        self.imgvThumbnail.sd_setImage(with: URL(string: videoDetail.mainThumbnailUrl)) { (image, error, cacheType, url) in
+        self.imgvThumbnail.sd_setImage(with: URL(string: videoDetail.standardThumbnailUrl), placeholderImage: UIImage(named: "placeholder_square"), options: []) { (image, error, cacheType, url) in
             self.imgvThumbnail.image = image
         }
         self.lblTitle.text = videoDetail.videoTitle

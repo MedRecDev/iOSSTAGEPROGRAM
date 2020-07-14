@@ -275,24 +275,23 @@ class NetworkAdapter {
         }
     }
     
-    func uploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
+    func uploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
         self.provider.request(.UploadVideo(userToken: userToken, videoTitle: videoTitle, videoDescription: videoDescription, stateId: stateId, videoFilePath: videoFilePath)) { (result) in
             switch result {
             case .success(let response):
                 let data = response.data
                 do {
                     let responseJson = try JSON(data: data)
-                    if let data = responseJson["data"].dictionary {
-                        completion(nil, "Error occured while video unlike")
+                    if let message = responseJson["message"].string {
+                        completion(nil, message)
                     } else {
-                        let errorMessage = responseJson["message"].string
-                        completion(nil, "Error occured while video unlike")
+                        completion(nil, "Error occured while uploading a video.")
                     }
                 } catch {
-                    completion(nil, "Error occured while video unlike")
+                    completion(nil, "Error occured while uploading a video.")
                 }
             case .failure(let _):
-                completion(nil, "Error occured while uploading video")
+                completion(nil, "Error occured while uploading a video.")
             }
         }
     }

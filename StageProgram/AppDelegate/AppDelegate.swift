@@ -48,10 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        if let topVC = UIApplication.getTopViewController() as? SPVideoDetailViewController {
+        if let _ = UIApplication.getTopViewController() as? SPVideoDetailViewController {
             return .allButUpsideDown
-        } else if let topVC = UIApplication.getTopViewController() as? YoutubePlayerViewController {
-            return .allButUpsideDown
+        } else if let _ = UIApplication.getTopViewController() as? YoutubePlayerViewController {
+            return .landscapeRight
         }
         return .portrait
     }

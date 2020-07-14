@@ -26,6 +26,7 @@ class YoutubePlayerViewController: SPBaseViewController {
         if let channel = self.channel {
             youtubePlayer.loadVideoURL(URL(string: channel.newsFeedUrl)!)
         }
+        youtubePlayer.delegate = self
         self.playButton.isHidden = true
         self.handleLeftBarButtonItem(leftButtonType: .WhiteBack)
     }
@@ -33,6 +34,11 @@ class YoutubePlayerViewController: SPBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = channel?.newsChannelName
+        
+        UIApplication.shared.statusBarUIView?.isHidden = true
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,6 +55,15 @@ class YoutubePlayerViewController: SPBaseViewController {
                 youtubePlayer.pause()
                 playButton.setImage(UIImage(named: "play_icon"), for: .normal)
             }
+        }
+    }
+}
+
+extension YoutubePlayerViewController : YouTubePlayerDelegate {
+    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+        if playerState == .Ended {
+//            self.playerHeightConstraint.constant = self.view.frame.size.height + 20
+//            UIApplication.shared.statusBarUIView?.isHidden = true
         }
     }
 }

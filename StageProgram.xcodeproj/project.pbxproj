@@ -767,7 +767,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stageprogram.sp;
 				PRODUCT_NAME = "STAGE PROGRAM";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -790,7 +790,7 @@
 				PRODUCT_NAME = "STAGE PROGRAM";
 				PROVISIONING_PROFILE_SPECIFIER = StageProgram_AppStore_Profile;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

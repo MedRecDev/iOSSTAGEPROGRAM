@@ -14,7 +14,7 @@ class SPHomeViewController: SPBaseViewController {
     var pagingViewController : PagingViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Stage Program"
+        self.navigationItem.title = "STAGE PROGRAM"
         self.handleLeftBarButtonItem(leftButtonType: .Menu)
         self.handleRightBarButtonItem(rightButtonTypes: [.Profile, .Upload])
         self.fetchStateList()
@@ -25,6 +25,7 @@ class SPHomeViewController: SPBaseViewController {
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,7 +89,7 @@ extension SPHomeViewController : PagingViewControllerDataSource {
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
         let state = StatesDataManager.shared.states![index]
-        return PagingIndexItem(index: index, title: state.stateName)
+        return PagingIndexItem(index: index, title: state.stateName.uppercased())
     }
 }
 

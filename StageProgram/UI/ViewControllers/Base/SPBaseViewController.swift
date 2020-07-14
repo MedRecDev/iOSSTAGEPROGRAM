@@ -75,10 +75,17 @@ class SPBaseViewController: UIViewController {
         if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             //  Will show Profile screen
         } else {
-            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
-            loginVC.modalPresentationStyle = .fullScreen
-            self.present(loginVC, animated: true, completion: nil)
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
         }
     }
     
@@ -90,10 +97,17 @@ class SPBaseViewController: UIViewController {
             videoUploadVC.modalPresentationStyle = .fullScreen
             self.present(videoUploadVC, animated: true, completion: nil)
         } else {
-            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
-            loginVC.modalPresentationStyle = .fullScreen
-            self.present(loginVC, animated: true, completion: nil)
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
         }
     }
     

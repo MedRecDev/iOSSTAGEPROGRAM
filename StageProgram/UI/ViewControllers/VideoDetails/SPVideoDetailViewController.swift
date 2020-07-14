@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import VersaPlayer
 import SDWebImage
 import FirebaseAnalytics
 import BMPlayer
@@ -17,8 +16,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var versaPlayerControls: VersaPlayerControls!
-    @IBOutlet weak var versaPlayer: BMPlayer!
+    @IBOutlet weak var playerContainer: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewCount: UILabel!
@@ -26,6 +24,8 @@ class SPVideoDetailViewController: SPBaseViewController {
     @IBOutlet weak var lblLikeCount: UILabel!
     @IBOutlet weak var lblDislikeCount: UILabel!
     @IBOutlet weak var lblShareCount: UILabel!
+    
+    var player: BMPlayer!
     weak var videoDetail : SPVideoDetail!
     var videoDetailDM : VideoDetailDataManager = VideoDetailDataManager()
     var videoTumbnailImage: UIImage?
@@ -37,6 +37,8 @@ class SPVideoDetailViewController: SPBaseViewController {
         
         self.tableView.register(UINib(nibName: "SuggestedVideoTVCell", bundle: nil), forCellReuseIdentifier: "SuggestedVideoTVCell")
         self.tableView.separatorStyle = .none
+        
+        self.setupBMPlayer()
         
         self.updatePlayerConfiguration()
         
@@ -55,20 +57,37 @@ class SPVideoDetailViewController: SPBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        self.versaPlayer.pause()
+    }
+    
+    func setupBMPlayer() {
+        let controlView = BMPlayerControlView()
+        controlView.backButton.isHidden = true
+        player = BMPlayer(customControllView: controlView)
+        self.playerContainer.addSubview(player)
+        player.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(self.playerContainer)
+            make.left.right.equalTo(self.playerContainer)
+            make.height.equalTo(self.playerContainer)
+            make.width.equalTo(self.playerContainer)
+        }
+        // Back button event
+        player.backBlock = { [unowned self] (isFullScreen) in
+            if isFullScreen == true { return }
+            let _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func updatePlayerConfiguration() {
         BMPlayerConf.enablePlaytimeGestures = true
         BMPlayerConf.enableVolumeGestures = true
-        self.versaPlayer.delegate = self
+        self.player.delegate = self
     }
     
     func updateUI() {
         if let encodedURL = self.videoDetail.mediaUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedURL) {
             let asset = BMPlayerResource(url: url)
-            self.versaPlayer.setVideo(resource: asset)
-            self.versaPlayer.play()
+            self.player.setVideo(resource: asset)
+            self.player.play()
         }
         
         self.lblTitle.text = self.videoDetail.videoTitle
@@ -125,10 +144,17 @@ class SPVideoDetailViewController: SPBaseViewController {
                 }
             }
         } else {
-            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
-            loginVC.modalPresentationStyle = .fullScreen
-            self.present(loginVC, animated: true, completion: nil)
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
         }
     }
     
@@ -145,10 +171,17 @@ class SPVideoDetailViewController: SPBaseViewController {
                 }
             }
         } else {
-            let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
-            loginVC.modalPresentationStyle = .fullScreen
-            self.present(loginVC, animated: true, completion: nil)
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
         }
     }
     
@@ -166,6 +199,15 @@ class SPVideoDetailViewController: SPBaseViewController {
         let activityVC = UIActivityViewController(activityItems: [card, imageItem!], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
+    
+    func changeNextVideo(video: SPVideoDetail) {
+        self.videoDetail = video
+        self.videoDetail.totalViews += 1
+        self.videoDetailDM.videoDetail = video
+        self.fetchSuggestedVideos()
+        self.updateUI()
+        self.increaseViewCount()
+    }
 }
 
 extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelegate {
@@ -180,6 +222,7 @@ extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedVideoTVCell", for: indexPath) as! SuggestedVideoTVCell
         let video = self.videoDetailDM.suggestedVideos![indexPath.row]
         cell.updateUI(videoDetail: video)
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -189,10 +232,7 @@ extension SPVideoDetailViewController : UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = self.videoDetailDM.suggestedVideos![indexPath.row]
-        self.videoDetail = video
-        self.videoDetailDM.videoDetail = video
-        self.fetchSuggestedVideos()
-        self.updateUI()
+        self.changeNextVideo(video: video)
     }
 }
 
@@ -219,7 +259,12 @@ class FlashCard: NSObject, UIActivityItemSource {
 
 extension SPVideoDetailViewController : BMPlayerDelegate {
     func bmPlayer(player: BMPlayer ,playerStateDidChange state: BMPlayerState) {
-//        print("playerStateDidChange")
+        print("playerStateDidChange")
+        if state == .playedToTheEnd {
+            if let video = self.videoDetailDM.suggestedVideos?.first {
+                self.changeNextVideo(video: video)
+            }
+        }
     }
     
     func bmPlayer(player: BMPlayer ,loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval)  {
@@ -237,11 +282,9 @@ extension SPVideoDetailViewController : BMPlayerDelegate {
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
         if isFullscreen {
             self.playerHeightConstraint.constant = self.view.frame.size.height + 20
-            self.tabBarController?.tabBar.isHidden = true
             UIApplication.shared.statusBarUIView?.isHidden = true
         } else {
             self.playerHeightConstraint.constant = 250
-            self.tabBarController?.tabBar.isHidden = false
         }
     }
 }

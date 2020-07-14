@@ -18,7 +18,7 @@ enum AppTutorService {
     case UserRegister(firstName: String, lastName: String, email: String, password: String, phoneNo: String)
     case VideoLike(videoId: Int, userToken: String)
     case VideoDisLike(videoId: Int, userToken: String)
-    case UploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: Data)
+    case UploadVideo(userToken: String, videoTitle: String, videoDescription: String, stateId: Int, videoFilePath: String)
     case NewsStates
     case NewsChannels
     case RegisterComplete(userToken: String, otp: String)
@@ -124,17 +124,18 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
         case .UploadVideo:
             var mutDatas = [MultipartFormData]()
             for (key, value) in self.parameters! {
-                if let data = (value as? String)?.data(using: .utf8) {
+                if let data = (value as? String), key == "video_file" {
+                    mutDatas.append(MultipartFormData(provider: .file(URL(string: data)!), name: key))
+                }
+                else if let data = (value as? String)?.data(using: .utf8) {
                     mutDatas.append(MultipartFormData(provider: .data(data), name: key))
                 }
                 else if let intValue = value as? Int, let data = String(intValue).data(using: .utf8) {
                     mutDatas.append(MultipartFormData(provider: .data(data), name: key))
-                } else if let data = value as? Data {
-                    mutDatas.append(MultipartFormData(provider: .data(data), name: key))
                 }
             }
-            return .uploadMultipart(mutDatas)
-//            return .uploadCompositeMultipart(mutDatas, urlParameters: [:])
+//            return .uploadMultipart(mutDatas)
+            return .uploadCompositeMultipart(mutDatas, urlParameters: [:])
         //Get WithOut Parameters
         default :
             return .requestPlain

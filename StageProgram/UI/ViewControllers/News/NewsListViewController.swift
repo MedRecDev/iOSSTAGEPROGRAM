@@ -18,7 +18,7 @@ class NewsListViewController: SPBaseViewController {
         self.tableView.register(UINib(nibName: "NewsChannelsTVCell", bundle: nil), forCellReuseIdentifier: "NewsChannelsTVCell")
         self.tableView.separatorStyle = .none
         self.fetchNewsStates()
-        self.title = "News Channels"
+        self.title = "NEWS CHANNELS"
     }
     
     override func viewWillAppear(_ animated: Bool) {
