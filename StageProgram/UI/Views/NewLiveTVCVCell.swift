@@ -20,12 +20,6 @@ class NewLiveTVCVCell: UICollectionViewCell {
         self.outerView.layer.cornerRadius = 5.0
         self.outerView.layer.borderWidth = 1.0
         self.outerView.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0).cgColor
-        
-//        self.outerView.layer.shadowColor = UIColor.black.cgColor
-//        self.outerView.layer.shadowOpacity = 0.8
-//        self.outerView.layer.shadowOffset = CGSize(width: 0, height: 4)
-//        self.outerView.layer.shadowRadius = 5
-//        self.outerView.layer.masksToBounds = true
     }
     
     func updateUI(newsChannel : SPNewsChannel) {

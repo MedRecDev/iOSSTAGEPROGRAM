@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class VideoDetailDataManager: NSObject {
     
@@ -25,21 +26,29 @@ class VideoDetailDataManager: NSObject {
         }
     }
     
-    func videoLike(completion:@escaping (Int?, String?) -> Void) {
+    func videoLike(completion:@escaping ([String:JSON]?, String?) -> Void) {
         let videoId : Int = self.videoDetail.videoSourceId
-        if let userToken = UserDataManager.shared.currentUser?.userToken {
-            NetworkAdapter().videoLike(videoId: videoId, userToken: userToken) { (likeCount, errorMessage) in
-                completion(likeCount, errorMessage)
-            }
+        var token = ""
+        if let uToken = UserDataManager.shared.currentUser?.userToken {
+            token = uToken
+        } else if let uToken = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) as? String {
+            token = uToken
+        }
+        NetworkAdapter().videoLike(videoId: videoId, userToken: token) { (likeDict, errorMessage) in
+            completion(likeDict, errorMessage)
         }
     }
     
-    func videoDisLike(completion:@escaping (Int?, String?) -> Void) {
+    func videoDisLike(completion:@escaping ([String:JSON]?, String?) -> Void) {
         let videoId : Int = self.videoDetail.videoSourceId
-        if let userToken = UserDataManager.shared.currentUser?.userToken {
-            NetworkAdapter().videoUnLike(videoId: videoId, userToken: userToken) { (unlikeCount, errorMessage) in
-                completion(unlikeCount, errorMessage)
-            }
+        var token = ""
+        if let uToken = UserDataManager.shared.currentUser?.userToken {
+            token = uToken
+        } else if let uToken = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) as? String {
+            token = uToken
+        }
+        NetworkAdapter().videoUnLike(videoId: videoId, userToken: token) { (unlikeDict, errorMessage) in
+            completion(unlikeDict, errorMessage)
         }
     }
     

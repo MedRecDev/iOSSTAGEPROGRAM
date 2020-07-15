@@ -21,7 +21,7 @@ class VideoUploadViewController: SPBaseViewController {
     @IBOutlet weak var btnCategoryWidthConstraint: NSLayoutConstraint!
     
     var videoUrl : URL?
-    var videoFeedOptions = ["Stage Show", "Video Feed"]
+    var videoFeedOptions = ["Stage Show", "Clips"]
     var categories : [SPState]? = StatesDataManager.shared.states
     var fileUrlData: String?
     let uploadVideoManager : UploadVideoDataManager = UploadVideoDataManager()
@@ -44,16 +44,17 @@ class VideoUploadViewController: SPBaseViewController {
         self.txtvDescription.layer.borderWidth = 1.0
         self.txtvDescription.layer.cornerRadius = 5.0
         
-        
         if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 1136 {
             self.btnTypeWidthConstraint.constant = 130
             self.btnCategoryWidthConstraint.constant = 130
         }
         
+        self.btnType.setTitle(videoFeedOptions.first!, for: .normal)
         self.btnUpload.layer.cornerRadius = 20.0
     }
     
     func resetAllFields() {
+        self.txtfTitle.becomeFirstResponder()
         self.txtfTitle.text = ""
         self.txtvDescription.text = ""
         self.fileUrlData = nil
@@ -74,7 +75,7 @@ class VideoUploadViewController: SPBaseViewController {
     }
     
     @IBAction func updateVideoFeed(_ sender: Any) {
-        RPicker.selectOption(title: "Select Type", hideCancel: false, dataArray: videoFeedOptions, selectedIndex: 0) { (type, selectIndex) in
+        RPicker.selectOption(title: videoFeedOptions.first!, hideCancel: false, dataArray: videoFeedOptions, selectedIndex: 0) { (type, selectIndex) in
             self.btnType.setTitle(type, for: .normal)
         }
     }

@@ -44,7 +44,7 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
             } else {
                 if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
                     let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-                    let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                    let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
                     loginVC.modalPresentationStyle = .fullScreen
                     self.present(loginVC, animated: true, completion: nil)
                 } else {

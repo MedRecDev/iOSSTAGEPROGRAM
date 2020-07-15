@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import FirebaseAnalytics
 import BMPlayer
+import SwiftyJSON
 
 class SPVideoDetailViewController: SPBaseViewController {
 
@@ -26,7 +27,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     @IBOutlet weak var lblShareCount: UILabel!
     
     var player: BMPlayer!
-    weak var videoDetail : SPVideoDetail!
+    var videoDetail : SPVideoDetail!
     var videoDetailDM : VideoDetailDataManager = VideoDetailDataManager()
     var videoTumbnailImage: UIImage?
     
@@ -135,10 +136,15 @@ class SPVideoDetailViewController: SPBaseViewController {
         let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
         if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             self.showProgressHUD()
-            self.videoDetailDM.videoLike { (likeCount, errorMessage) in
+            self.videoDetailDM.videoLike { (dict, errorMessage) in
                 self.hideProgressHUD()
-                if let likeCount = likeCount {
-                    self.lblLikeCount.text = "\(likeCount)"
+                    if let countDict = dict {
+                    if let unlikeCount = countDict["unlike_count"]?.intValue {
+                        self.lblDislikeCount.text = "\(String(describing: unlikeCount))"
+                    }
+                    if let likeCount = countDict["like_count"]?.intValue {
+                        self.lblLikeCount.text = "\(String(describing:likeCount))"
+                    }
                 } else if let msg = errorMessage {
                     self.showAlert(withMessage: msg)
                 }
@@ -146,7 +152,7 @@ class SPVideoDetailViewController: SPBaseViewController {
         } else {
             if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
                 let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
                 loginVC.modalPresentationStyle = .fullScreen
                 self.present(loginVC, animated: true, completion: nil)
             } else {
@@ -162,10 +168,15 @@ class SPVideoDetailViewController: SPBaseViewController {
         let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
         if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
             self.showProgressHUD()
-            self.videoDetailDM.videoDisLike { (likeCount, errorMessage) in
+            self.videoDetailDM.videoDisLike { (dict, errorMessage) in
                 self.hideProgressHUD()
-                if let unLikeCount = likeCount {
-                    self.lblDislikeCount.text = "\(unLikeCount)"
+                if let countDict = dict {
+                    if let unlikeCount = countDict["unlike_count"]?.intValue {
+                        self.lblDislikeCount.text = "\(String(describing: unlikeCount))"
+                    }
+                    if let likeCount = countDict["like_count"]?.intValue {
+                        self.lblLikeCount.text = "\(String(describing:likeCount))"
+                    }
                 } else if let msg = errorMessage {
                     self.showAlert(withMessage: msg)
                 }
@@ -173,7 +184,7 @@ class SPVideoDetailViewController: SPBaseViewController {
         } else {
             if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
                 let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
                 loginVC.modalPresentationStyle = .fullScreen
                 self.present(loginVC, animated: true, completion: nil)
             } else {
@@ -203,7 +214,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     func changeNextVideo(video: SPVideoDetail) {
         self.videoDetail = video
         self.videoDetail.totalViews += 1
-        self.videoDetailDM.videoDetail = video
+        self.videoDetailDM.videoDetail = self.videoDetail
         self.fetchSuggestedVideos()
         self.updateUI()
         self.increaseViewCount()

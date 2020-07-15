@@ -27,6 +27,15 @@ class OTPViewController: SPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.btnLogin.layer.cornerRadius = 20.0
+        
+        self.updateTextFieldBorder(textfield: self.txtfFirst)
+        self.updateTextFieldBorder(textfield: self.txtSecond)
+        self.updateTextFieldBorder(textfield: self.txtfThird)
+        self.updateTextFieldBorder(textfield: self.txtfFourth)
+        self.updateTextFieldBorder(textfield: self.txtfFifth)
+        self.updateTextFieldBorder(textfield: self.txtfSixth)
+        
         self.txtfFirst.textAlignment = .center
         self.txtSecond.textAlignment = .center
         self.txtfThird.textAlignment = .center
@@ -40,6 +49,23 @@ class OTPViewController: SPBaseViewController {
         self.txtfFourth.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.txtfFifth.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.txtfSixth.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        
+        let mutMessageAttrText = NSMutableAttributedString(string: "Please enter the OTP below to verify your email address. if you can't see the email in your ", attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 14.0), NSAttributedString.Key.foregroundColor : UIColor(red: 164/255, green: 0, blue: 29/255, alpha: 1.0)])
+        mutMessageAttrText.append(NSAttributedString(string: "inbox", attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-SemiBold", size: 14.0), NSAttributedString.Key.foregroundColor : UIColor(red: 164/255, green: 0, blue: 29/255, alpha: 1.0)]))
+        mutMessageAttrText.append(NSAttributedString(string: " then please make sure to check on your ", attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 14.0), NSAttributedString.Key.foregroundColor : UIColor(red: 164/255, green: 0, blue: 29/255, alpha: 1.0)]))
+        mutMessageAttrText.append(NSAttributedString(string: "spam", attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-SemiBold", size: 14.0), NSAttributedString.Key.foregroundColor : UIColor(red: 164/255, green: 0, blue: 29/255, alpha: 1.0)]))
+        self.lblMessage.attributedText = mutMessageAttrText
+    }
+    
+    func updateTextFieldBorder(textfield: UITextField) {
+        textfield.layer.cornerRadius = 10
+        textfield.layer.borderColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0).cgColor
+        textfield.layer.borderWidth = 1.0
+        
+        textfield.layer.shadowOpacity = 1
+        textfield.layer.shadowRadius = 5
+        textfield.layer.shadowColor = UIColor.lightGray.cgColor
+        textfield.layer.shadowOffset = CGSize(width: 3, height: 3)
     }
     
     @IBAction func resendOtpTapped(_ sender: Any) {
@@ -68,6 +94,14 @@ class OTPViewController: SPBaseViewController {
             } else if let msg = errorMessage {
                 self.showAlert(withMessage: msg)
             }
+        }
+    }
+    
+    @IBAction func moveBack(_ sender: Any) {
+        if let navCtrl = self.navigationController {
+            navCtrl.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

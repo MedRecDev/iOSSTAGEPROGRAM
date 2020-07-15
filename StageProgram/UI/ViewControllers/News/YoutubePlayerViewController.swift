@@ -24,7 +24,9 @@ class YoutubePlayerViewController: SPBaseViewController {
             "showinfo": "0"
             ] as YouTubePlayerView.YouTubePlayerParameters
         if let channel = self.channel {
-            youtubePlayer.loadVideoURL(URL(string: channel.newsFeedUrl)!)
+            if let encodedURL = channel.newsEmbedUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedURL) {
+                youtubePlayer.loadVideoURL(url)
+            }
         }
         youtubePlayer.delegate = self
         self.playButton.isHidden = true

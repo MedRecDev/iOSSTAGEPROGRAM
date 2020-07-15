@@ -99,11 +99,7 @@ class SPRegisterViewController: SPBaseViewController {
             self.showAlert(withMessage: "Please enter a valid name.")
             return
         }
-        guard let email = self.txtfEmail.text else {
-            self.showAlert(withMessage: "Please enter a valid email address.")
-            return
-        }
-        guard email.isValidEmail() else {
+        guard let email = self.txtfEmail.text, email.isValidEmail() else {
             self.showAlert(withMessage: "Please enter a valid email address.")
             return
         }
@@ -111,15 +107,14 @@ class SPRegisterViewController: SPBaseViewController {
             self.showAlert(withMessage: "Please enter a valid password.")
             return
         }
-        guard !self.isValidPassword(testStr: password) else {
-            self.showAlert(withMessage: "Please enter a valid password.")
+        guard password.isValidPassword() else {
+            self.showAlert(withMessage: "Password must contain an Upper case a lower case and a special character.")
             return
         }
         guard let confirmPass = self.txtfConfirmPassword.text else {
             self.showAlert(withMessage: "Please enter a valid confirm password.")
             return
         }
-        
         if confirmPass != password {
             self.showAlert(withMessage: "Please enter a valid confirm password.")
             return

@@ -77,7 +77,7 @@ class SPBaseViewController: UIViewController {
         } else {
             if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
                 let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! UINavigationController
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
                 loginVC.modalPresentationStyle = .fullScreen
                 self.present(loginVC, animated: true, completion: nil)
             } else {
@@ -150,7 +150,8 @@ extension SPBaseViewController {
 extension SPBaseViewController {
     func showProgressHUD() {
         if let keyWindow = UIApplication.shared.windows.first {
-            MBProgressHUD.showAdded(to: keyWindow, animated: true)
+            let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
+            hud.contentColor = UIColor(hexString: "#971D24")
         }
     }
     

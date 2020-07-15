@@ -219,7 +219,7 @@ class NetworkAdapter {
         }
     }
     
-    func videoLike(videoId: Int, userToken: String, completion: @escaping (_ response: Int?, _ errorMessage: String?) -> Void) {
+    func videoLike(videoId: Int, userToken: String, completion: @escaping (_ response: [String:JSON]?, _ errorMessage: String?) -> Void) {
         self.provider.request(.VideoLike(videoId: videoId, userToken: userToken)) { (result) in
             switch result {
             case .success(let response):
@@ -227,7 +227,7 @@ class NetworkAdapter {
                 do {
                     let responseJson = try JSON(data: data)
                     if let data = responseJson["data"].dictionary {
-                        completion(data["like_count"]?.intValue, nil)
+                        completion(data, nil)
                     } else {
                         let errorMessage = responseJson["message"].string
                         completion(nil, errorMessage)
@@ -241,7 +241,7 @@ class NetworkAdapter {
         }
     }
     
-    func videoUnLike(videoId: Int, userToken: String, completion: @escaping (_ response: Int?, _ errorMessage: String?) -> Void) {
+    func videoUnLike(videoId: Int, userToken: String, completion: @escaping (_ response: [String:JSON]?, _ errorMessage: String?) -> Void) {
         self.provider.request(.VideoDisLike(videoId: videoId, userToken: userToken)) { (result) in
             switch result {
             case .success(let response):
@@ -249,7 +249,7 @@ class NetworkAdapter {
                 do {
                     let responseJson = try JSON(data: data)
                     if let data = responseJson["data"].dictionary {
-                        completion(data["unlike_count"]?.intValue, nil)
+                        completion(data, nil)
                     } else {
                         let errorMessage = responseJson["message"].string
                         completion(nil, errorMessage)

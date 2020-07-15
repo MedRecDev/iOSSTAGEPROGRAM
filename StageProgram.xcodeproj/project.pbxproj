@@ -36,6 +36,8 @@
 		48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */; };
 		48C9D53024A352B400555C4B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D52F24A352B400555C4B /* DateExtension.swift */; };
 		48C9D53224A3731700555C4B /* VideoDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */; };
+		48C9D5A924BDC43D00527886 /* VideoListCRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9D5A724BDC43D00527886 /* VideoListCRView.swift */; };
+		48C9D5AA24BDC43D00527886 /* VideoListCRView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C9D5A824BDC43D00527886 /* VideoListCRView.xib */; };
 		48CDDAA924B2F78100B2C412 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAA824B2F78100B2C412 /* NewsListViewController.swift */; };
 		48CDDAAC24B3027600B2C412 /* NewsChannelsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAAA24B3027600B2C412 /* NewsChannelsTVCell.swift */; };
 		48CDDAAD24B3027600B2C412 /* NewsChannelsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */; };
@@ -104,6 +106,8 @@
 		48C9D52D24A3433B00555C4B /* SPVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPVideoDetailViewController.swift; sourceTree = "<group>"; };
 		48C9D52F24A352B400555C4B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailDataManager.swift; sourceTree = "<group>"; };
+		48C9D5A724BDC43D00527886 /* VideoListCRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCRView.swift; sourceTree = "<group>"; };
+		48C9D5A824BDC43D00527886 /* VideoListCRView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCRView.xib; sourceTree = "<group>"; };
 		48CDDAA824B2F78100B2C412 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		48CDDAAA24B3027600B2C412 /* NewsChannelsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsChannelsTVCell.swift; sourceTree = "<group>"; };
 		48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsChannelsTVCell.xib; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				48CDDAAB24B3027600B2C412 /* NewsChannelsTVCell.xib */,
 				48CDDAAE24B30FE000B2C412 /* NewLiveTVCVCell.swift */,
 				48CDDAAF24B30FE000B2C412 /* NewLiveTVCVCell.xib */,
+				48C9D5A724BDC43D00527886 /* VideoListCRView.swift */,
+				48C9D5A824BDC43D00527886 /* VideoListCRView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				48CDDAAD24B3027600B2C412 /* NewsChannelsTVCell.xib in Resources */,
 				48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */,
 				48CDDAB124B30FE000B2C412 /* NewLiveTVCVCell.xib in Resources */,
+				48C9D5AA24BDC43D00527886 /* VideoListCRView.xib in Resources */,
 				48C5FEF624A0A558009141D5 /* Montserrat-Regular.otf in Resources */,
 				48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */,
 				48C5FF0424A0AF82009141D5 /* VideoCVCell.xib in Resources */,
@@ -611,6 +618,7 @@
 				48EA4C5F24A4631900164B53 /* SPLoginViewController.swift in Sources */,
 				48FD8EA6249DE72400C72683 /* SPVideoListViewController.swift in Sources */,
 				48E0BCF224B86A370094B04A /* String+Extension.swift in Sources */,
+				48C9D5A924BDC43D00527886 /* VideoListCRView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +764,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -767,7 +775,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stageprogram.sp;
 				PRODUCT_NAME = "STAGE PROGRAM";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -778,7 +786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S456V39VT8;
 				INFOPLIST_FILE = StageProgram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -790,7 +798,7 @@
 				PRODUCT_NAME = "STAGE PROGRAM";
 				PROVISIONING_PROFILE_SPECIFIER = StageProgram_AppStore_Profile;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
