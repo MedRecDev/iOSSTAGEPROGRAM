@@ -24,7 +24,7 @@ class YoutubePlayerViewController: SPBaseViewController {
             "showinfo": "0"
             ] as YouTubePlayerView.YouTubePlayerParameters
         if let channel = self.channel {
-            if let encodedURL = channel.newsEmbedUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedURL) {
+            if let encodedURL = channel.newsFeedUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: encodedURL) {
                 youtubePlayer.loadVideoURL(url)
             }
         }
