@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4819CD2C24A1D4EC00B37BFC /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */; };
+		481CE8B224C025A8003F0C8D /* SPFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481CE8B124C025A8003F0C8D /* SPFeedbackViewController.swift */; };
 		48416C8024B33F750019CBD8 /* YoutubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48416C7F24B33F750019CBD8 /* YoutubePlayerViewController.swift */; };
 		484499DE24B5B89A001A86C4 /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484499DD24B5B89A001A86C4 /* CustomActivity.swift */; };
 		484499E124B5F70F001A86C4 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484499E024B5F70F001A86C4 /* WebViewViewController.swift */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		3FAF3BF26A6C2D00702897E1 /* Pods-StageProgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StageProgram.release.xcconfig"; path = "Target Support Files/Pods-StageProgram/Pods-StageProgram.release.xcconfig"; sourceTree = "<group>"; };
 		4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
+		481CE8B124C025A8003F0C8D /* SPFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPFeedbackViewController.swift; sourceTree = "<group>"; };
 		48416C7F24B33F750019CBD8 /* YoutubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerViewController.swift; sourceTree = "<group>"; };
 		484499DD24B5B89A001A86C4 /* CustomActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivity.swift; sourceTree = "<group>"; };
 		484499E024B5F70F001A86C4 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				488B46DC24A207C8007BE492 /* SPSideMenuViewController.swift */,
+				481CE8B124C025A8003F0C8D /* SPFeedbackViewController.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				48C5FEEA24A09C0D009141D5 /* UIView+AutoLayout.swift in Sources */,
 				48EA4C6524A4961300164B53 /* SPUser.swift in Sources */,
 				48CDDAB524B313B400B2C412 /* SPNewsChannel.swift in Sources */,
+				481CE8B224C025A8003F0C8D /* SPFeedbackViewController.swift in Sources */,
 				48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */,
 				488B46E024A2167B007BE492 /* SideMenuTVCell.swift in Sources */,
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,

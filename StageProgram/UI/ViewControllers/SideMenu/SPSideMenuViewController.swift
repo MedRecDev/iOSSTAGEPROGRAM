@@ -68,8 +68,12 @@ extension SPSideMenuViewController : UITableViewDataSource, UITableViewDelegate 
             let activityVC = UIActivityViewController(activityItems: [image, news], applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
         }
-        else if indexPath.row == 3 {
-            //  Feedback
+        else if indexPath.row == 3 {    //Feedback
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let webVC = storyboard.instantiateViewController(withIdentifier: "SPFeedbackViewController") as! SPFeedbackViewController
+            let navController = UINavigationController(rootViewController: webVC)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
         }
         else if indexPath.row == 4 {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)

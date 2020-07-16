@@ -178,6 +178,69 @@
             </objects>
             <point key="canvasLocation" x="-1630" y="1999"/>
         </scene>
+        <!--Feedback View Controller-->
+        <scene sceneID="aR8-2Q-Dip">
+            <objects>
+                <viewController storyboardIdentifier="SPFeedbackViewController" id="U1C-tq-TFu" customClass="SPFeedbackViewController" customModule="STAGE_PROGRAM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kv6-VM-XkO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your review will help us to give you a better experience. Make it a good one!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8g-QX-lDc">
+                                <rect key="frame" x="25" y="74" width="364" height="39.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nhz-wV-tzD">
+                                <rect key="frame" x="20" y="138.5" width="374" height="210"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="alr-QR-9OZ"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vj-7M-OgU">
+                                <rect key="frame" x="20" y="398.5" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.64313725489999995" green="0.0" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hS2-1w-h8Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                <state key="normal" title="SEND">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFeedback:" destination="U1C-tq-TFu" eventType="touchUpInside" id="9aW-JO-Ns2"/>
+                                    <action selector="uploadTapped:" destination="QnA-V2-q9f" eventType="touchUpInside" id="hwG-ur-dAU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nhz-wV-tzD" firstAttribute="leading" secondItem="A1S-PV-V4v" secondAttribute="leading" constant="20" id="46Z-fJ-cXG"/>
+                            <constraint firstItem="A1S-PV-V4v" firstAttribute="trailing" secondItem="e8g-QX-lDc" secondAttribute="trailing" constant="25" id="6sU-He-2Q1"/>
+                            <constraint firstItem="e8g-QX-lDc" firstAttribute="leading" secondItem="A1S-PV-V4v" secondAttribute="leading" constant="25" id="OVa-AK-a7c"/>
+                            <constraint firstItem="A1S-PV-V4v" firstAttribute="trailing" secondItem="3vj-7M-OgU" secondAttribute="trailing" constant="20" id="XwI-Em-NKW"/>
+                            <constraint firstItem="3vj-7M-OgU" firstAttribute="top" secondItem="nhz-wV-tzD" secondAttribute="bottom" constant="50" id="YjY-fx-RTz"/>
+                            <constraint firstItem="3vj-7M-OgU" firstAttribute="leading" secondItem="A1S-PV-V4v" secondAttribute="leading" constant="20" id="h7B-hr-TYe"/>
+                            <constraint firstItem="nhz-wV-tzD" firstAttribute="top" secondItem="e8g-QX-lDc" secondAttribute="bottom" constant="25" id="j60-Hl-Tdy"/>
+                            <constraint firstItem="e8g-QX-lDc" firstAttribute="top" secondItem="A1S-PV-V4v" secondAttribute="top" constant="30" id="kJS-nc-VLX"/>
+                            <constraint firstItem="A1S-PV-V4v" firstAttribute="trailing" secondItem="nhz-wV-tzD" secondAttribute="trailing" constant="20" id="qw8-Yu-MR3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A1S-PV-V4v"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnSend" destination="3vj-7M-OgU" id="DH7-ML-2R6"/>
+                        <outlet property="txtvFeedback" destination="nhz-wV-tzD" id="CMr-gI-20b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qKh-d0-qxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-842" y="1999"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="W8Z-Rf-1YW">
             <objects>
@@ -779,7 +842,7 @@
         <image name="ic_thumb_up" width="28.5" height="26"/>
         <image name="livetv_selected" width="26.5" height="24"/>
         <image name="livetv_unselected" width="26.5" height="24"/>
-        <image name="logo" width="160" height="15"/>
+        <image name="logo" width="168.5" height="15"/>
         <image name="made_in_india" width="114" height="15"/>
         <image name="play_icon" width="64" height="64"/>
         <image name="red_back" width="16" height="16"/>

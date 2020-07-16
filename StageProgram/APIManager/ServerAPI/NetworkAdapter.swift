@@ -341,6 +341,27 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func sendFeedback(userToken: String, title: String, description: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.SendFeedback(userToken: userToken, title: title, description: description)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let message = responseJson["message"].string {
+                        completion(message, nil)
+                    } else {
+                        completion(nil, "Error occured while sending user feedback.")
+                    }
+                } catch {
+                    completion(nil, "Error occured while sending user feedback.")
+                }
+            case .failure(let error):
+                completion(nil, "Error occured while sending user feedback.")
+            }
+        }
+    }
 }
 
 class DefaultAlamofireManager: Alamofire.Session {

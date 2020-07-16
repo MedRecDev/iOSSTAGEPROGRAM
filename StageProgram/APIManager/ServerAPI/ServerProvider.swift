@@ -24,6 +24,7 @@ enum AppTutorService {
     case RegisterComplete(userToken: String, otp: String)
     case ResendOTP(userToken: String, tokenType: Int)
     case IncreaseVideoView(videoId: Int)
+    case SendFeedback(userToken: String, title: String, description: String)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -63,6 +64,8 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "resendotp"
         case .IncreaseVideoView:
             return "videos/setviews"
+        case .SendFeedback:
+            return "feedback"
         }
     }
     
@@ -96,13 +99,15 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["resend_token_type": tokenType, "token": userToken]
         case .IncreaseVideoView(let videoId):
             return ["video_id": videoId]
+        case .SendFeedback(let userToken, let title, let description):
+            return ["user_token": userToken, "feedback_title": title, "feedback_description": description]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP:
+        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP, .SendFeedback:
             return .post
         case .VideoLike, .VideoDisLike, .IncreaseVideoView:
             return .put
@@ -115,7 +120,7 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
     var task: Task {
         switch self {
         //Post API
-        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike, .RegisterComplete, .ResendOTP:
+        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike, .RegisterComplete, .ResendOTP, .SendFeedback:
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])

@@ -19,6 +19,7 @@ enum LeftBarButtonType {
 enum RightBarButtonType {
     case Upload
     case Profile
+    case FeedbackSend
 }
 
 class SPBaseViewController: UIViewController {
@@ -32,7 +33,7 @@ class SPBaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "Montserrat-Bold", size: 16)!]
+        NSAttributedString.Key.font: UIFont(name: "Montserrat-SemiBold", size: 16)!]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +66,10 @@ class SPBaseViewController: UIViewController {
                 rightButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
                 let rightBarButtomItem = UIBarButtonItem(customView: rightButton)
                 barButtonItems.append(rightBarButtomItem)
+            } else if buttonType == .FeedbackSend {
+                let image = UIImage(named: "feedbackSend")?.withRenderingMode(.alwaysOriginal)
+                let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(sendFeedback))
+                barButtonItems.append(barButton)
             }
         }
         navigationItem.rightBarButtonItems = barButtonItems
@@ -109,6 +114,10 @@ class SPBaseViewController: UIViewController {
                 self.present(loginVC, animated: true, completion: nil)
             }
         }
+    }
+    
+    @objc func sendFeedback() {
+        
     }
     
     @objc func moveBack() {

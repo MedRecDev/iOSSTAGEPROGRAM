@@ -78,9 +78,29 @@ class UserDataManager: NSObject {
     }
     
     func resendOTP(completion: @escaping (Bool, String?) -> Void) {
-        if let userToken = UserDataManager.shared.userToken {
-            NetworkAdapter().resendOTP(userToken: userToken, tokenType: 2) { (success, errorMessage) in
-                completion(success, errorMessage)
+        var token = ""
+        if let uToken = self.userToken {
+            token = uToken
+        } else if let uToken = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) as? String {
+            token = uToken
+        }
+        NetworkAdapter().resendOTP(userToken: token, tokenType: 2) { (success, errorMessage) in
+            completion(success, errorMessage)
+        }
+    }
+    
+    func sendFeedback(title: String, description: String, completion: @escaping (Bool, String?) -> Void) {
+        var token = ""
+        if let uToken = self.userToken {
+            token = uToken
+        } else if let uToken = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) as? String {
+            token = uToken
+        }
+        NetworkAdapter().sendFeedback(userToken: token, title: title, description: description) { (successMessage, errorMessage) in
+            if let success = successMessage {
+                completion(true, success)
+            } else {
+                completion(false, errorMessage)
             }
         }
     }
