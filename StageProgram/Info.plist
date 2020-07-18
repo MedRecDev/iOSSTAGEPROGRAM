@@ -21,10 +21,20 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+    <dict>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>ebookfrenzy.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+          <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+          <key>NSTemporaryExceptionMinimumTLSVersion</key>
+          <string>TLSv1.1</string>
+        </dict>
+      </dict>
+    </dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.otf</string>

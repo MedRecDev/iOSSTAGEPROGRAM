@@ -18,7 +18,7 @@ class NewsListViewController: SPBaseViewController {
         self.tableView.register(UINib(nibName: "NewsChannelsTVCell", bundle: nil), forCellReuseIdentifier: "NewsChannelsTVCell")
         self.tableView.separatorStyle = .none
         self.fetchNewsStates()
-        self.title = "NEWS CHANNELS"
+        self.navigationItem.title = "STAGE PROGRAM"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +68,7 @@ extension NewsListViewController : UITableViewDataSource, UITableViewDelegate {
         let channels = self.fetchNewsChannels(for: newsState.newsStateId)
         cell.updateUI(state: newsState, channels: channels)
         cell.delegate = self
+        cell.selectionStyle = .none
         return cell
     }
 }

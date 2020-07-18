@@ -58,6 +58,7 @@ class SPVideoDetailViewController: SPBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.player.pause()
     }
     
     func setupBMPlayer() {

@@ -362,6 +362,30 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func fetchClipFeeds(pageSize: Int, pageNumber: Int, completion: @escaping (_ response: [SPClipFeed]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.ClipFeed(pageSize: pageSize, pageNumber: pageNumber)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    let videosJson = responseJson["data"]
+                    let arrVideos = videosJson["data"].arrayValue
+                    var videos: [SPClipFeed] = []
+                    for json in arrVideos {
+                        let state = SPClipFeed(fromJson: json)
+                        videos.append(state)
+                    }
+                    completion(videos, nil)
+                } catch {
+                    completion(nil, "Error occured while fetching clip feed.")
+                }
+            case .failure(let error):
+                completion(nil, "Error occured while fetching clip feed.")
+            }
+        }
+    }
 }
 
 class DefaultAlamofireManager: Alamofire.Session {

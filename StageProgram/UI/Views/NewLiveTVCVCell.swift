@@ -25,6 +25,7 @@ class NewLiveTVCVCell: UICollectionViewCell {
     func updateUI(newsChannel : SPNewsChannel) {
         self.imgvNews.sd_setImage(with: URL(string: newsChannel.newsThumbUrl), placeholderImage: UIImage(named: "placeholder_square"), options: []) { (image, error, cacheType, url) in
             self.imgvNews.image = image
+            self.imgvNews.contentMode = .scaleAspectFit
         }
         self.lblChannelName.text = newsChannel.newsChannelName
     }

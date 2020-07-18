@@ -18,6 +18,8 @@
 		488B46E124A2167B007BE492 /* SideMenuTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */; };
 		4898427824B45576008F162A /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898427724B45576008F162A /* OTPViewController.swift */; };
 		4898427A24B4872F008F162A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4898427924B4872F008F162A /* GoogleService-Info.plist */; };
+		48A8B8C724C1761D006BA810 /* VideoClipCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8B8C524C1761D006BA810 /* VideoClipCVCell.swift */; };
+		48A8B8C824C1761D006BA810 /* VideoClipCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48A8B8C624C1761D006BA810 /* VideoClipCVCell.xib */; };
 		48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */; };
 		48AAEF5D24ADF39E007D337A /* RPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5C24ADF39E007D337A /* RPicker.swift */; };
 		48AAEF5F24AE0C14007D337A /* UploadVideoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */; };
@@ -47,6 +49,9 @@
 		48CDDAB424B313B400B2C412 /* SPNewsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB224B313B400B2C412 /* SPNewsStates.swift */; };
 		48CDDAB524B313B400B2C412 /* SPNewsChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */; };
 		48CDDAB724B31A1500B2C412 /* SPNewsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */; };
+		48CEBF6624C1B8C40050038A /* SPClipVideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CEBF6524C1B8C40050038A /* SPClipVideoListViewController.swift */; };
+		48CEBF6924C1CB520050038A /* SPClipFeedCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CEBF6724C1CB520050038A /* SPClipFeedCVCell.swift */; };
+		48CEBF6A24C1CB520050038A /* SPClipFeedCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48CEBF6824C1CB520050038A /* SPClipFeedCVCell.xib */; };
 		48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48CFDC6824923B68002DB2DE /* Home.storyboard */; };
 		48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */; };
 		48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */; };
@@ -58,6 +63,9 @@
 		48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC212490A4B200260F3A /* Assets.xcassets */; };
 		48D1DC252490A4B200260F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC232490A4B200260F3A /* LaunchScreen.storyboard */; };
 		48D1DC2F2490A7A400260F3A /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */; };
+		48DBBF2B24C06AD700343AAE /* ClipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DBBF2A24C06AD700343AAE /* ClipsViewController.swift */; };
+		48DBBF2D24C06D1000343AAE /* ClipsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DBBF2C24C06D1000343AAE /* ClipsDataManager.swift */; };
+		48DBBF2F24C0728800343AAE /* SPClipFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DBBF2E24C0728800343AAE /* SPClipFeed.swift */; };
 		48E0BCF224B86A370094B04A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0BCF124B86A370094B04A /* String+Extension.swift */; };
 		48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */; };
 		48E3020A24A37C360019C1B4 /* SuggestedVideoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */; };
@@ -72,6 +80,7 @@
 		48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EAF249DEBB300C72683 /* GlobalConstants.swift */; };
 		48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EB2249DF09500C72683 /* CustomSplashViewController.swift */; };
 		48FD8EB5249E02D500C72683 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD8EB4249E02D500C72683 /* UserDataManager.swift */; };
+		48FEBCF524C2B4130010E7D3 /* CustomClipFeedFlowlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FEBCF424C2B4130010E7D3 /* CustomClipFeedFlowlayout.swift */; };
 		67169D419CC1D1DB00EA47A2 /* Pods_StageProgram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD3072A5079F00C0FE0BDCF /* Pods_StageProgram.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +97,8 @@
 		488B46DF24A2167B007BE492 /* SideMenuTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTVCell.xib; sourceTree = "<group>"; };
 		4898427724B45576008F162A /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		4898427924B4872F008F162A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48A8B8C524C1761D006BA810 /* VideoClipCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClipCVCell.swift; sourceTree = "<group>"; };
+		48A8B8C624C1761D006BA810 /* VideoClipCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoClipCVCell.xib; sourceTree = "<group>"; };
 		48AAEF5A24ADEFA2007D337A /* VideoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadViewController.swift; sourceTree = "<group>"; };
 		48AAEF5C24ADF39E007D337A /* RPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPicker.swift; sourceTree = "<group>"; };
 		48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVideoDataManager.swift; sourceTree = "<group>"; };
@@ -118,6 +129,9 @@
 		48CDDAB224B313B400B2C412 /* SPNewsStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsStates.swift; sourceTree = "<group>"; };
 		48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsChannel.swift; sourceTree = "<group>"; };
 		48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPNewsDataManager.swift; sourceTree = "<group>"; };
+		48CEBF6524C1B8C40050038A /* SPClipVideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPClipVideoListViewController.swift; sourceTree = "<group>"; };
+		48CEBF6724C1CB520050038A /* SPClipFeedCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPClipFeedCVCell.swift; sourceTree = "<group>"; };
+		48CEBF6824C1CB520050038A /* SPClipFeedCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SPClipFeedCVCell.xib; sourceTree = "<group>"; };
 		48CFDC6824923B68002DB2DE /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		48CFDC6D24923BBF002DB2DE /* SPHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPHomeViewController.swift; sourceTree = "<group>"; };
 		48CFDC7524924FAE002DB2DE /* SPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPBaseViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +145,9 @@
 		48D1DC242490A4B200260F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48D1DC262490A4B200260F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D1DC2E2490A7A400260F3A /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
+		48DBBF2A24C06AD700343AAE /* ClipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsViewController.swift; sourceTree = "<group>"; };
+		48DBBF2C24C06D1000343AAE /* ClipsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsDataManager.swift; sourceTree = "<group>"; };
+		48DBBF2E24C0728800343AAE /* SPClipFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClipFeed.swift; sourceTree = "<group>"; };
 		48E0BCF124B86A370094B04A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		48E3020724A37C360019C1B4 /* SuggestedVideoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedVideoTVCell.swift; sourceTree = "<group>"; };
 		48E3020824A37C360019C1B4 /* SuggestedVideoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedVideoTVCell.xib; sourceTree = "<group>"; };
@@ -145,6 +162,7 @@
 		48FD8EAF249DEBB300C72683 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		48FD8EB2249DF09500C72683 /* CustomSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplashViewController.swift; sourceTree = "<group>"; };
 		48FD8EB4249E02D500C72683 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		48FEBCF424C2B4130010E7D3 /* CustomClipFeedFlowlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClipFeedFlowlayout.swift; sourceTree = "<group>"; };
 		6D91877B30E971D490CF3E0F /* Pods-StageProgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StageProgram.debug.xcconfig"; path = "Target Support Files/Pods-StageProgram/Pods-StageProgram.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD3072A5079F00C0FE0BDCF /* Pods_StageProgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StageProgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -260,6 +278,10 @@
 				48CDDAAF24B30FE000B2C412 /* NewLiveTVCVCell.xib */,
 				48C9D5A724BDC43D00527886 /* VideoListCRView.swift */,
 				48C9D5A824BDC43D00527886 /* VideoListCRView.xib */,
+				48A8B8C524C1761D006BA810 /* VideoClipCVCell.swift */,
+				48A8B8C624C1761D006BA810 /* VideoClipCVCell.xib */,
+				48CEBF6724C1CB520050038A /* SPClipFeedCVCell.swift */,
+				48CEBF6824C1CB520050038A /* SPClipFeedCVCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +289,7 @@
 		48CFDC6C24923B97002DB2DE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48DBBF2924C06AAC00343AAE /* Clips */,
 				484499DF24B5F6E8001A86C4 /* WebViewScreen */,
 				48CDDAA724B2F70500B2C412 /* News */,
 				48AAEF5924ADEF6A007D337A /* VideoUpload */,
@@ -288,6 +311,7 @@
 				48FD8EAF249DEBB300C72683 /* GlobalConstants.swift */,
 				4819CD2B24A1D4EC00B37BFC /* ColumnFlowLayout.swift */,
 				484499DD24B5B89A001A86C4 /* CustomActivity.swift */,
+				48FEBCF424C2B4130010E7D3 /* CustomClipFeedFlowlayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -301,6 +325,7 @@
 				48C9D53124A3731700555C4B /* VideoDetailDataManager.swift */,
 				48AAEF5E24AE0C14007D337A /* UploadVideoDataManager.swift */,
 				48CDDAB624B31A1500B2C412 /* SPNewsDataManager.swift */,
+				48DBBF2C24C06D1000343AAE /* ClipsDataManager.swift */,
 			);
 			path = DataAccessLayer;
 			sourceTree = "<group>";
@@ -389,9 +414,19 @@
 			path = StoryBoards;
 			sourceTree = "<group>";
 		};
+		48DBBF2924C06AAC00343AAE /* Clips */ = {
+			isa = PBXGroup;
+			children = (
+				48DBBF2A24C06AD700343AAE /* ClipsViewController.swift */,
+				48CEBF6524C1B8C40050038A /* SPClipVideoListViewController.swift */,
+			);
+			path = Clips;
+			sourceTree = "<group>";
+		};
 		48E3E68F249E4E56005CE6CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				48DBBF2E24C0728800343AAE /* SPClipFeed.swift */,
 				48CDDAB324B313B400B2C412 /* SPNewsChannel.swift */,
 				48CDDAB224B313B400B2C412 /* SPNewsStates.swift */,
 				48EA4C6424A4961300164B53 /* SPUser.swift */,
@@ -515,6 +550,7 @@
 				48C5FEFC24A0A558009141D5 /* Montserrat-Light.otf in Resources */,
 				48D1DC252490A4B200260F3A /* LaunchScreen.storyboard in Resources */,
 				48C5FEF824A0A558009141D5 /* Montserrat-SemiBold.otf in Resources */,
+				48A8B8C824C1761D006BA810 /* VideoClipCVCell.xib in Resources */,
 				48D1DC222490A4B200260F3A /* Assets.xcassets in Resources */,
 				48D1DC202490A4B100260F3A /* Main.storyboard in Resources */,
 				4898427A24B4872F008F162A /* GoogleService-Info.plist in Resources */,
@@ -522,6 +558,7 @@
 				48C5FEF524A0A558009141D5 /* Montserrat-Black.otf in Resources */,
 				48CDDAB124B30FE000B2C412 /* NewLiveTVCVCell.xib in Resources */,
 				48C9D5AA24BDC43D00527886 /* VideoListCRView.xib in Resources */,
+				48CEBF6A24C1CB520050038A /* SPClipFeedCVCell.xib in Resources */,
 				48C5FEF624A0A558009141D5 /* Montserrat-Regular.otf in Resources */,
 				48CFDC6924923B68002DB2DE /* Home.storyboard in Resources */,
 				48C5FF0424A0AF82009141D5 /* VideoCVCell.xib in Resources */,
@@ -578,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DBBF2D24C06D1000343AAE /* ClipsDataManager.swift in Sources */,
 				48EA4C6124A47B6F00164B53 /* SPRegisterViewController.swift in Sources */,
 				48CDDAB024B30FE000B2C412 /* NewLiveTVCVCell.swift in Sources */,
 				48E3E691249E4E77005CE6CB /* SPState.swift in Sources */,
@@ -596,23 +634,29 @@
 				488B46DA24A1F921007BE492 /* UIView+Gradient.swift in Sources */,
 				48AAEF5D24ADF39E007D337A /* RPicker.swift in Sources */,
 				48EA4C6324A489DF00164B53 /* SPForgotPasswordViewController.swift in Sources */,
+				48DBBF2B24C06AD700343AAE /* ClipsViewController.swift in Sources */,
 				48FD8EB3249DF09500C72683 /* CustomSplashViewController.swift in Sources */,
 				48CFDC7624924FAE002DB2DE /* SPBaseViewController.swift in Sources */,
 				488B46DD24A207C8007BE492 /* SPSideMenuViewController.swift in Sources */,
 				484499DE24B5B89A001A86C4 /* CustomActivity.swift in Sources */,
 				4898427824B45576008F162A /* OTPViewController.swift in Sources */,
+				48CEBF6624C1B8C40050038A /* SPClipVideoListViewController.swift in Sources */,
 				48C9D52E24A3433B00555C4B /* SPVideoDetailViewController.swift in Sources */,
+				48DBBF2F24C0728800343AAE /* SPClipFeed.swift in Sources */,
 				48E3020924A37C360019C1B4 /* SuggestedVideoTVCell.swift in Sources */,
+				48A8B8C724C1761D006BA810 /* VideoClipCVCell.swift in Sources */,
 				48FD8EB0249DEBB300C72683 /* GlobalConstants.swift in Sources */,
 				48416C8024B33F750019CBD8 /* YoutubePlayerViewController.swift in Sources */,
 				48D1DC1B2490A4B100260F3A /* SceneDelegate.swift in Sources */,
 				48FD8EAC249DEB0100C72683 /* ServerProvider.swift in Sources */,
+				48FEBCF524C2B4130010E7D3 /* CustomClipFeedFlowlayout.swift in Sources */,
 				484499E124B5F70F001A86C4 /* WebViewViewController.swift in Sources */,
 				48C9D53024A352B400555C4B /* DateExtension.swift in Sources */,
 				48CDDAB424B313B400B2C412 /* SPNewsStates.swift in Sources */,
 				48C5FEFE24A0A6C2009141D5 /* VideoDataManager.swift in Sources */,
 				48AAEF5B24ADEFA2007D337A /* VideoUploadViewController.swift in Sources */,
 				48CFDC6E24923BBF002DB2DE /* SPHomeViewController.swift in Sources */,
+				48CEBF6924C1CB520050038A /* SPClipFeedCVCell.swift in Sources */,
 				48C5FF0324A0AF82009141D5 /* VideoCVCell.swift in Sources */,
 				48CDDAB724B31A1500B2C412 /* SPNewsDataManager.swift in Sources */,
 				48C5FF0024A0AA20009141D5 /* SPVideoDetail.swift in Sources */,
