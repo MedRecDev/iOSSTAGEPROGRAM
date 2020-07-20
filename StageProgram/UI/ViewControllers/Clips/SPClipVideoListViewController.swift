@@ -52,6 +52,7 @@ extension SPClipVideoListViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SPClipFeedCVCell", for: indexPath) as! SPClipFeedCVCell
+        cell.delegate = self
         return cell
     }
     
@@ -68,5 +69,24 @@ extension SPClipVideoListViewController {
             NSLog("<<<<<<<<<<<<<<< Removed IndexPath Row : \(indexPath.row)")
             lastCell.pause()
         }
+    }
+}
+
+extension SPClipVideoListViewController: SPClipFeedCVCellDelegate {
+    func sendLikeEvent(clipFeed: SPClipFeed, isLiked: Bool) {
+//        self.showProgressHUD()
+        
+    }
+    
+    func sendShareEvent(clipFeed: SPClipFeed) {
+        
+    }
+    
+    func sendReportEvent(clipFeed: SPClipFeed) {
+        
+    }
+    
+    func sendCommentEvent(clipFeed: SPClipFeed) {
+        
     }
 }
