@@ -27,6 +27,9 @@ class CustomClipFeedFlowlayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
 
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
+        self.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         guard let collectionView = collectionView else { return }
         let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)

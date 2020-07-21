@@ -27,6 +27,8 @@ class SPClipFeed : NSObject, NSCoding{
     var totalLike : Int!
     var totalViews : Int!
     var userIp : String!
+    var totalComments: String!
+    var totalShares: String!
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
@@ -53,6 +55,8 @@ class SPClipFeed : NSObject, NSCoding{
         totalLike = json["totalLike"].intValue
         totalViews = json["totalViews"].intValue
         userIp = json["userIp"].stringValue
+        totalComments = json["totalComments"].stringValue
+        totalShares = json["totalShares"].stringValue
 	}
 
 	/**
@@ -115,6 +119,12 @@ class SPClipFeed : NSObject, NSCoding{
         if userIp != nil{
         	dictionary["userIp"] = userIp
         }
+        if totalComments != nil{
+            dictionary["totalComments"] = totalComments
+        }
+        if totalShares != nil{
+            dictionary["totalShares"] = totalShares
+        }
 		return dictionary
 	}
 
@@ -142,6 +152,8 @@ class SPClipFeed : NSObject, NSCoding{
 		totalLike = aDecoder.decodeObject(forKey: "totalLike") as? Int
 		totalViews = aDecoder.decodeObject(forKey: "totalViews") as? Int
 		userIp = aDecoder.decodeObject(forKey: "userIp") as? String
+        totalComments = aDecoder.decodeObject(forKey: "totalComments") as? String
+        totalShares = aDecoder.decodeObject(forKey: "totalShares") as? String
 	}
 
     /**
@@ -204,7 +216,12 @@ class SPClipFeed : NSObject, NSCoding{
 		if userIp != nil{
 			aCoder.encode(userIp, forKey: "userIp")
 		}
-
+        if totalComments != nil{
+            aCoder.encode(totalComments, forKey: "totalComments")
+        }
+        if totalShares != nil{
+            aCoder.encode(totalShares, forKey: "totalShares")
+        }
 	}
 
 }

@@ -386,6 +386,61 @@ class NetworkAdapter {
             }
         }
     }
+    
+    func increaseViewCountForClip(feedSourceId: Int, completion: @escaping (_ response: Bool, _ errorMessage: String?) -> Void) {
+        self.provider.request(.IncreaseViewCountForClip(feedSourceId: feedSourceId)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                completion(true, nil)
+            case .failure(let _):
+                completion(false, "Error occured while video unlike")
+            }
+        }
+    }
+    
+    func feedLike(feedSourceId: Int, userToken: String, completion: @escaping (_ response: [String:JSON]?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.FeedLike(feedSourceId: feedSourceId, userToken: userToken)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let data = responseJson["data"].dictionary {
+                        completion(data, nil)
+                    } else {
+                        let errorMessage = responseJson["message"].string
+                        completion(nil, errorMessage)
+                    }
+                } catch {
+                    completion(nil, "Error occured while video unlike")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while video unlike")
+            }
+        }
+    }
+    
+    func reportFeedSpam(feedSourceId: Int, userToken: String, reason: String, completion: @escaping (_ response: String?, _ errorMessage: String?) -> Void) {
+        self.provider.request(.ReportFeedSpam(feedSourceId: feedSourceId, userToken: userToken, reason: reason)) { (result) in
+            switch result {
+            case .success(let response):
+                let data = response.data
+                do {
+                    let responseJson = try JSON(data: data)
+                    if let message = responseJson["message"].string {
+                        completion(nil, message)
+                    } else {
+                        completion(nil, "Error occured while marking feed spam.")
+                    }
+                } catch {
+                    completion(nil, "v")
+                }
+            case .failure(let _):
+                completion(nil, "Error occured while marking feed spam.")
+            }
+        }
+    }
 }
 
 class DefaultAlamofireManager: Alamofire.Session {

@@ -12,9 +12,10 @@ class SPClipVideoListViewController: SPBaseViewController, UICollectionViewDataS
 
     @IBOutlet weak var collectionView: UICollectionView!
     weak var clipDataManager: ClipsDataManager!
+    var canSetOffset: Bool = true
     let columnLayout = CustomClipFeedFlowlayout(
         cellsPerRow: 2,
-        minimumInteritemSpacing: 0  ,
+        minimumInteritemSpacing: 0,
         minimumLineSpacing: 0,
         sectionInset: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     )
@@ -24,20 +25,25 @@ class SPClipVideoListViewController: SPBaseViewController, UICollectionViewDataS
         UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.black
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.collectionViewLayout = columnLayout
-        self.collectionView.contentInsetAdjustmentBehavior = .always
         self.collectionView.register(UINib(nibName: "SPClipFeedCVCell", bundle: nil), forCellWithReuseIdentifier: "SPClipFeedCVCell")
+    }
+    
+    deinit {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if let index = self.clipDataManager.indexForSelectedFeed() {
-            self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .top, animated: false)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if canSetOffset {
+            if let index = self.clipDataManager.indexForSelectedFeed() {
+                self.collectionView.contentOffset = CGPoint(x: 0, y: (CGFloat(index) * CGFloat(self.collectionView.frame.size.height)))
+            }
         }
     }
     
     @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -60,6 +66,7 @@ extension SPClipVideoListViewController {
         if let lastCell = cell as? SPClipFeedCVCell {
             NSLog(">>>>>>>>>>>>>> Displayed IndexPath Row : \(indexPath.row)")
             let clip = self.clipDataManager.clipFeeds[indexPath.row]
+            self.increaseViewsCount(clip: clip)
             lastCell.playVideo(clipFeed: clip)
         }
     }
@@ -67,15 +74,47 @@ extension SPClipVideoListViewController {
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let lastCell = cell as? SPClipFeedCVCell {
             NSLog("<<<<<<<<<<<<<<< Removed IndexPath Row : \(indexPath.row)")
+            canSetOffset = false
             lastCell.pause()
         }
     }
 }
 
 extension SPClipVideoListViewController: SPClipFeedCVCellDelegate {
-    func sendLikeEvent(clipFeed: SPClipFeed, isLiked: Bool) {
-//        self.showProgressHUD()
-        
+    func sendLikeEvent(clipFeed: SPClipFeed, cell: SPClipFeedCVCell) {
+        let isRegistrationComplete = UserDefaults.standard.bool(forKey: KEY_REGISTRATION_COMPLETED)
+        if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN), isRegistrationComplete {
+            self.showProgressHUD()
+            self.clipDataManager.feedLike(clip: clipFeed) { (dict, errorMessage) in
+                self.hideProgressHUD()
+                if let countDict = dict {
+                    if let likeCount = countDict["like_count"]?.intValue, let unlikeCount = countDict["unlike_count"]?.intValue {
+                        self.clipDataManager.updateLikeCount(likes: likeCount, unlikes: unlikeCount, feedSourceId: clipFeed.feedSourceId) { (likes) in
+                            cell.lblLikeCount.text = "\(likes)"
+                        }
+                        if likeCount == 0 {
+                            cell.btnLike.isSelected = false
+                        } else {
+                            cell.btnLike.isSelected = true
+                        }
+                    }
+                } else if let msg = errorMessage {
+                    self.showAlert(withMessage: msg)
+                }
+            }
+        } else {
+            if let _ = UserDefaults.standard.value(forKey: KEY_USER_TOKEN) {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            } else {
+                let loginStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let loginVC = loginStoryboard.instantiateViewController(withIdentifier: "loginNavigationController") as! UINavigationController
+                loginVC.modalPresentationStyle = .fullScreen
+                self.present(loginVC, animated: true, completion: nil)
+            }
+        }
     }
     
     func sendShareEvent(clipFeed: SPClipFeed) {
@@ -83,10 +122,21 @@ extension SPClipVideoListViewController: SPClipFeedCVCellDelegate {
     }
     
     func sendReportEvent(clipFeed: SPClipFeed) {
-        
+        self.showProgressHUD()
+        self.clipDataManager.reportFeedSpam(clip: clipFeed, reason: "Spam") { (successMsg, errorMsg) in
+            self.hideProgressHUD()
+            if let success = successMsg {
+                self.showAlert(withMessage: success)
+            }
+        }
     }
     
     func sendCommentEvent(clipFeed: SPClipFeed) {
         
+    }
+    
+    func increaseViewsCount(clip: SPClipFeed) {
+        self.clipDataManager.increaseViewCountForClip(clip: clip)
+        self.clipDataManager.updateViewCounts(feedSourceId: clip.feedSourceId)
     }
 }

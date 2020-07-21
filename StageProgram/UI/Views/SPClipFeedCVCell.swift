@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol SPClipFeedCVCellDelegate {
-    func sendLikeEvent(clipFeed: SPClipFeed, isLiked:Bool)
+    func sendLikeEvent(clipFeed: SPClipFeed, cell: SPClipFeedCVCell)
     func sendShareEvent(clipFeed: SPClipFeed)
     func sendCommentEvent(clipFeed: SPClipFeed)
     func sendReportEvent(clipFeed: SPClipFeed)
@@ -26,16 +26,19 @@ class SPClipFeedCVCell: UICollectionViewCell {
     @IBOutlet weak var lblCommentsCount: UILabel!
     @IBOutlet weak var lblShareCount: UILabel!
     @IBOutlet weak var btnLike: UIButton!
+    @IBOutlet weak var itemsContainerView: UIView!
     
     var player: AVPlayer?
-    var playerItem: AVPlayerItem!
-    var playerLayer: AVPlayerLayer!
-    var clipFeed: SPClipFeed?
+    var playerItem: AVPlayerItem?
+    var playerLayer: AVPlayerLayer?
+    weak var clipFeed: SPClipFeed?
     var delegate: SPClipFeedCVCellDelegate?
     var isLiked: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.btnLike.setImage(UIImage(named: "fav_unselected"), for: .normal)
+        self.btnLike.setImage(UIImage(named: "ic_favorite_24"), for: .selected)
     }
     
     func playVideo(clipFeed: SPClipFeed) {
@@ -46,9 +49,9 @@ class SPClipFeedCVCell: UICollectionViewCell {
             self.playerItem = AVPlayerItem(url: url)
             self.player = AVPlayer(playerItem: self.playerItem)
             self.playerLayer = AVPlayerLayer(player: self.player)
-            self.layer.addSublayer(self.playerLayer)
-            self.playerLayer.videoGravity = .resizeAspect
-            self.playerLayer.frame = CGRect(x: 0, y: 0, width: self.layer.frame.size.width, height: self.layer.frame.size.height)
+            self.layer.insertSublayer(self.playerLayer!, at: 0)
+            self.playerLayer?.videoGravity = .resizeAspect
+            self.playerLayer?.frame = CGRect(x: 0, y: 0, width: self.layer.frame.size.width, height: self.layer.frame.size.height)
             self.player?.play()
             
             if let title = clipFeed.feedTitle {
@@ -57,7 +60,7 @@ class SPClipFeedCVCell: UICollectionViewCell {
                 self.lblTitle.text = ""
             }
             self.lblDescription.text = clipFeed.feedDescription
-            self.lblDescription.text = "@userid"
+            self.lblUserId.text = "@userid"
             if let views = clipFeed.totalViews {
                 self.lblViewCount.text = "\(views)"
             } else {
@@ -68,15 +71,19 @@ class SPClipFeedCVCell: UICollectionViewCell {
             } else {
                 self.lblLikeCount.text = "0"
             }
-            self.lblShareCount.text = "0"
-            self.lblCommentsCount.text = "0"
+            self.lblShareCount.text = clipFeed.totalShares
+            self.lblCommentsCount.text = clipFeed.totalComments
         }
+    }
+    
+    deinit {
+        
     }
     
     func pause() {
         self.player?.pause()
         self.player = nil
-        self.playerLayer.removeFromSuperlayer()
+        self.playerLayer?.removeFromSuperlayer()
     }
     
     @objc func playerDidFinishPlaying() {
@@ -86,12 +93,12 @@ class SPClipFeedCVCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.playerLayer.removeFromSuperlayer()
+        self.playerLayer?.removeFromSuperlayer()
     }
     
     @IBAction func btnLikeTapped(_ sender: Any) {
         if let feed = self.clipFeed {
-            self.delegate?.sendLikeEvent(clipFeed: feed, isLiked: !isLiked)
+            self.delegate?.sendLikeEvent(clipFeed: feed, cell: self)
         }
     }
     

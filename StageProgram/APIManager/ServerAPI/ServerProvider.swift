@@ -26,6 +26,9 @@ enum AppTutorService {
     case IncreaseVideoView(videoId: Int)
     case SendFeedback(userToken: String, title: String, description: String)
     case ClipFeed(pageSize:Int, pageNumber: Int)
+    case IncreaseViewCountForClip(feedSourceId: Int)
+    case FeedLike(feedSourceId: Int, userToken: String)
+    case ReportFeedSpam(feedSourceId: Int, userToken: String, reason: String)
 }
 
 extension AppTutorService : TargetType, AccessTokenAuthorizable {    
@@ -69,6 +72,12 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return "feedback"
         case .ClipFeed:
             return "feed"
+        case .IncreaseViewCountForClip:
+            return "feed/setviews"
+        case .FeedLike:
+            return "feed/like"
+        case .ReportFeedSpam:
+            return "feed/report-spam"
         }
     }
     
@@ -106,15 +115,21 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
             return ["user_token": userToken, "feedback_title": title, "feedback_description": description]
         case .ClipFeed(let pageSize, let pageNumber):
             return ["page_size": pageSize, "page_number": pageNumber]
+        case .IncreaseViewCountForClip(let feedSourceId):
+            return ["feed_source_id": feedSourceId]
+        case .FeedLike(let feedSourceId, let userToken):
+            return ["feed_source_id": feedSourceId, "user_token": userToken]
+        case .ReportFeedSpam(let feedSourceId, let userToken, let reason):
+            return ["feed_source_id": feedSourceId, "user_token": userToken, "reason": reason]
         }
     }
     
     /// The HTTP method used in the request.
     var method: Moya.Method {
         switch self {
-        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP, .SendFeedback:
+        case .TokenCreate, .UserLogin, .UserRegister, .UploadVideo, .RegisterComplete, .ResendOTP, .SendFeedback, .ReportFeedSpam:
             return .post
-        case .VideoLike, .VideoDisLike, .IncreaseVideoView:
+        case .VideoLike, .VideoDisLike, .IncreaseVideoView, .IncreaseViewCountForClip, .FeedLike:
             return .put
         case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels, .ClipFeed:
             return .get
@@ -125,11 +140,11 @@ extension AppTutorService : TargetType, AccessTokenAuthorizable {
     var task: Task {
         switch self {
         //Post API
-        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike, .RegisterComplete, .ResendOTP, .SendFeedback:
+        case  .TokenCreate, .UserLogin, .UserRegister, .VideoLike, .VideoDisLike, .RegisterComplete, .ResendOTP, .SendFeedback, .FeedLike, .ReportFeedSpam:
             return .requestCompositeParameters(bodyParameters: self.parameters!,
                                                bodyEncoding: JSONEncoding.default,
                                                urlParameters: [:])
-        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels, .IncreaseVideoView, .ClipFeed:
+        case .StateList, .VideoList, .SuggestionList, .NewsStates, .NewsChannels, .IncreaseVideoView, .ClipFeed, .IncreaseViewCountForClip:
                 return .requestParameters(parameters: self.parameters!, encoding: URLEncoding.queryString)
         case .UploadVideo:
             var mutDatas = [MultipartFormData]()

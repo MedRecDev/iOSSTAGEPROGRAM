@@ -43,6 +43,10 @@ class ClipsViewController: SPBaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SPClipVideoListViewController {
             destination.clipDataManager = self.clipsDataManager
